@@ -1,0 +1,1 @@
+- [ ] Implement DoctorController.js (Audit logic)\n- [ ] Add "check-site" command to athena-agent\n- [ ] Implement "heal-site" logic (npm install, json validation)\n- [ ] Create nightly cron script

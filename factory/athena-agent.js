@@ -8,6 +8,7 @@ import { AthenaConfigManager } from './5-engine/lib/ConfigManager.js';
 import { ProjectController } from './5-engine/controllers/ProjectController.js';
 import { SiteController } from './5-engine/controllers/SiteController.js';
 import { MarketingController } from './5-engine/controllers/MarketingController.js';
+import { DoctorController } from './5-engine/controllers/DoctorController.js';
 import { AthenaInterpreter } from './5-engine/lib/Interpreter.js';
 import { AthenaGateway } from './5-engine/lib/Gateway.js';
 import path from 'path';
@@ -23,6 +24,7 @@ const config = new AthenaConfigManager(root);
 const projectCtrl = new ProjectController(config);
 const siteCtrl = new SiteController(config);
 const marketingCtrl = new MarketingController(config);
+const doctorCtrl = new DoctorController(config);
 const interpreter = new AthenaInterpreter(config);
 const gateway = new AthenaGateway(root);
 
@@ -32,6 +34,18 @@ const args = process.argv.slice(3);
 async function run() {
     try {
         switch (command) {
+            case 'doctor-check':
+                // Usage: athena-agent doctor-check [siteName]
+                console.log(JSON.stringify(doctorCtrl.audit(args[0]), null, 2));
+                break;
+
+            case 'doctor-heal':
+                // Usage: athena-agent doctor-heal <siteName>
+                if (!args[0]) throw new Error("Site name required for healing.");
+                const healRes = await doctorCtrl.heal(args[0]);
+                console.log(JSON.stringify(healRes, null, 2));
+                break;
+
             case 'list-projects':
                 console.log(JSON.stringify(projectCtrl.list(), null, 2));
                 break;
