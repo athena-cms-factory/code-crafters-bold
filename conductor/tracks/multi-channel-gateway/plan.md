@@ -1,0 +1,1 @@
+- [ ] Audit existing Gateway.js\n- [ ] Install and configure mail listener (node-imap or similar)\n- [ ] Implement "Mail-to-Agent" logic (Parse body -> SiteController)\n- [ ] Implement "Agent-to-Mail" reply logic\n- [ ] Create a "Watchdog" service to keep the gateway alive

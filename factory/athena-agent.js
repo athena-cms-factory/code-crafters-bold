@@ -9,6 +9,7 @@ import { ProjectController } from './5-engine/controllers/ProjectController.js';
 import { SiteController } from './5-engine/controllers/SiteController.js';
 import { MarketingController } from './5-engine/controllers/MarketingController.js';
 import { AthenaInterpreter } from './5-engine/lib/Interpreter.js';
+import { AthenaGateway } from './5-engine/lib/Gateway.js';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -23,6 +24,7 @@ const projectCtrl = new ProjectController(config);
 const siteCtrl = new SiteController(config);
 const marketingCtrl = new MarketingController(config);
 const interpreter = new AthenaInterpreter(config);
+const gateway = new AthenaGateway(root);
 
 const command = process.argv[2];
 const args = process.argv.slice(3);
@@ -36,6 +38,12 @@ async function run() {
 
             case 'list-sites':
                 console.log(JSON.stringify(siteCtrl.list(), null, 2));
+                break;
+
+            case 'start-gateway':
+                console.log("🔱 Athena Agent Gateway Service wordt opgestart...");
+                gateway.watchFileInbox(); // Lokale simulatie
+                await gateway.startMailListener(); // Echte mail listener
                 break;
 
             case 'generate-blog':
