@@ -1,1 +1,5 @@
-- [ ] Extract business logic from athena.js into standalone Controllers\n- [ ] Design athena-agent.js CLI architecture\n- [ ] Implement "Create from Prompt" flow (LLM -> JSON -> Factory)\n- [ ] Implement "Update from Instruction" flow\n- [ ] Design Mail/Webhook Gateway architecture
+- [x] Extract business logic from athena.js into standalone Controllers
+- [x] Design athena-agent.js CLI architecture
+- [ ] Implement "Create from Prompt" flow (LLM -> JSON -> Factory)
+- [ ] Implement "Update from Instruction" flow
+- [ ] Design Mail/Webhook Gateway architecture

@@ -7,7 +7,9 @@
 import { AthenaConfigManager } from './5-engine/lib/ConfigManager.js';
 import { ProjectController } from './5-engine/controllers/ProjectController.js';
 import { SiteController } from './5-engine/controllers/SiteController.js';
+import { AthenaInterpreter } from './5-engine/lib/Interpreter.js';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +19,7 @@ const root = path.resolve(__dirname, '..');
 const config = new AthenaConfigManager(root);
 const projectCtrl = new ProjectController(config);
 const siteCtrl = new SiteController(config);
+const interpreter = new AthenaInterpreter(config);
 
 const command = process.argv[2];
 const args = process.argv.slice(3);
@@ -34,9 +37,35 @@ async function run() {
 
             case 'create-site':
                 // Usage: athena-agent create-site '{"projectName": "test-site", "siteType": "portfolio"}'
-                const params = JSON.parse(args[0]);
-                const result = await siteCtrl.create(params);
-                console.log(JSON.stringify(result, null, 2));
+                // NEW: Also supports --prompt "..."
+                if (args[0] === '--prompt') {
+                    const prompt = args.slice(1).join(' ');
+                    console.log(JSON.stringify({ status: "analyzing", prompt }, null, 2));
+                    
+                    // Haal werkelijke sitetypes op (zoeken in docked en autonomous)
+                    const types = [];
+                    ['docked', 'autonomous'].forEach(track => {
+                        const dir = path.join(root, 'factory/3-sitetypes', track);
+                        if (fs.existsSync(dir)) {
+                            fs.readdirSync(dir).forEach(t => {
+                                if (fs.statSync(path.join(dir, t)).isDirectory()) types.push(t);
+                            });
+                        }
+                    });
+
+                    const stylesDir = path.join(root, 'factory/2-templates/boilerplate/docked/css');
+                    const styles = fs.readdirSync(stylesDir).filter(f => f.endsWith('.css')).map(f => f.replace('.css', ''));
+                    
+                    const aiConfig = await interpreter.interpretCreate(prompt, types, styles);
+                    console.log(JSON.stringify({ status: "generated-config", config: aiConfig }, null, 2));
+                    
+                    const result = await siteCtrl.create(aiConfig);
+                    console.log(JSON.stringify(result, null, 2));
+                } else {
+                    const params = JSON.parse(args[0]);
+                    const result = await siteCtrl.create(params);
+                    console.log(JSON.stringify(result, null, 2));
+                }
                 break;
 
             case 'sync-to-sheet':
