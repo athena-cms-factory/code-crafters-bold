@@ -15,6 +15,8 @@ import { AthenaProcessManager } from '../5-engine/lib/ProcessManager.js';
 import { AthenaConfigManager } from '../5-engine/lib/ConfigManager.js';
 import { AthenaLogManager } from '../5-engine/lib/LogManager.js';
 import { AthenaSecretManager } from '../5-engine/lib/SecretManager.js';
+import { ProjectController } from '../5-engine/controllers/ProjectController.js';
+import { SiteController } from '../5-engine/controllers/SiteController.js';
 import {
     generateDataStructureAPI,
     generateParserInstructionsAPI,
@@ -32,6 +34,8 @@ const configManager = new AthenaConfigManager(root);
 const pm = new AthenaProcessManager(root);
 const lm = new AthenaLogManager(root);
 const sm = new AthenaSecretManager(root);
+const projectCtrl = new ProjectController(configManager);
+const siteCtrl = new SiteController(configManager);
 
 // --- MULTER CONFIG (voor uploads) ---
 const storage = multer.diskStorage({
@@ -106,112 +110,22 @@ app.post('/api/system/secrets/sync', async (req, res) => {
 });
 
 app.get('/api/projects', (req, res) => {
-    const dir = path.join(root, '../input');
-    if (!fs.existsSync(dir)) return res.json([]);
-    const projects = fs.readdirSync(dir).filter(f => fs.statSync(path.join(dir, f)).isDirectory() && !f.startsWith('.'));
-    res.json(projects);
+    res.json(projectCtrl.list());
 });
 
 app.get('/api/sites', (req, res) => {
-    const dir = path.resolve(root, '../sites');
-    if (!fs.existsSync(dir)) return res.json([]);
-    const sites = fs.readdirSync(dir).filter(f => fs.statSync(path.join(dir, f)).isDirectory() && !f.startsWith('.') && f !== 'athena-cms');
-
-    const sitesWithStatus = sites.map(site => {
-        const deployFile = path.join(dir, site, 'project-settings', 'deployment.json');
-        const sheetFile = path.join(dir, site, 'project-settings', 'url-sheet.json');
-
-        let status = 'local';
-        let deployData = null;
-        let sheetData = null;
-        let isDataEmpty = false;
-
-        // --- RAM-SAFE DATA CHECK ---
-        const dataDir = path.join(dir, site, 'src', 'data');
-        if (fs.existsSync(dataDir)) {
-            const jsonFiles = fs.readdirSync(dataDir).filter(f => f.endsWith('.json') && f !== 'schema.json');
-            if (jsonFiles.length > 0) {
-                let allEmpty = true;
-                for (const file of jsonFiles) {
-                    try {
-                        const stats = fs.statSync(path.join(dataDir, file));
-                        // Als een bestand kleiner is dan 5 bytes (bv. '[]' of '[\n]'), beschouwen we het als leeg.
-                        if (stats.size > 5) {
-                            allEmpty = false;
-                            break;
-                        }
-                    } catch (e) { }
-                }
-                isDataEmpty = allEmpty;
-            } else {
-                isDataEmpty = true;
-            }
-        } else {
-            isDataEmpty = true;
-        }
-
-        if (fs.existsSync(deployFile)) {
-            try {
-                deployData = JSON.parse(fs.readFileSync(deployFile, 'utf8'));
-                status = deployData.status || 'live';
-            } catch (e) { status = 'error'; }
-        }
-
-        if (fs.existsSync(sheetFile)) {
-            try {
-                const json = JSON.parse(fs.readFileSync(sheetFile, 'utf8'));
-                // url-sheet.json structuur is { "TabNaam": { "editUrl": "..." } }
-                // We pakken de eerste de beste editUrl
-                const firstKey = Object.keys(json)[0];
-                if (firstKey) sheetData = json[firstKey].editUrl;
-            } catch (e) { }
-        }
-
-        return { name: site, status, deployData, sheetUrl: sheetData, isDataEmpty };
-    });
-    res.json(sitesWithStatus);
+    res.json(siteCtrl.list());
 });
 
 app.get('/api/projects/:id/files', (req, res) => {
     try {
-        const { id } = req.params;
-        const dir = path.join(root, '../input', id, 'input');
-        if (!fs.existsSync(dir)) return res.json([]);
-        const files = fs.readdirSync(dir).filter(f => fs.statSync(path.join(dir, f)).isFile() && !f.startsWith('.'));
-        res.json(files);
+        res.json(projectCtrl.getFiles(req.params.id));
     } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 app.get('/api/projects/:id/content', (req, res) => {
     try {
-        const { id } = req.params;
-        const baseDir = path.join(root, '../input', id);
-        const inputDir = path.join(baseDir, 'input');
-
-        // Helper to collect files from a directory
-        const collectFiles = (directory) => {
-            if (fs.existsSync(directory)) {
-                return fs.readdirSync(directory).filter(f => {
-                    return fs.statSync(path.join(directory, f)).isFile() &&
-                        !f.startsWith('.') &&
-                        (f.endsWith('.txt') || f.endsWith('.md') || f.endsWith('.json'));
-                }).map(f => path.join(directory, f));
-            }
-            return [];
-        };
-
-        const filesToRead = [...collectFiles(baseDir), ...collectFiles(inputDir)];
-
-        if (filesToRead.length === 0) return res.json({ content: "" });
-
-        let fullContent = "";
-        for (const filePath of filesToRead) {
-            const content = fs.readFileSync(filePath, 'utf8');
-            const fileName = path.basename(filePath);
-            fullContent += `--- FILE: ${fileName} ---\n${content}\n\n`;
-        }
-
-        res.json({ content: fullContent });
+        res.json(projectCtrl.getContent(req.params.id));
     } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -369,14 +283,7 @@ app.post('/api/settings', (req, res) => {
 
 app.post('/api/projects/create', (req, res) => {
     try {
-        const { projectName } = req.body;
-        const safeName = validateProjectName(projectName);
-        const dir = path.join(root, '../input', safeName, 'input');
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-            fs.writeFileSync(path.join(root, '../input', safeName, '.gitkeep'), '');
-        }
-        res.json({ success: true, message: `Bronproject '${safeName}' aangemaakt.`, projectName: safeName });
+        res.json(projectCtrl.create(req.body.projectName));
     } catch (e) {
         res.status(500).json({ success: false, error: e.message });
     }
@@ -386,21 +293,9 @@ app.post('/api/projects/create', (req, res) => {
 app.post('/api/projects/create-from-site', async (req, res) => {
     try {
         const { sourceSiteName, targetProjectName } = req.body;
-        if (!sourceSiteName || !targetProjectName) {
-            return res.status(400).json({ error: "Bron site en doel project naam zijn verplicht" });
-        }
-
-        const tool = path.join(root, '5-engine', 'site-to-datasource-generator.js');
-        const output = execSync(`"${process.execPath}" "${tool}" "${sourceSiteName}" "${targetProjectName}"`, {
-            cwd: root,
-            env: { ...process.env }
-        }).toString();
-
-        res.json({ success: true, message: `Data Bron '${targetProjectName}' succesvol gegenereerd van site '${sourceSiteName}'!`, details: output });
+        res.json(projectCtrl.createFromSite(sourceSiteName, targetProjectName));
     } catch (e) {
-        const stderr = e.stderr ? e.stderr.toString() : e.message;
-        console.error(`[DATASOURCE-FROM-SITE] Fout:`, stderr);
-        res.status(500).json({ success: false, error: stderr });
+        res.status(500).json({ success: false, error: e.message });
     }
 });
 
@@ -421,22 +316,9 @@ app.post('/api/projects/:id/upload', upload.array('files'), (req, res) => {
 app.post('/api/projects/:id/add-text', (req, res) => {
     try {
         const { id } = req.params;
-        const { text, filename = 'input.txt' } = req.body;
-
-        if (!text) throw new Error("Geen tekst ontvangen.");
-
-        const uploadDir = path.join(root, '../input', id, 'input');
-        if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
-
-        const filePath = path.join(uploadDir, filename);
-
-        // Append met een scheidingsteken
-        const separator = fs.existsSync(filePath) ? "\n\n--- NIEUWE INVOER ---\n\n" : "";
-        fs.appendFileSync(filePath, separator + text, 'utf8');
-
-        res.json({ success: true, message: "Tekst succesvol toegevoegd aan " + filename });
+        const { text, filename } = req.body;
+        res.json(projectCtrl.addText(id, text, filename));
     } catch (e) {
-        console.error(e);
         res.status(500).json({ success: false, error: e.message });
     }
 });
@@ -446,46 +328,16 @@ app.post('/api/projects/:id/save-urls', (req, res) => {
     try {
         const { id } = req.params;
         const { urls } = req.body;
-
-        if (!urls) throw new Error("Geen URLs ontvangen.");
-
-        const uploadDir = path.join(root, '../input', id, 'input');
-        if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
-
-        // Normaliseer URLs (splitsen op komma's en newlines, trimmen, lege regels weg)
-        const urlList = urls.split(/[\n,]+/).map(u => u.trim()).filter(u => u.length > 0);
-
-        if (urlList.length === 0) throw new Error("Geen geldige URLs gevonden.");
-
-        const filePath = path.join(uploadDir, 'urls.txt');
-        fs.writeFileSync(filePath, urlList.join('\n'), 'utf8');
-
-        res.json({ success: true, message: `${urlList.length} URL(s) opgeslagen in urls.txt` });
+        res.json(projectCtrl.saveUrls(id, urls));
     } catch (e) {
-        console.error(e);
         res.status(500).json({ success: false, error: e.message });
     }
 });
 
 app.post('/api/create', async (req, res) => {
     try {
-        const { projectName, sourceProject, siteType, layoutName, styleName, siteModel, autoSheet, clientEmail } = req.body;
-        console.log(`Creating project: ${projectName} from source: ${sourceProject || projectName} (${siteModel})`);
-        const config = {
-            projectName: validateProjectName(projectName),
-            sourceProject: sourceProject ? validateProjectName(sourceProject) : undefined,
-            siteType,
-            layoutName,
-            styleName,
-            siteModel: siteModel || 'SPA',
-            autoSheet: autoSheet === true || autoSheet === 'true',
-            clientEmail,
-            blueprintFile: path.join(siteType, 'blueprint', `${siteType}.json`)
-        };
-        await createProject(config);
-        res.json({ success: true, message: `Project ${config.projectName} created!` });
+        res.json(await siteCtrl.create(req.body));
     } catch (e) {
-        console.error(e);
         res.status(500).json({ success: false, error: e.message });
     }
 });
@@ -599,65 +451,20 @@ app.post('/api/projects/:id/link-sheet', async (req, res) => {
 
 app.post('/api/projects/:id/sync-site-to-sheet', async (req, res) => {
     try {
-        const { id } = req.params;
-        const manager = new AthenaDataManager(root);
-        await manager.syncToSheet(id);
-        res.json({ success: true, details: "Sync completed successfully. Check server logs for details." });
+        res.json(await siteCtrl.syncToSheet(req.params.id));
     } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
 app.post('/api/sync-to-sheets/:id', async (req, res) => {
     try {
-        const { id } = req.params;
-        // Check of het project bestaat in sites/
-        const siteDir = path.resolve(root, '../sites', id);
-        if (!fs.existsSync(siteDir)) {
-            return res.status(404).json({ success: false, error: "Site niet gevonden in de sites/ map." });
-        }
-
-        // --- AUTOMATISCHE PROVISIONING (v7.4) ---
-        const settingsPath = path.join(siteDir, 'project-settings/url-sheet.json');
-        if (!fs.existsSync(settingsPath)) {
-            console.log(`[SHEETS] Geen sheet gevonden voor ${id}. Start automatische aanmaak...`);
-            const provisioner = path.join(root, '5-engine', 'auto-sheet-provisioner.js');
-            try {
-                execSync(`"${process.execPath}" "${provisioner}" "${id}"`, { cwd: root, env: { ...process.env } });
-                console.log(`[SHEETS] Nieuwe Google Sheet succesvol aangemaakt voor ${id}.`);
-            } catch (provErr) {
-                console.error(`[SHEETS] Provisioning mislukt voor ${id}:`, provErr.message);
-                return res.status(500).json({ success: false, error: "Kon geen nieuwe Google Sheet aanmaken: " + provErr.message });
-            }
-        }
-
-        const tool = path.join(root, '5-engine', 'sync-full-project-to-sheet.js');
-        console.log(`[SHEETS] Full Sync gestart voor: ${id}`);
-
-        const output = execSync(`"${process.execPath}" "${tool}" "${id}"`, {
-            cwd: root,
-            env: { ...process.env }
-        }).toString();
-
-        res.json({ success: true, message: 'Succesvol gesynct naar Google Sheets!', details: output });
-    } catch (e) {
-        const stderr = e.stderr ? e.stderr.toString() : e.message;
-        console.error(`[SHEETS] Sync fout voor ${req.params.id}:`, stderr);
-        res.status(500).json({ success: false, error: stderr });
-    }
+        res.json(await siteCtrl.syncToSheet(req.params.id));
+    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
 app.post('/api/pull-from-sheets/:id', async (req, res) => {
     try {
-        const { id } = req.params;
-        console.log(`[SHEETS] Pull & Backup gestart voor: ${id}`);
-
-        const manager = new AthenaDataManager(root);
-        await manager.syncFromSheet(id);
-
-        res.json({ success: true, message: 'Data succesvol opgehaald! (Lokale backup gemaakt)', details: "Sync completed successfully." });
-    } catch (e) {
-        console.error(`[SHEETS] Pull fout voor ${req.params.id}:`, e.message);
-        res.status(500).json({ success: false, error: e.message });
-    }
+        res.json(await siteCtrl.pullFromSheet(req.params.id));
+    } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
 app.post('/api/projects/:id/reverse-sync', async (req, res) => {
@@ -829,8 +636,7 @@ app.post('/api/sites/update-deployment', (req, res) => {
 app.post('/api/deploy', async (req, res) => {
     try {
         const { projectName, commitMsg } = req.body;
-        const result = await deployProject(projectName, commitMsg);
-        res.json({ success: true, result });
+        res.json(await siteCtrl.deploy(projectName, commitMsg));
     } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
@@ -871,9 +677,7 @@ app.post('/api/run-script', (req, res) => {
 
 app.post('/api/generate-overview', (req, res) => {
     try {
-        const tool = path.join(root, '5-engine', 'generate-sites-overview.js');
-        execSync(`"${process.execPath}" "${tool}"`, { cwd: root });
-        res.json({ success: true });
+        res.json(siteCtrl.runScript('generate-sites-overview.js', []));
     } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
