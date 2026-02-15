@@ -60,6 +60,9 @@
                 <button class="nav-btn" onclick="showSection('todo', this)">
                     <i class="fa-solid fa-list-check"></i> Roadmap
                 </button>
+                <button class="nav-btn" onclick="showSection('storage', this)">
+                    <i class="fa-solid fa-microchip"></i> Storage & Health
+                </button>
                 <button class="nav-btn" onclick="showSection('settings', this)">
                     <i class="fa-solid fa-cog"></i> Instellingen
                 </button>
@@ -511,7 +514,74 @@
             </section>
             <!-- SECTION: TODO -->
             <section id="todo" class="view-section hidden">
-                <!-- ... -->
+                <div class="section-header">
+                    <h3>Athena Roadmap & Tracks</h3>
+                    <button onclick="loadTodo()" class="secondary-btn">
+                        <i class="fa-solid fa-sync"></i> Refresh
+                    </button>
+                </div>
+                <p class="muted mb-20">Kies een track om stap-voor-stap begeleid te worden door de Factory processen.</p>
+
+                <div class="roadmap-container">
+                    <div id="roadmap-menu" class="list-grid mb-20">
+                        <!-- Tracks worden hier geladen -->
+                    </div>
+
+                    <div id="active-roadmap" class="hidden">
+                        <button onclick="backToRoadmapMenu()" class="secondary-btn mb-20">
+                            <i class="fa-solid fa-arrow-left"></i> Terug naar overzicht
+                        </button>
+                        <div id="roadmap-content" class="roadmap-steps">
+                            <!-- Stappen worden hier geladen -->
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <h4 class="mb-10 mt-20"><i class="fa-solid fa-clipboard-list"></i> Algemene TODO lijst</h4>
+                    <div id="todo-content" class="markdown-body bg-surface p-20 rounded-xl border border-border">
+                        Laden...
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: STORAGE -->
+            <section id="storage" class="view-section hidden">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Totale Sites</h3>
+                        <p id="storage-count-sites">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Bespaarbare Ruimte</h3>
+                        <p id="storage-savable" class="text-success">0 MB</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Systeem Schijf</h3>
+                        <div class="flex-row" style="margin-top: 5px;">
+                            <span id="storage-disk-percent" style="font-size: 1.5rem; font-weight: 800; color: #fff;">--%</span>
+                            <div class="progress-bar-bg" style="flex: 1; margin-left: 15px; height: 8px;">
+                                <div id="storage-disk-bar" class="progress-bar-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h3>Hydration Management</h3>
+                    <div class="flex-row" style="gap: 10px;">
+                        <button onclick="pruneAllDormant()" class="primary-btn danger-btn" style="background: var(--error);">
+                            <i class="fa-solid fa-broom"></i> Prune All Dormant
+                        </button>
+                        <button onclick="loadStorageStatus()" class="secondary-btn">
+                            <i class="fa-solid fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                <p class="muted" style="margin-bottom: 20px;">Beheer de <code>node_modules</code> opslag per site om schijfruimte te besparen op je Chromebook.</p>
+                
+                <div id="storage-list" class="list-grid">
+                    <p class="loading-msg">Opslag status laden...</p>
+                </div>
             </section>
 
             <!-- SECTION: SETTINGS -->
@@ -546,8 +616,27 @@
                             </div>
                         </div>
 
-                        <div class="tool-category-header"><i class="fa-brands fa-google"></i> Google Cloud / Sheets
+                        <div class="tool-category-header"><i class="fa-solid fa-credit-card"></i> Betaal Gateways & E-commerce</div>
+                        <div class="info-box mb-10" style="border-left-color: var(--accent);">
+                            <p class="small">Configureer hier je Stripe keys om betalingen te ontvangen via Bancontact, Creditcard, etc. 
+                            <a href="#" onclick="showManual('PAYMENTS_STRIPE_NL.md')" class="accent" style="text-decoration: underline; margin-left: 5px;">Bekijk Handleiding</a></p>
                         </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Stripe Secret Key (sk_...)</label>
+                                <input type="password" name="STRIPE_SECRET_KEY" placeholder="sk_live_...">
+                            </div>
+                            <div class="form-group">
+                                <label>Stripe Publishable Key (pk_...)</label>
+                                <input type="text" name="STRIPE_PUBLISHABLE_KEY" placeholder="pk_live_...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mollie API Key (Optioneel)</label>
+                            <input type="password" name="MOLLIE_API_KEY" placeholder="live_...">
+                        </div>
+
+                        <div class="tool-category-header"><i class="fa-brands fa-google"></i> Google Cloud / Sheets</div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Client ID</label>

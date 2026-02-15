@@ -17,6 +17,8 @@ import { AthenaLogManager } from '../5-engine/lib/LogManager.js';
 import { AthenaSecretManager } from '../5-engine/lib/SecretManager.js';
 import { ProjectController } from '../5-engine/controllers/ProjectController.js';
 import { SiteController } from '../5-engine/controllers/SiteController.js';
+import { DoctorController } from '../5-engine/controllers/DoctorController.js';
+import { PaymentController } from '../5-engine/controllers/PaymentController.js';
 import {
     generateDataStructureAPI,
     generateParserInstructionsAPI,
@@ -36,6 +38,8 @@ const lm = new AthenaLogManager(root);
 const sm = new AthenaSecretManager(root);
 const projectCtrl = new ProjectController(configManager);
 const siteCtrl = new SiteController(configManager);
+const doctorCtrl = new DoctorController(configManager);
+const paymentCtrl = new PaymentController(configManager);
 
 // --- MULTER CONFIG (voor uploads) ---
 const storage = multer.diskStorage({
@@ -159,10 +163,24 @@ app.get('/api/styles', (req, res) => {
 });
 
 app.get('/api/todo', (req, res) => {
-    const todoPath = path.join(root, 'TODO.md');
+    const todoPath = path.join(root, 'TASKS/_TODO.md');
     if (fs.existsSync(todoPath)) {
         res.json({ content: fs.readFileSync(todoPath, 'utf8') });
     } else { res.status(404).json({ error: "TODO.md niet gevonden" }); }
+});
+
+app.get('/api/roadmaps', (req, res) => {
+    const roadmapPath = path.join(root, 'config/roadmaps.json');
+    if (fs.existsSync(roadmapPath)) {
+        res.json(JSON.parse(fs.readFileSync(roadmapPath, 'utf8')));
+    } else { res.status(404).json({ error: "Roadmaps niet gevonden" }); }
+});
+
+app.get('/api/docs/:filename', (req, res) => {
+    const docPath = path.join(root, 'docs', req.params.filename);
+    if (fs.existsSync(docPath)) {
+        res.json({ content: fs.readFileSync(docPath, 'utf8') });
+    } else { res.status(404).json({ error: "Document niet gevonden" }); }
 });
 
 app.get('/api/system-status', (req, res) => {
@@ -275,6 +293,20 @@ app.post('/api/settings', (req, res) => {
 
         res.json({ success: true, message: 'Instellingen succesvol bijgewerkt in .env' });
     } catch (e) {
+        res.status(500).json({ success: false, error: e.message });
+    }
+});
+
+// --- PAYMENTS ---
+app.post('/api/payments/create-session', async (req, res) => {
+    try {
+        const { projectName, cart, successUrl, cancelUrl } = req.body;
+        console.log(`💳 Betalingsverzoek voor ${projectName} (${cart.length} items)`);
+        
+        const session = await paymentCtrl.createStripeSession(projectName, cart, successUrl, cancelUrl);
+        res.json({ success: true, url: session.url });
+    } catch (e) {
+        console.error("❌ Stripe Session Error:", e.message);
         res.status(500).json({ success: false, error: e.message });
     }
 });
@@ -1124,6 +1156,59 @@ app.post('/api/sites/:id/update-data', (req, res) => {
     } catch (e) {
         res.status(500).json({ success: false, error: e.message });
     }
+});
+
+// --- STORAGE MANAGEMENT API ---
+
+app.get('/api/storage/status', (req, res) => {
+    try {
+        const { siteName } = req.query;
+        res.json(doctorCtrl.audit(siteName));
+    } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/storage/policy', (req, res) => {
+    try {
+        const { siteName, policy } = req.body;
+        res.json(doctorCtrl.setPolicy(siteName, policy));
+    } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/storage/enforce', async (req, res) => {
+    try {
+        const { siteName } = req.body;
+        res.json(await doctorCtrl.enforcePolicy(siteName));
+    } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/storage/prune-all', async (req, res) => {
+    try {
+        const auditResults = doctorCtrl.audit();
+        const pruneActions = [];
+        for (const resObj of auditResults) {
+            if (resObj.policy === 'dormant' && resObj.hydration === 'hydrated') {
+                const pruneRes = doctorCtrl.dehydrate(resObj.site);
+                pruneActions.push({ site: resObj.site, ...pruneRes });
+            }
+        }
+        res.json({ success: true, actions: pruneActions });
+    } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// --- MARKETING API ---
+
+app.post('/api/marketing/generate-seo', async (req, res) => {
+    try {
+        const { projectName } = req.body;
+        res.json(await marketingCtrl.generateSEO(projectName));
+    } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/marketing/generate-blog', async (req, res) => {
+    try {
+        const { projectName, topic } = req.body;
+        res.json(await marketingCtrl.generateBlog(projectName, topic));
+    } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 app.listen(port, () => {

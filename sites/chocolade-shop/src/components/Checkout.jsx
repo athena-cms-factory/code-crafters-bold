@@ -18,6 +18,33 @@ const Checkout = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleStripePayment = async () => {
+    setIsProcessing(true);
+    try {
+      const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '4001';
+      const response = await fetch(`http://localhost:${dashboardPort}/api/payments/create-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          projectName: 'chocolade-shop',
+          cart: cart,
+          successUrl: window.location.origin + '/checkout?status=success',
+          cancelUrl: window.location.origin + '/checkout?status=cancel'
+        })
+      });
+
+      const data = await response.json();
+      if (data.success && data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Kon geen betaalsessie aanmaken.");
+      }
+    } catch (e) {
+      alert("Betalingsfout: " + e.message);
+      setIsProcessing(false);
+    }
+  };
+
   const handleEmailOrder = (e) => {
     e.preventDefault();
     setIsProcessing(true);
@@ -62,6 +89,21 @@ Opmerkingen: ${formData.opmerkingen}
     );
   }
 
+  // Check for status in URL
+  const query = new URLSearchParams(window.location.search);
+  const status = query.get('status');
+
+  if (status === 'success') {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-8 text-center bg-green-50">
+        <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center text-white text-4xl mb-6">✓</div>
+        <h2 className="text-3xl font-serif font-bold mb-4 text-green-800">Betaling Geslaagd!</h2>
+        <p className="text-green-700 mb-8 max-w-md">Bedankt voor je aankoop. We maken je bestelling direct in orde.</p>
+        <Link to="/" onClick={() => clearCart()} className="btn-primary px-8 py-3 rounded-full bg-green-600 border-none text-white">Terug naar de winkel</Link>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[var(--color-background)] py-20 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -71,7 +113,7 @@ Opmerkingen: ${formData.opmerkingen}
           <Link to="/" className="inline-flex items-center text-accent hover:underline mb-8">
             <span className="mr-2">←</span> Terug naar winkel
           </Link>
-          <h1 className="text-4xl font-serif font-bold text-[var(--color-heading)]">Plaats Bestelling</h1>
+          <h1 className="text-4xl font-serif font-bold text-[var(--color-heading)]">Afrekenen</h1>
           
           <div className="bg-surface p-8 rounded-[2rem] shadow-sm border border-slate-100 dark:border-white/5">
             <h3 className="text-xl font-bold mb-6">Jouw Selectie</h3>
@@ -93,10 +135,28 @@ Opmerkingen: ${formData.opmerkingen}
           </div>
         </div>
 
-        {/* Contactformulier */}
+        {/* Betaalmethode */}
         <div className="bg-surface p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 dark:border-white/5 self-start">
-          <h3 className="text-2xl font-bold mb-8">Jouw Gegevens</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">Betaalmethode</h3>
           
+          <div className="space-y-4 mb-8">
+            <button 
+              onClick={handleStripePayment}
+              disabled={isProcessing}
+              className={`w-full py-5 rounded-2xl text-xl font-bold shadow-xl transition-all flex items-center justify-center gap-4 ${isProcessing ? 'bg-slate-200 cursor-not-allowed' : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:scale-[1.02]'}`}
+            >
+              <i className="fa-brands fa-stripe text-4xl"></i>
+              {isProcessing ? 'Verwerken...' : `Nu Betalen (€${cartTotal.toFixed(2)})`}
+            </button>
+            <p className="text-center text-xs text-secondary font-medium">
+              Veilig betalen via Bancontact (Payconiq), iDEAL, Creditcard of PayPal.
+            </p>
+          </div>
+
+          <div className="flex items-center my-10 before:flex-1 before:border-t before:border-slate-200 after:flex-1 after:border-t after:border-slate-200">
+            <span className="px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Of bestel handmatig</span>
+          </div>
+
           <form onSubmit={handleEmailOrder} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>

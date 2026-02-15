@@ -1,13 +1,14 @@
-# Athena CMS Factory - Architecture & Flow (v7.9.2)
+# Athena CMS Factory - Architecture & Flow (v8.0)
 
-This document provides deep insight into the interactions between various scripts in the Athena Factory (v7.9.2) and the architectural models supported.
+This document provides deep insight into the interactions between various scripts in the Athena Factory (v8.0) and the architectural models supported.
 
-## 1. Architectural Models: SPA vs MPA
+## 1. Architectural Models: React 19 + Tailwind v4
 
-Athena supports two fundamentally different architectural models to meet the diverse needs of the SME market.
+Athena v8.0 introduces a modernized stack leveraging **React 19** for improved concurrency and **Tailwind CSS v4** for a zero-runtime, high-performance styling engine.
 
 ### A. SINGLE-PAGE ARCHITECTURE (SPA)
 **Ideal for:** Local merchants, portfolios, event sites, and simple landing pages.
+*   **Stack:** React 19 + Vite + Tailwind v4.
 *   **Navigation:** Uses anchor links (`#services`, `#contact`) with smooth scrolling.
 *   **Structure:** One central `App.jsx` that renders all sections sequentially.
 *   **Data:** Fetches all data at once during page load.
@@ -15,6 +16,7 @@ Athena supports two fundamentally different architectural models to meet the div
 
 ### B. MULTI-PAGE ARCHITECTURE (MPA)
 **Ideal for:** Institutions (hospitals, schools), larger companies with multiple locations, or complex services.
+*   **Stack:** React 19 + Vite + Tailwind v4 + React Router 7.
 *   **Navigation:** Uses `react-router-dom` for real URL paths (`/services/cardiology`, `/about-us`).
 *   **Structure:** A routing map that renders unique page components based on the URL.
 *   **Data:** Can load page-specific data, increasing scalability.
@@ -29,16 +31,18 @@ Athena supports two fundamentally different architectural models to meet the div
 The system has two main entry points (Hubs) that drive the rest of the engine:
 
 1.  **Visual Hub:** `dashboard/server.js` (Express API running on port **5001**)
-2.  **CLI Hub:** `5-engine/athena.js` (Interactive Menu)
+2.  **CLI Hub:** `athena-agent.js` (Headless Agent Interface) & `5-engine/athena.js` (Interactive Menu)
 
 Both hubs act as "orchestrators": they utilize centralized managers to perform tasks.
 
-### Core Managers (v7.9.2)
+### Core Managers & Controllers (v8.0)
 
 *   **ConfigManager:** Centralized handling of configuration files (`config/`, `.env`). Ensures consistent settings across all tools.
 *   **ProcessManager:** Manages child processes (e.g., `factory.js`, `pnpm install`) to ensure resource limits are respected and processes are properly cleaned up.
 *   **LogManager:** Centralized logging utility replacing scattered `console.log` calls. Directs logs to `output/logs/` and rotates them automatically.
 *   **AthenaDataManager:** Handles synchronization between local JSON/TSV files and Google Sheets.
+*   **DoctorController:** The "immune system" responsible for site health audits and the **Hydration Management System** (pruning `node_modules` to save space).
+*   **MarketingController:** Autonomous engine for generating Blogs and SEO metadata using AI.
 
 ---
 

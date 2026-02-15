@@ -46,14 +46,35 @@ jobs:
         with:
           version: 10
       
-      - name: 🏗️ Pre-flight Build Check
+      - name: 🏗️ Pre-flight Build & Quality Audit
         run: |
+          npm install -g @lhci/cli@0.13.x
           for SITE in ${{ steps.detect.outputs.sites }}; do
             if [ -d "sites/$SITE" ]; then
               echo "🔨 Validating build for: $SITE"
               cd "sites/$SITE"
               pnpm install --no-frozen-lockfile
               pnpm build
+              
+              echo "🚦 Running Lighthouse Audit (Performance, Accessibility, SEO)..."
+              # Create temporary minimalist config
+              cat <<EOF > lighthouserc.json
+              {
+                "ci": {
+                  "collect": { "staticDistDir": "./dist" },
+                  "assert": {
+                    "assertions": {
+                      "categories:performance": ["warn", {"minScore": 0.7}],
+                      "categories:accessibility": ["warn", {"minScore": 0.8}],
+                      "categories:seo": ["warn", {"minScore": 0.8}]
+                    }
+                  }
+                }
+              }
+          EOF
+              lhci collect --static-dist-dir=./dist
+              lhci assert || echo "⚠️ Audit metrics below target, but continuing publish..."
+              
               cd ../..
             fi
           done

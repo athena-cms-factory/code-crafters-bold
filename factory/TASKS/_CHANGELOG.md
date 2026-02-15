@@ -1,5 +1,21 @@
 # Changelog - Athena CMS Factory
 
+## [7.9.4] - 2026-02-15
+### Added
+- **Stripe Checkout Integration**: Native support for real-world payments (Bancontact, Payconiq, iDEAL, Creditcard, PayPal) across all docked webshops.
+- **Secure Payment Gateway Proxy**: Implemented `PaymentController.js` to handle Stripe sessions server-side, protecting secret API keys.
+- **Hybrid Checkout System**: Upgraded all e-commerce templates to support both automated Stripe payments and manual email-based orders.
+- **Interactive Roadmaps v2**: Expanded the roadmap system with Expert tracks for E-commerce and detailed accordion-based guidance.
+
+### Fixed
+- **System Path Alignment**: Unified `ROOT_DIR` and `ATHENA_ROOT` variables in `.env` to prevent absolute path resolution errors.
+- **Manual Site Synchronization**: Upgraded `Checkout.jsx` in existing sites (`chocolade-shop`, `urban-soles`, `demo-bakkerij`, `athena-pro`) to support the new payment flow.
+
+## [7.9.3] - 2026-02-15
+### Added
+- **Gmail IMAP Integration**: Successfully transitioned the Athena Gateway to a dedicated Gmail account (`athena.cms.agent@gmail.com`).
+- **IMAP Verification Suite**: Added `factory/tests/verify-imap.js` for quick connectivity testing.
+
 ## [7.9.2] - 2026-02-09
 ### Added
 - **Universal Field Typing**: Introduced `data-dock-type` attribute for `EditableLink`, `EditableMedia`, and `EditableText` to guarantee the correct Dock editor modal (Link vs Media vs Text) regardless of field name.

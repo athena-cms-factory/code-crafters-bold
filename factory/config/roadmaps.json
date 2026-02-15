@@ -1,0 +1,154 @@
+{
+  "tracks": [
+    {
+      "id": "quick-start",
+      "title": "🚀 Quick-Start: Van Nul naar Live",
+      "difficulty": "Beginner",
+      "time": "15 min",
+      "description": "De standaard workflow voor het snel lanceren van een professionele website zonder bestaande data.",
+      "steps": [
+        {
+          "title": "Data Bron Voorbereiden",
+          "description": "Elke site begint met een bronmap. Maak deze aan om je teksten en afbeeldingen later in op te slaan.",
+          "action": "showSection('projects')",
+          "details": "Ga naar 'Data Bronnen' > 'Nieuw Bronproject'. Geef het de naam van je klant of project."
+        },
+        {
+          "title": "Architectuur Kiezen",
+          "description": "Bepaal welk SiteType (blauwdruk) het beste past bij het doel van de site.",
+          "action": "showSection('create')",
+          "details": "Klik op 'SITE' bij je project. Kies 'athena-pro' voor zakelijk of 'portfolio-warm' voor creatievelingen."
+        },
+        {
+          "title": "Visueel Ontwerp in de Dock",
+          "description": "Gebruik de Athena Dock om kleuren, fonts en teksten live aan te passen.",
+          "action": "openDock()",
+          "details": "Start de site via 'Sites' > 'DEV' en klik daarna op 'DOCK'. Wijzigingen worden direct opgeslagen in je lokale JSON bestanden."
+        },
+        {
+          "title": "Cloud Koppeling (CMS)",
+          "description": "Koppel een Google Sheet zodat je klant zelf de website kan bijwerken zonder technische kennis.",
+          "details": "Klik in de Dock op 'Sync to Google Sheets'. Athena maakt automatisch de database aan in de cloud."
+        },
+        {
+          "title": "Productie Deployment",
+          "description": "Publiceer de website naar GitHub Pages voor een wereldwijde lancering.",
+          "action": "showSection('deploy')",
+          "details": "Gebruik de 'Deployment' tab om je lokale code naar een publieke repository te pushen."
+        }
+      ]
+    },
+    {
+      "id": "mpa-hydra",
+      "title": "🌊 Project Hydra: Multi-Page Content Machine",
+      "difficulty": "Advanced",
+      "time": "45 min",
+      "description": "Bouw complexe websites met onbeperkte pagina's op basis van grote datasets of externe scrapes.",
+      "steps": [
+        {
+          "title": "Deep Scrape",
+          "description": "Haal de volledige inhoud van een bestaande website binnen via de Scraper.",
+          "action": "showSection('tools')",
+          "details": "Voeg een lijst met URL's toe aan een project en start de 'Website Scraper'. De tekst wordt opgeslagen in `scraped-content.txt`."
+        },
+        {
+          "title": "AI Route Splitting",
+          "description": "Gebruik AI om de ruwe data op te splitsen in logische pagina's en secties.",
+          "details": "De 'AI Content Parser' herkent patronen en vertaalt deze naar de juiste mappenstructuur voor een MPA."
+        },
+        {
+          "title": "MPA Generatie",
+          "description": "Genereer de site met het 'Multi-Page (MPA)' model.",
+          "action": "showSection('create')",
+          "details": "Selecteer 'Model: MPA' in het creatie-formulier. Athena bouwt een React-Router structuur met lazy-loading voor optimale performance."
+        },
+        {
+          "title": "Navigatie Beheer",
+          "description": "Beheer de menustructuur en paginalinks via de Dock.",
+          "details": "In de Dock verschijnt bij MPA sites een extra 'Pages' tabblad in het rechterpaneel om razendsnel tussen pagina's te navigeren tijdens het editen."
+        }
+      ]
+    },
+    {
+      "id": "payment-gateway",
+      "title": "💳 E-commerce & Stripe Flow",
+      "difficulty": "Expert",
+      "time": "30 min",
+      "description": "Integreer real-world betalingen (Stripe, Bancontact, PayPal) in je Athena webshops.",
+      "steps": [
+        {
+          "title": "API Keys Configureren",
+          "description": "Voeg je Stripe Secret Key toe aan het systeem.",
+          "action": "showSection('settings')",
+          "details": "Open 'Instellingen' in het dashboard en vul `STRIPE_SECRET_KEY` in. Gebruik de `sk_test_...` key voor ontwikkeling."
+        },
+        {
+          "title": "Checkout Activeren",
+          "description": "Zorg dat je sitetype gebruik maakt van de 'webshop-pay' blauwdruk.",
+          "details": "De 'webshop-pay' blauwdruk bevat de `Checkout.jsx` die automatisch verbinding maakt met de Athena Payment Gateway proxy."
+        },
+        {
+          "title": "Betaalmethodes Kiezen",
+          "description": "Configureer welke methodes je wilt aanbieden in je Stripe Dashboard.",
+          "details": "In Stripe kun je met één klik Bancontact, iDEAL en PayPal activeren. De Athena Gateway regelt de rest."
+        },
+        {
+          "title": "Succes & Cancel URL's",
+          "description": "Test de volledige flow van mandje tot bedankpagina.",
+          "details": "Na een geslaagde betaling stuurt Stripe de klant terug naar `/checkout?status=success`. De Checkout component toont dan automatisch de bevestiging en leegt het mandje."
+        }
+      ]
+    },
+    {
+      "id": "athenafy-existing",
+      "title": "🤖 Athenafier: Bestaande prototypes omzetten",
+      "difficulty": "Intermediate",
+      "time": "30 min",
+      "description": "Transformeer een statische HTML site of AI-gegenereerd prototype naar een beheersbare Athena site.",
+      "steps": [
+        {
+          "title": "Prototype Importeren",
+          "description": "Plaats je externe HTML/JS bestanden in de `inputsites/` map.",
+          "details": "Athena scant de structuur van je externe prototype."
+        },
+        {
+          "title": "Reverse Engineering",
+          "description": "Laat de 'Athenafier' engine de componenten en datavelden extraheren.",
+          "details": "De engine vervangt statische tekst door `EditableText` componenten en maakt automatisch een `data-dock` map aan."
+        },
+        {
+          "title": "Sitetype Extractie",
+          "description": "Maak van je geathenafiseerde site een herbruikbare blauwdruk.",
+          "action": "showSection('sitetypes')",
+          "details": "Gebruik 'Sitetype van Site' om je unieke ontwerp vast te leggen voor toekomstig gebruik."
+        }
+      ]
+    },
+    {
+      "id": "maintenance-growth",
+      "title": "🛠️ Groei & Onderhoud: De Survival Track",
+      "difficulty": "Beginner",
+      "time": "5 min (periodiek)",
+      "description": "Houd je systeem gezond en je sites up-to-date terwijl je portfolio groeit.",
+      "steps": [
+        {
+          "title": "Hydration Management",
+          "description": "Bespaar gigabytes aan schijfruimte door inactieve sites in 'Dormant' modus te zetten.",
+          "action": "showSection('storage')",
+          "details": "Zet projecten die je momenteel niet bewerkt op '🌵 Dormant'. Dit verwijdert de zware `node_modules` mappen."
+        },
+        {
+          "title": "Content Explosion",
+          "description": "Gebruik de AI Marketing tools om je site organisch te laten groeien.",
+          "action": "showSection('sites')",
+          "details": "Klik op 'BLOG' of 'SEO' op een site-card om automatisch nieuwe pagina's en metadata te genereren op basis van je bestaande data."
+        },
+        {
+          "title": "Nightly Audits",
+          "description": "Vertrouw op de 'Self-Healing' architectuur van Athena.",
+          "details": "De `athena-monitor.sh` draait periodiek om fouten in JSON bestanden te herstellen en opslaglimieten te bewaken."
+        }
+      ]
+    }
+  ]
+}

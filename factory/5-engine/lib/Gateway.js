@@ -60,7 +60,72 @@ export class AthenaGateway {
     }
 
     /**
-     * Simulation: Poll a JSON file
+     * Process all pending messages in the file-based inbox once (No Daemon)
+     */
+    async processFileOnce() {
+        console.log("📂 Gateway: Eenmalige check van input/gateway_inbox.json...");
+        if (!fs.existsSync(this.inboxPath)) return;
+        
+        try {
+            const content = fs.readFileSync(this.inboxPath, 'utf8');
+            if (!content.trim()) {
+                console.log("ℹ️  Geen berichten gevonden in lokale inbox.");
+                return;
+            }
+            const request = JSON.parse(content);
+            const response = await this.processRequest(request);
+            console.log("✅ Bericht verwerkt. Resultaat:", response.reply.substring(0, 100) + "...");
+            fs.writeFileSync(this.inboxPath, ""); // Clear
+        } catch (e) {
+            console.error("❌ Fout bij verwerken lokaal bericht:", e.message);
+        }
+    }
+
+    /**
+     * Check the live mailbox once and process pending mail (No Daemon)
+     */
+    async processMailOnce() {
+        if (!this.mailConfig.auth.user || !this.mailConfig.auth.pass) {
+            throw new Error("Geen MAIL credentials ingesteld.");
+        }
+
+        const client = new ImapFlow(this.mailConfig);
+        console.log(`📡 Gateway: Eenmalige e-mail check op ${this.mailConfig.auth.user}...`);
+
+        try {
+            await client.connect();
+            let lock = await client.getMailboxLock('INBOX');
+            try {
+                const messages = await client.fetch('1:*', { source: true, unread: true });
+                let count = 0;
+                for await (const msg of messages) {
+                    const parsed = await simpleParser(msg.source);
+                    const subject = parsed.subject || "";
+                    const projectMatch = subject.match(/\[(.*?)\]/);
+                    const projectName = projectMatch ? projectMatch[1] : null;
+
+                    if (projectName) {
+                        const request = {
+                            customerEmail: parsed.from.value[0].address,
+                            projectName: projectName,
+                            message: parsed.text
+                        };
+                        await this.processRequest(request);
+                        count++;
+                    }
+                }
+                console.log(`✅ Klaar. ${count} e-mails verwerkt.`);
+            } finally {
+                lock.release();
+                await client.logout();
+            }
+        } catch (e) {
+            console.error("❌ IMAP Error:", e.message);
+        }
+    }
+
+    /**
+     * Simulation: Poll a JSON file (DAEMON MODE)
      */
     watchFileInbox() {
         console.log("👀 Gateway: Wachten op lokale berichten in input/gateway_inbox.json...");
@@ -88,6 +153,10 @@ export class AthenaGateway {
         }
 
         const client = new ImapFlow(this.mailConfig);
+        client.on('error', err => {
+            console.error("📡 IMAP Runtime Error:", err.message);
+        });
+        
         console.log(`📡 Gateway: Verbinding maken met mailbox ${this.mailConfig.auth.user}...`);
 
         try {

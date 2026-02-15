@@ -32,7 +32,7 @@ const SyncModal = ({ onConfirm, onCancel }) => {
             </div>
           </div>
 
-          <label className="flex items-center gap-3 mb-8 p-3 rounded-xl border border-green-100 dark:border-green-900/30 bg-green-50/30 dark:bg-green-900/10 cursor-pointer hover:bg-green-50 transition-colors">
+          <label className="flex items-center gap-3 mb-8 p-3 rounded-xl border border-green-100 dark:border-green-900/30 bg-green-50/30 dark:bg-green-900/10 cursor-pointer hover:bg-green-50 transition-colors" title="Bevestig dat je de instellingen van je Google Sheet hebt gecontroleerd en dat de Dashboard Server draait.">
             <input 
               type="checkbox" 
               checked={isChecked} 
@@ -46,6 +46,7 @@ const SyncModal = ({ onConfirm, onCancel }) => {
             <button 
               onClick={onCancel}
               className="flex-1 py-3 px-4 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-200 font-bold rounded-xl transition-all"
+              title="Sluit dit venster zonder je wijzigingen te synchroniseren naar de cloud."
             >
               Annuleren
             </button>
@@ -57,6 +58,7 @@ const SyncModal = ({ onConfirm, onCancel }) => {
                 ? 'bg-green-600 hover:bg-green-700 text-white shadow-green-200 dark:shadow-none' 
                 : 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
               }`}
+              title={isChecked ? "Stuur al je lokale Dock-wijzigingen naar de Google Sheet in de cloud. Hiermee worden je aanpassingen definitief opgeslagen in je centrale database." : "Vink eerst 'Controle uitgevoerd' aan om door te gaan."}
             >
               <i className="fa-solid fa-cloud-arrow-up"></i>
               Push to Cloud

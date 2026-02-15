@@ -45,5 +45,35 @@ To keep the system running smoothly:
     *   `sudo apt clean`
 4.  **Monitoring:** Use `free -h` and `df -h` to monitor RAM and storage status.
 
+## 5. Hydration Management System (DoctorController)
+
+The **Hydration Management System** is a key feature of Athena v8.0, designed to manage disk usage by pruning `node_modules` folders from inactive sites.
+
+### Concepts
+*   **Hydrated Site:** A site with all dependencies installed (`node_modules` present). Ready for development.
+*   **Dehydrated Site:** A site without `node_modules`. Takes up minimal space but cannot be started immediately.
+
+### Commands
+*   **Check Status:** `node athena-agent.js storage-status` - Displays disk usage of all sites.
+*   **Prune All (Dehydrate):** `node athena-agent.js storage-prune-all` - Removes `node_modules` from all sites.
+*   **Heal (Rehydrate):** `node athena-agent.js doctor-heal [site-name]` - Reinstalls dependencies for a specific site.
+
+## 6. Nightly Monitoring (Cron Job)
+
+The factory includes a `athena-monitor.sh` script to automate health checks and storage reporting.
+
+### Setup
+Add the following line to your crontab (`crontab -e`) to run the monitor every night at 3 AM:
+
+```bash
+0 3 * * * /path/to/factory/athena-monitor.sh >> /var/log/athena-monitor.log 2>&1
+```
+
+### Report Contents
+The monitor generates a report including:
+1.  **Storage Usage:** Total disk space used by sites and `node_modules`.
+2.  **Health Check:** Verifies JSON integrity for all sites.
+3.  **Policy Enforcement:** (Optional) Auto-prunes sites exceeding storage limits.
+
 ---
-*Updated for v7.9.2 - Optimized for Dell Latitude Performance.*
+*Updated for v8.0 - Optimized for Dell Latitude Performance.*

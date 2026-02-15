@@ -634,7 +634,7 @@ const DockFrame = () => {
               onClick={undo}
               disabled={historyIndex < 0}
               className={`px-3 py-1 rounded text-xs flex items-center gap-1 transition-all ${historyIndex < 0 ? 'text-slate-600 cursor-not-allowed' : 'text-white hover:bg-slate-700'}`}
-              title="Undo (Ctrl+Z)"
+              title="Maak de laatste actie ongedaan. Gebruik dit als je per ongeluk iets hebt gewijzigd of verwijderd (Sneltoets: Ctrl+Z)."
             >
               <i className="fa-solid fa-rotate-left"></i> Undo
             </button>
@@ -643,7 +643,7 @@ const DockFrame = () => {
               onClick={redo}
               disabled={historyIndex >= history.length - 1}
               className={`px-3 py-1 rounded text-xs flex items-center gap-1 transition-all ${historyIndex >= history.length - 1 ? 'text-slate-600 cursor-not-allowed' : 'text-white hover:bg-slate-700'}`}
-              title="Redo (Ctrl+Y)"
+              title="Voer de actie die je zojuist ongedaan hebt gemaakt opnieuw uit (Sneltoets: Ctrl+Y)."
             >
               Redo <i className="fa-solid fa-rotate-right"></i>
             </button>
@@ -652,6 +652,7 @@ const DockFrame = () => {
           <button
             onClick={forceRefresh}
             className="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-xs text-white rounded shadow border border-slate-600"
+            title="Herlaad de website-weergave in het midden van het scherm. Gebruik dit als wijzigingen niet direct zichtbaar zijn."
           >
             ⟳ Refresh Preview
           </button>
@@ -663,7 +664,7 @@ const DockFrame = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-[10px] text-white rounded font-bold flex items-center gap-1 transition-all"
-                title="Open lokale preview in nieuw tabblad"
+                title="Open de lokale werkversie van deze website in een nieuw browsertabblad."
               >
                 <i className="fa-solid fa-laptop-code"></i> Preview
               </a>
@@ -674,7 +675,7 @@ const DockFrame = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1 bg-green-600 hover:bg-green-500 text-[10px] text-white rounded font-bold flex items-center gap-1 transition-all"
-                  title="Open live productie website"
+                  title="Open de live productie website die voor iedereen op internet zichtbaar is."
                 >
                   <i className="fa-solid fa-globe"></i> Live
                 </a>
@@ -685,7 +686,7 @@ const DockFrame = () => {
                   <button
                     onClick={handlePush}
                     className="px-3 py-1 bg-violet-600 hover:bg-violet-500 text-[10px] text-white rounded font-bold flex items-center gap-1 transition-all"
-                    title="Push wijzigingen naar GitHub"
+                    title="Verstuur je wijzigingen naar GitHub om de live website bij te werken. De website wordt daarna automatisch opnieuw opgebouwd."
                   >
                     <i className="fa-solid fa-code-commit"></i> Push to GitHub
                   </button>
@@ -694,7 +695,7 @@ const DockFrame = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-[10px] text-white rounded font-bold flex items-center gap-1 transition-all"
-                    title="Bekijk broncode op GitHub"
+                    title="Bekijk de technische broncode van dit project op GitHub."
                   >
                     <i className="fa-brands fa-github"></i> GitHub
                   </a>
@@ -703,7 +704,7 @@ const DockFrame = () => {
                 <button
                   onClick={handleDeploy}
                   className="px-3 py-1 bg-amber-600 hover:bg-amber-500 text-[10px] text-white rounded font-bold flex items-center gap-1 transition-all"
-                  title="Maak GitHub repository en deploy site"
+                  title="Maak een nieuwe plek op internet (GitHub repository) aan voor deze website en publiceer hem voor de eerste keer."
                 >
                   <i className="fa-solid fa-cloud-arrow-up"></i> Deploy to GitHub
                 </button>
@@ -712,12 +713,12 @@ const DockFrame = () => {
           )}
 
           {isConnected ? (
-            <span className="flex items-center gap-2 text-green-400">
+            <span className="flex items-center gap-2 text-green-400" title="De Dock is verbonden met de website en klaar voor bewerkingen.">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               Connected
             </span>
           ) : (
-            <span className="flex items-center gap-2 text-amber-400">
+            <span className="flex items-center gap-2 text-amber-400" title="De Dock probeert verbinding te maken met de website server...">
               <span className="w-2 h-2 bg-amber-400 rounded-full"></span>
               Connecting...
             </span>
@@ -740,12 +741,13 @@ const DockFrame = () => {
           <div 
             onMouseDown={() => { isResizingLeft.current = true; document.body.classList.add('select-none'); }}
             className="absolute right-0 top-0 w-1 h-full cursor-col-resize hover:bg-blue-400 transition-colors z-50"
+            title="Sleep naar links of rechts om het zijpaneel groter of kleiner te maken."
           />
         </aside>
 
         {/* Center - Site Preview in Iframe */}
         <main className="flex-1 bg-slate-200 p-4 lg:p-8 flex items-center justify-center relative min-w-0">
-          <div className="h-full w-full bg-white rounded-lg shadow-2xl overflow-hidden relative">
+          <div className="h-full w-full bg-white rounded-lg shadow-2xl overflow-hidden relative" title="Interactieve weergave van je website. Klik op tekst of afbeeldingen om ze aan te passen.">
             <iframe
               key={refreshKey}
               ref={iframeRef}
@@ -790,6 +792,7 @@ const DockFrame = () => {
           <div 
             onMouseDown={() => { isResizingRight.current = true; document.body.classList.add('select-none'); }}
             className="absolute left-0 top-0 w-1 h-full cursor-col-resize hover:bg-blue-400 transition-colors z-50"
+            title="Sleep naar links of rechts om het zijpaneel groter of kleiner te maken."
           />
           
           <div className="p-4">
@@ -799,7 +802,7 @@ const DockFrame = () => {
               <button
                 disabled
                 className="w-full py-3 bg-slate-300 text-slate-500 font-bold rounded-xl shadow-inner cursor-not-allowed flex items-center justify-center gap-2"
-                title="Content is managed by the client via Google Sheets"
+                title="Sincronisatie is geblokkeerd omdat de klant de inhoud beheert via Google Sheets. Pas de data direct in de Sheet aan."
               >
                 <i className="fa-solid fa-lock"></i>
                 Push Locked (Client Mode)
@@ -809,6 +812,7 @@ const DockFrame = () => {
                 id="cloud-sync-btn"
                 onClick={syncToSheets}
                 className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl shadow-lg shadow-green-200 transition-all flex items-center justify-center gap-2"
+                title="Sla je lokale Dock-wijzigingen op in de cloud (Google Sheets). Hiermee worden je aanpassingen definitief en gedeeld."
               >
                 <i className="fa-solid fa-cloud-arrow-up"></i>
                 Sync to Google Sheets
@@ -819,20 +823,21 @@ const DockFrame = () => {
               id="cloud-pull-btn"
               onClick={pullFromSheets}
               className="w-full py-2 bg-white hover:bg-slate-50 text-slate-600 font-bold rounded-xl border border-slate-200 shadow-sm transition-all flex items-center justify-center gap-2 text-xs"
+              title="Haal de nieuwste gegevens op uit Google Sheets. Let op: dit overschrijft je huidige lokale Dock-wijzigingen!"
             >
               <i className="fa-solid fa-cloud-arrow-down text-blue-500"></i>
               Pull from Google Sheets
             </button>
 
             <p className="text-[10px] text-slate-400 mt-2 text-center italic">
-              Sync pushes local edits. Pull fetches cloud updates.
+              Sync stuurt Dock-wijzigingen naar de cloud. Pull haalt cloud-updates op.
             </p>
           </div>
 
           {/* Page Switcher (v6.6 MPA) */}
           {pages.length > 0 && (
             <div className="mb-8 pb-6 border-b border-slate-100">
-              <h3 className="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2" title="Lijst van alle beschikbare pagina's op deze website. Klik op een pagina om deze te bekijken en te bewerken.">
                 <i className="fa-solid fa-file-lines text-blue-500"></i> Pages
               </h3>
               <div className="space-y-1 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
@@ -847,6 +852,7 @@ const DockFrame = () => {
                           ? 'bg-blue-600 text-white font-bold shadow-md'
                           : 'hover:bg-slate-50 text-slate-600'
                         }`}
+                      title={`Navigeer naar de ${page.title} pagina.`}
                     >
                       <span className="truncate capitalize">{page.title}</span>
                       {isActive && <span className="w-1.5 h-1.5 bg-white rounded-full"></span>}
@@ -863,25 +869,28 @@ const DockFrame = () => {
             <button
               onClick={() => forceRefresh()}
               className="text-[10px] bg-slate-100 hover:bg-slate-200 p-1 rounded uppercase font-bold text-slate-500"
+              title="Scan de website opnieuw om nieuwe of gewijzigde secties te detecteren."
             >
               Scan
             </button>
           </div>
           {siteStructure?.sections?.length > 0 ? (
             siteStructure.sections.map(section => (
-              <div key={section} className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-xl shadow-sm">
+              <div key={section} className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-xl shadow-sm" title={`Beheersectie voor de '${section}' op je pagina.`}>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-bold text-slate-800 capitalize truncate" title={section}>{section}</span>
+                  <span className="text-sm font-bold text-slate-800 capitalize truncate" title={`Sectie: ${section}`}>{section}</span>
                   <div className="flex gap-1">
                     <button
                       onClick={() => moveSection(section, 'up')}
                       className="p-1 hover:bg-slate-200 text-slate-500 rounded"
+                      title="Verplaats deze sectie één plek omhoog op de pagina."
                     >
                       ↑
                     </button>
                     <button
                       onClick={() => moveSection(section, 'down')}
                       className="p-1 hover:bg-slate-200 text-slate-500 rounded"
+                      title="Verplaats deze sectie één plek omlaag op de pagina."
                     >
                       ↓
                     </button>
@@ -896,11 +905,12 @@ const DockFrame = () => {
                       className="w-full text-xs p-2 bg-white border border-slate-200 rounded-lg text-slate-600 focus:outline-none focus:border-blue-400"
                       onChange={(e) => updateLayout(section, e.target.value)}
                       value={siteStructure?.layouts?.[section] || 'grid'}
+                      title="Kies de visuele indeling voor deze sectie (bijv. Raster, Lijst of Z-Patroon)."
                     >
-                      <option value="grid">Grid</option>
-                      <option value="list">List</option>
-                      <option value="z-pattern">Z-Pattern</option>
-                      <option value="focus">Focus</option>
+                      <option value="grid">Grid (Raster)</option>
+                      <option value="list">List (Lijst)</option>
+                      <option value="z-pattern">Z-Pattern (Z-Vorm)</option>
+                      <option value="focus">Focus (Eén groot item)</option>
                     </select>
                   </div>
 
@@ -928,27 +938,27 @@ const DockFrame = () => {
                           const isVisible = !isHidden;
 
                           return (
-                            <div key={field} className="flex items-center justify-between text-[10px] p-1.5 bg-white mb-1 rounded border border-slate-100 shadow-sm">
+                            <div key={field} className="flex items-center justify-between text-[10px] p-1.5 bg-white mb-1 rounded border border-slate-100 shadow-sm" title={`Veld: ${field}`}>
                               <span className={`truncate flex-1 ${isVisible ? 'text-slate-700 font-bold' : 'text-slate-300 italic line-through'}`}>{field}</span>
                               <div className="flex gap-1">
                                 <button
                                   onClick={() => { console.log('↑ Clicked', field); moveField(section, field, 'up'); }}
                                   className="p-1.5 text-slate-300 hover:text-blue-600 hover:bg-blue-50 rounded transition-all cursor-pointer"
-                                  title="Move Up"
+                                  title="Verplaats dit veld omhoog in de weergave."
                                 >
                                   <i className="fa-solid fa-chevron-up text-[8px]"></i>
                                 </button>
                                 <button
                                   onClick={() => { console.log('↓ Clicked', field); moveField(section, field, 'down'); }}
                                   className="p-1.5 text-slate-300 hover:text-blue-600 hover:bg-blue-50 rounded transition-all cursor-pointer"
-                                  title="Move Down"
+                                  title="Verplaats dit veld omlaag in de weergave."
                                 >
                                   <i className="fa-solid fa-chevron-down text-[8px]"></i>
                                 </button>
                                 <button
                                   onClick={() => { console.log('👁 Clicked', field); toggleFieldVisibility(section, field); }}
                                   className={`p-1.5 rounded transition-all cursor-pointer ${isVisible ? 'text-green-500 hover:bg-green-50' : 'text-slate-300 hover:bg-slate-100'}`}
-                                  title={isVisible ? 'Hide Field' : 'Show Field'}
+                                  title={isVisible ? 'Verberg dit veld op de website' : 'Toon dit veld op de website'}
                                 >
                                   <i className={`fa-solid ${isVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                                 </button>
@@ -981,12 +991,12 @@ const DockFrame = () => {
                         if (!title) title = `Item ${index + 1}`;
 
                         return (
-                          <div key={index} className="flex items-center justify-between bg-white p-1.5 rounded border border-slate-100 text-[10px]">
+                          <div key={index} className="flex items-center justify-between bg-white p-1.5 rounded border border-slate-100 text-[10px]" title={`Beheer item: ${title}`}>
                             <span className="truncate flex-1 pr-2 text-slate-600">{title}</span>
                             <button
                               onClick={() => deleteItem(section, index)}
                               className="p-2 -mr-1 text-slate-300 hover:text-red-600 hover:bg-red-50 rounded transition-all"
-                              title="Delete item"
+                              title="Verwijder dit item definitief uit de lijst."
                             >
                               <i className="fa-solid fa-trash-can"></i>
                             </button>
@@ -994,12 +1004,13 @@ const DockFrame = () => {
                         );
                       })}
                       {(!siteStructure?.data?.[section] || siteStructure.data[section].length === 0) && (
-                        <p className="text-[10px] text-slate-400 italic text-center py-2">No items</p>
+                        <p className="text-[10px] text-slate-400 italic text-center py-2">Geen items aanwezig.</p>
                       )}
                     </div>
                     <button
                       onClick={() => addItem(section)}
                       className="w-full py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 text-[10px] font-bold rounded-lg transition-colors border border-blue-200"
+                      title="Voeg een nieuw, leeg item toe aan deze lijst om daarna in te vullen."
                     >
                       <i className="fa-solid fa-plus mr-1"></i> Add Item
                     </button>
@@ -1008,7 +1019,7 @@ const DockFrame = () => {
               </div>
             ))
           ) : (
-            <p className="text-sm text-slate-400 italic">No sections detected yet.</p>
+            <p className="text-sm text-slate-400 italic">Nog geen secties gedetecteerd. Klik op 'Scan' om te zoeken.</p>
           )}
           </div>
         </aside>

@@ -31,7 +31,7 @@ const PullModal = ({ onConfirm, onCancel }) => {
             </div>
           </div>
 
-          <label className="flex items-center gap-3 mb-8 p-3 rounded-xl border border-blue-100 dark:border-blue-900/30 bg-blue-50/30 dark:bg-blue-900/10 cursor-pointer hover:bg-blue-50 transition-colors">
+          <label className="flex items-center gap-3 mb-8 p-3 rounded-xl border border-blue-100 dark:border-blue-900/30 bg-blue-50/30 dark:bg-blue-900/10 cursor-pointer hover:bg-blue-50 transition-colors" title="Vink dit aan nadat je hebt gecontroleerd of de Google Sheet correct is gepubliceerd op internet. Dit is nodig om de gegevens te kunnen ophalen.">
             <input 
               type="checkbox" 
               checked={isChecked} 
@@ -45,6 +45,7 @@ const PullModal = ({ onConfirm, onCancel }) => {
             <button 
               onClick={onCancel}
               className="flex-1 py-3 px-4 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-200 font-bold rounded-xl transition-all"
+              title="Sluit dit venster zonder gegevens op te halen. Er verandert niets aan je huidige data."
             >
               Annuleren
             </button>
@@ -56,6 +57,7 @@ const PullModal = ({ onConfirm, onCancel }) => {
                 ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-200 dark:shadow-none' 
                 : 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
               }`}
+              title={isChecked ? "Haal nu de gegevens op uit Google Sheets en werk de lokale website bij. Je huidige lokale wijzigingen worden overschreven (er wordt wel een backup gemaakt)." : "Vink eerst 'Controle uitgevoerd' aan om door te gaan."}
             >
               <i className="fa-solid fa-cloud-arrow-down"></i>
               Pull Data

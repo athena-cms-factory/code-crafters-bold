@@ -216,3 +216,23 @@ To prevent clients from seeing "JSON code" in their Google Sheet, data and form 
     *   `style_config.json`: Design settings.
 *   **Runtime Merge**:
     During site startup (`main.jsx`), these two sources are merged back in memory.
+
+## 🖥️ Dashboard (v8.0 Updates)
+
+The Athena Dashboard (Port 5001) has been enhanced to support new operational needs.
+
+### 1. Storage & Health Tab
+A new dedicated tab provides visibility into the **Hydration Management System**.
+*   **Disk Usage**: Real-time visualization of `node_modules` vs project data.
+*   **Actions**:
+    *   **pnpm Prune**: Cleans the global pnpm store.
+    *   **Clean Sites**: Triggers `storage-prune-all` to dehydrate inactive sites.
+    *   **Logs**: View and rotate system logs.
+
+### 2. Marketing Tools
+Integrated directly into the interface, allowing one-click execution of `MarketingController` functions:
+*   **Blog Generator**: Prompts for a topic and generates a blog post (syncs to Sheet).
+*   **SEO Optimizer**: Generates/Refines meta tags based on site content (syncs to Sheet).
+
+### 3. Server Management
+The sidebar now includes status indicators for all core services (Dashboard, Dock, Layout Architect, Media Visualizer).

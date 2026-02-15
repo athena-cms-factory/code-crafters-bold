@@ -1,5 +1,47 @@
 # ✅ DONE - Athena CMS
 
+## E-commerce & Betaalsystemen (Stripe) - 2026-02-15
+- [x] **Stripe Checkout Integratie**
+    - Ontwikkeld `PaymentController.js` voor beveiligde server-side betaalsessies.
+    - Geüpgrade `Checkout.jsx` in alle e-commerce sitetypes en bestaande sites.
+    - Ondersteuning voor Bancontact, Payconiq, iDEAL, PayPal en Creditcard.
+- [x] **Hybride Bestelflow**
+    - Gecombineerde weergave van Stripe (automatisch) en E-mail (handmatig) in de checkout.
+    - Automatische mandje-leeg functie na geslaagde Stripe betaling.
+- [x] **Documentatie & Roadmaps**
+    - Toegevoegd "Payment Gateway" Expert track aan de interactieve roadmap.
+    - Geschreven `HANDLEIDING_STRIPE.md` voor developers en klanten.
+
+## Gateway & Simulation (Operation War Game) - 2026-02-15
+- [x] **Gmail IMAP Integration**
+    - Transitioned Athena Gateway from Outlook to a dedicated Gmail account (`athena.cms.agent@gmail.com`).
+    - Verified real-world email connectivity using `ImapFlow`.
+    - Added `factory/tests/verify-imap.js` for automated connectivity audits.
+
+## Self-Healing & Automated Monitoring - 2026-02-14
+- [x] **Nightly Monitor Script (`athena-monitor.sh`)**
+    - Implemented a bash-based master monitor that executes global audits.
+    - Automated storage pruning (enforcing dormancy) to protect Chromebook SSD.
+    - Added automated `pnpm store prune` to the maintenance cycle.
+- [x] **Integrated Doctor Logic**
+    - Connected the `DoctorController` audit/heal cycle to the monitoring script.
+    - Generated a summary report in `output/logs/monitor.log`.
+
+## Hydration Management System (Node Storage Optimization) - 2026-02-14
+- [x] **Hierarchical Hydration Logic**
+    - Implemented `DoctorController.js` with support for `Site > Group > Global` policy levels.
+    - Added `hydrate()` (pnpm install) and `dehydrate()` (rm -rf node_modules) methods.
+    - Integrated policy enforcement into the site audit cycle.
+- [x] **Headless CLI Support (athena-agent.js)**
+    - Added `storage-status`, `storage-policy`, `storage-enforce`, and `storage-prune-all` commands.
+    - Enabled AI agents to manage disk space autonomously.
+- [x] **Dashboard Visual Interface**
+    - Created "Storage & Health" tab in the Athena Dashboard.
+    - Added disk usage visualization and savable space calculation.
+    - Implemented interactive policy management and bulk pruning tools.
+- [x] **Automated Storage Metrics**
+    - Integrated `du -sm` based storage calculation for real-time MB reporting per site.
+
 ## Link & Media Editor Robustness (v7.9.2) - 2026-02-09
 - [x] **Universal Field Typing (data-dock-type)**
     - Added mandatory `data-dock-type` attributes (`text`, `media`, `link`) to all editable components (`EditableText`, `EditableMedia`, `EditableLink`).

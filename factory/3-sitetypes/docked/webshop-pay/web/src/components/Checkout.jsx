@@ -7,13 +7,31 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState('payconiq');
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     setIsProcessing(true);
-    // In een echte productie-omgeving zou hier een API call naar Mollie of Stripe gaan
-    setTimeout(() => {
-      alert(`Je wordt nu doorgeleid naar de veilige ${paymentMethod} omgeving...`);
+    try {
+      const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '4001';
+      const response = await fetch(`http://localhost:${dashboardPort}/api/payments/create-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          projectName: '{{PROJECT_NAME}}',
+          cart: cart,
+          successUrl: window.location.origin + '/checkout?status=success',
+          cancelUrl: window.location.origin + '/checkout?status=cancel'
+        })
+      });
+
+      const data = await response.json();
+      if (data.success && data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Kon geen betaalsessie aanmaken.");
+      }
+    } catch (e) {
+      alert("Betalingsfout: " + e.message);
       setIsProcessing(false);
-    }, 1500);
+    }
   };
 
   if (cart.length === 0) {
@@ -22,6 +40,21 @@ const Checkout = () => {
         <h2 className="text-3xl font-serif font-bold mb-4 text-[var(--color-heading)]">Je winkelmand is leeg</h2>
         <p className="text-secondary mb-8">Voeg wat producten toe voordat je gaat afrekenen.</p>
         <Link to="/" className="btn-primary px-8 py-3 rounded-full">Terug naar de winkel</Link>
+      </div>
+    );
+  }
+
+  // Check for status in URL
+  const query = new URLSearchParams(window.location.search);
+  const status = query.get('status');
+
+  if (status === 'success') {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-8 text-center bg-green-50">
+        <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center text-white text-4xl mb-6">✓</div>
+        <h2 className="text-3xl font-serif font-bold mb-4 text-green-800">Betaling Geslaagd!</h2>
+        <p className="text-green-700 mb-8 max-w-md">Bedankt voor je aankoop. We maken je bestelling direct in orde.</p>
+        <Link to="/" onClick={() => clearCart()} className="btn-primary px-8 py-3 rounded-full bg-green-600 border-none text-white">Terug naar de winkel</Link>
       </div>
     );
   }
@@ -57,64 +90,24 @@ const Checkout = () => {
           </div>
         </div>
 
-        {/* Rechter kant: Betalingsmethode */}
+        {/* Rechter kant: Betaalmethode */}
         <div className="bg-surface p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 dark:border-white/5 self-start">
-          <h3 className="text-2xl font-bold mb-8">Betaalmethode</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">Betaalmethode</h3>
           
-          <div className="space-y-4 mb-12">
-            {/* Payconiq Option */}
-            <label className={`flex items-center p-6 rounded-2xl border-2 cursor-pointer transition-all ${paymentMethod === 'payconiq' ? 'border-accent bg-accent/5' : 'border-slate-100 dark:border-white/10'}`}>
-              <input 
-                type="radio" 
-                name="payment" 
-                value="payconiq" 
-                checked={paymentMethod === 'payconiq'} 
-                onChange={() => setPaymentMethod('payconiq')}
-                className="hidden"
-              />
-              <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mr-6">
-                <span className="text-white font-bold text-xs">PAYCONIQ</span>
-              </div>
-              <div className="flex-grow">
-                <span className="block font-bold">Payconiq by Bancontact</span>
-                <span className="text-sm text-secondary text-balance">Snel en veilig betalen met je smartphone.</span>
-              </div>
-              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${paymentMethod === 'payconiq' ? 'border-accent' : 'border-slate-300'}`}>
-                {paymentMethod === 'payconiq' && <div className="w-3 h-3 bg-accent rounded-full"></div>}
-              </div>
-            </label>
-
-            {/* PayPal Option */}
-            <label className={`flex items-center p-6 rounded-2xl border-2 cursor-pointer transition-all ${paymentMethod === 'paypal' ? 'border-accent bg-accent/5' : 'border-slate-100 dark:border-white/10'}`}>
-              <input 
-                type="radio" 
-                name="payment" 
-                value="paypal" 
-                checked={paymentMethod === 'paypal'} 
-                onChange={() => setPaymentMethod('paypal')}
-                className="hidden"
-              />
-              <div className="w-12 h-12 bg-[#0070ba] rounded-lg flex items-center justify-center mr-6">
-                <span className="text-white font-bold text-xl italic">PP</span>
-              </div>
-              <div className="flex-grow">
-                <span className="block font-bold">PayPal</span>
-                <span className="text-sm text-secondary">Betaal met je PayPal saldo of gekoppelde kaart.</span>
-              </div>
-              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${paymentMethod === 'paypal' ? 'border-accent' : 'border-slate-300'}`}>
-                {paymentMethod === 'paypal' && <div className="w-3 h-3 bg-accent rounded-full"></div>}
-              </div>
-            </label>
+          <div className="space-y-4 mb-8">
+            <button 
+              onClick={handlePayment}
+              disabled={isProcessing}
+              className={`w-full py-5 rounded-2xl text-xl font-bold shadow-xl transition-all flex items-center justify-center gap-4 ${isProcessing ? 'bg-slate-200 cursor-not-allowed' : 'btn-primary shadow-accent/20 hover:scale-[1.02]'}`}
+            >
+              <i className="fa-brands fa-stripe text-4xl text-blue-500"></i>
+              {isProcessing ? 'Verwerken...' : `Nu Betalen (€${cartTotal.toFixed(2)})`}
+            </button>
+            <p className="text-center text-xs text-secondary font-medium px-4">
+              Veilig betalen via Bancontact (Payconiq), iDEAL, Creditcard of PayPal.
+            </p>
           </div>
 
-          <button 
-            onClick={handlePayment}
-            disabled={isProcessing}
-            className={`w-full py-5 rounded-2xl text-xl font-bold shadow-xl transition-all ${isProcessing ? 'bg-slate-200 cursor-not-allowed' : 'btn-primary shadow-accent/20 hover:scale-[1.02]'}`}
-          >
-            {isProcessing ? 'Verwerken...' : `Nu Betalen (€${cartTotal.toFixed(2)})`}
-          </button>
-          
           <div className="mt-8 flex items-center justify-center gap-4 opacity-40 grayscale">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6" />
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" />

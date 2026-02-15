@@ -10,5 +10,13 @@
   "contact": {
     "editUrl": "https://docs.google.com/spreadsheets/d/1_7fXR3A51LK65Glg-Qp4JUMOkQj1qcO2Ty3EcpNDLMM/edit",
     "exportUrl": "https://docs.google.com/spreadsheets/d/1_7fXR3A51LK65Glg-Qp4JUMOkQj1qcO2Ty3EcpNDLMM/export?format=tsv&gid=745819336"
+  },
+  "_style_config": {
+    "editUrl": "https://docs.google.com/spreadsheets/d/1_7fXR3A51LK65Glg-Qp4JUMOkQj1qcO2Ty3EcpNDLMM/edit#gid=482221505",
+    "exportUrl": "https://docs.google.com/spreadsheets/d/1_7fXR3A51LK65Glg-Qp4JUMOkQj1qcO2Ty3EcpNDLMM/export?format=tsv&gid=482221505"
+  },
+  "_links_config": {
+    "editUrl": "https://docs.google.com/spreadsheets/d/1_7fXR3A51LK65Glg-Qp4JUMOkQj1qcO2Ty3EcpNDLMM/edit#gid=829289951",
+    "exportUrl": "https://docs.google.com/spreadsheets/d/1_7fXR3A51LK65Glg-Qp4JUMOkQj1qcO2Ty3EcpNDLMM/export?format=tsv&gid=829289951"
   }
 }

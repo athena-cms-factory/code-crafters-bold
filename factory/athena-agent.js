@@ -55,15 +55,44 @@ async function run() {
                 break;
 
             case 'start-gateway':
-                console.log("🔱 Athena Agent Gateway Service wordt opgestart...");
-                gateway.watchFileInbox(); // Lokale simulatie
-                await gateway.startMailListener(); // Echte mail listener
+                console.log("🔱 Athena Agent Gateway Service wordt opgestart (DAEMON MODUS)...");
+                doctorCtrl.audit(); 
+                doctorCtrl.policiesPath = path.join(root, 'factory/config/hydration-policies.json');
+                gateway.watchFileInbox(); 
+                try {
+                    await gateway.startMailListener(); 
+                } catch (mailErr) {
+                    console.error("⚠️  Mail Listener kon niet starten, maar Local Gateway blijft actief:", mailErr.message);
+                }
+                break;
+
+            case 'gateway-process-file':
+                // Usage: athena-agent gateway-process-file
+                await gateway.processFileOnce();
+                break;
+
+            case 'gateway-process-mail':
+                // Usage: athena-agent gateway-process-mail
+                await gateway.processMailOnce();
+                break;
+
+            case 'simulate-mail':
+                // Usage: athena-agent simulate-mail
+                const simTool = path.join(root, 'factory/6-utilities/simulate-customers.js');
+                execSync(`"${process.execPath}" "${simTool}"`, { stdio: 'inherit' });
                 break;
 
             case 'generate-blog':
                 // Usage: athena-agent generate-blog <projectName> [topic]
                 const blogResult = await marketingCtrl.generateBlog(args[0], args[1]);
                 console.log(JSON.stringify(blogResult, null, 2));
+                break;
+
+            case 'generate-seo':
+                // Usage: athena-agent generate-seo <projectName>
+                if (!args[0]) throw new Error("Project name required for SEO generation.");
+                const seoResult = await marketingCtrl.generateSEO(args[0]);
+                console.log(JSON.stringify(seoResult, null, 2));
                 break;
 
             case 'create-site':
@@ -136,9 +165,46 @@ async function run() {
                 console.log(JSON.stringify(config.getAll(), null, 2));
                 break;
 
+            case 'storage-status':
+                // Usage: athena-agent storage-status [siteName]
+                console.log(JSON.stringify(doctorCtrl.audit(args[0]), null, 2));
+                break;
+
+            case 'storage-policy':
+                // Usage: athena-agent storage-policy <siteName> <hydrated|dormant>
+                if (!args[0] || !args[1]) throw new Error("Usage: storage-policy <siteName> <hydrated|dormant>");
+                console.log(JSON.stringify(doctorCtrl.setPolicy(args[0], args[1]), null, 2));
+                break;
+
+            case 'storage-enforce':
+                // Usage: athena-agent storage-enforce <siteName>
+                if (!args[0]) throw new Error("Site name required.");
+                console.log(JSON.stringify(await doctorCtrl.enforcePolicy(args[0]), null, 2));
+                break;
+
+            case 'storage-prune-all':
+                // Usage: athena-agent storage-prune-all
+                const auditResults = doctorCtrl.audit();
+                const pruneActions = [];
+                for (const res of auditResults) {
+                    if (res.policy === 'dormant' && res.hydration === 'hydrated') {
+                        const pruneRes = doctorCtrl.dehydrate(res.site);
+                        pruneActions.push({ site: res.site, ...pruneRes });
+                    }
+                }
+                console.log(JSON.stringify({ success: true, actions: pruneActions }, null, 2));
+                break;
+
             default:
                 console.log("Usage: node athena-agent.js <command> [args]");
-                console.log("Commands: list-projects, list-sites, create-site, sync-to-sheet, pull-from-sheet, deploy, get-config");
+                console.log("Commands: list-projects, list-sites, create-site, sync-to-sheet, pull-from-sheet, deploy, get-config, storage-status, storage-policy, storage-enforce, storage-prune-all, generate-seo, generate-blog, simulate-mail, start-gateway");
+        }
+
+        // Daemon commands keep the process alive, others should exit explicitly
+        const daemons = ['start-gateway'];
+        if (!daemons.includes(command)) {
+            console.log("⏹️  Process finished.");
+            process.exit(0);
         }
     } catch (e) {
         console.error(JSON.stringify({ success: false, error: e.message }, null, 2));

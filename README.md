@@ -63,3 +63,6 @@ Deze repo is ontworpen om samen te werken met Google AI Agents:
 
 ---
 *Gemaakt voor en door de Athena Community - februari 2026*
+
+### --- Betaalmethodes & Stripe ---
+Zie factory/docs/PAYMENTS_STRIPE_NL.md voor de volledige handleiding.

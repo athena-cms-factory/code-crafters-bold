@@ -250,23 +250,23 @@ const VisualEditor = ({ item, selectedSite, onSave, onCancel, onUpload }) => {
                  </div>
 
                  <div className="w-px h-4 bg-slate-200 dark:bg-slate-700"></div>
-                 <button onClick={() => toggleFormat('bold')} className={`p-1.5 rounded ${formatting.bold ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-slate-600 dark:text-slate-300'}`} title="Bold"><i className="fa-solid fa-bold"></i></button>
-                 <button onClick={() => toggleFormat('italic')} className={`p-1.5 rounded ${formatting.italic ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-slate-600 dark:text-slate-300'}`} title="Italic"><i className="fa-solid fa-italic"></i></button>
+                 <button onClick={() => toggleFormat('bold')} className={`p-1.5 rounded ${formatting.bold ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-slate-600 dark:text-slate-300'}`} title="Maak de geselecteerde tekst dikgedrukt (Bold)."><i className="fa-solid fa-bold"></i></button>
+                 <button onClick={() => toggleFormat('italic')} className={`p-1.5 rounded ${formatting.italic ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-slate-600 dark:text-slate-300'}`} title="Maak de geselecteerde tekst schuingedrukt (Italic)."><i className="fa-solid fa-italic"></i></button>
                  <div className="w-px h-4 bg-slate-200 dark:bg-slate-700"></div>
                  
                  {/* Text Shadow Button */}
                  <button 
                     onClick={() => toggleFormat('textShadow')} 
                     className={`p-1.5 rounded ${formatting.textShadow ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30' : 'text-slate-600 dark:text-slate-300'}`} 
-                    title="Contour / Shadow"
+                    title="Voeg een subtiele schaduw of contour toe aan de tekst voor betere leesbaarheid op drukke achtergronden."
                  >
                     <i className="fa-solid fa-circle-half-stroke"></i>
                  </button>
 
                  <div className="w-px h-4 bg-slate-200 dark:bg-slate-700"></div>
-                 <button onClick={() => updateFormat('textAlign', 'left')} className={`p-1.5 rounded ${formatting.textAlign === 'left' ? 'bg-blue-100 text-blue-600' : ''}`} title="Left"><i className="fa-solid fa-align-left"></i></button>
-                 <button onClick={() => updateFormat('textAlign', 'center')} className={`p-1.5 rounded ${formatting.textAlign === 'center' ? 'bg-blue-100 text-blue-600' : ''}`} title="Center"><i className="fa-solid fa-align-center"></i></button>
-                 <button onClick={() => updateFormat('textAlign', 'right')} className={`p-1.5 rounded ${formatting.textAlign === 'right' ? 'bg-blue-100 text-blue-600' : ''}`} title="Right"><i className="fa-solid fa-align-right"></i></button>
+                 <button onClick={() => updateFormat('textAlign', 'left')} className={`p-1.5 rounded ${formatting.textAlign === 'left' ? 'bg-blue-100 text-blue-600' : ''}`} title="Lijn de tekst links uit."><i className="fa-solid fa-align-left"></i></button>
+                 <button onClick={() => updateFormat('textAlign', 'center')} className={`p-1.5 rounded ${formatting.textAlign === 'center' ? 'bg-blue-100 text-blue-600' : ''}`} title="Lijn de tekst centraal uit."><i className="fa-solid fa-align-center"></i></button>
+                 <button onClick={() => updateFormat('textAlign', 'right')} className={`p-1.5 rounded ${formatting.textAlign === 'right' ? 'bg-blue-100 text-blue-600' : ''}`} title="Lijn de tekst rechts uit."><i className="fa-solid fa-align-right"></i></button>
                </div>
 
                <textarea 
@@ -275,14 +275,15 @@ const VisualEditor = ({ item, selectedSite, onSave, onCancel, onUpload }) => {
                  className="w-full p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-accent focus:outline-none min-h-[150px] text-base leading-relaxed resize-none text-slate-900 dark:text-slate-100"
                  style={getPreviewStyles()}
                  autoFocus
+                 title="Typ hier je nieuwe tekst. Je ziet de wijzigingen direct in de website preview op de achtergrond."
                />
              </div>
           )}
         </div>
 
         <div className="flex justify-end gap-3">
-          <button onClick={handleCancel} className="px-4 py-2 text-slate-500 font-bold hover:bg-slate-100 rounded-lg">Cancel</button>
-          <button onClick={handleSave} disabled={isUploading} className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-lg active:scale-95">Save</button>
+          <button onClick={handleCancel} className="px-4 py-2 text-slate-500 font-bold hover:bg-slate-100 rounded-lg" title="Sluit de editor zonder de wijzigingen op te slaan. Je wijzigingen gaan verloren.">Cancel</button>
+          <button onClick={handleSave} disabled={isUploading} className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-lg active:scale-95" title="Sla je wijzigingen op. De nieuwe tekst of afbeelding wordt direct verwerkt in de website bestanden.">Save</button>
         </div>
       </div>
     </div>

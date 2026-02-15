@@ -5,6 +5,11 @@
     "hero_header": "De Geur van Vers Brood, de Smaak van Geluk.",
     "hero_afbeelding": "hero.png",
     "order_email": "bestelling@bakkerij-artisanaal.be",
-    "valuta_code": "EURO"
+    "valuta_code": "EURO",
+    "blogposts": {
+      "titel": "Ons Nieuwe Zuurdesembrood",
+      "inhoud": "Ons nieuwe zuurdesembrood is gemaakt met de beste ingrediënten en een speciale zuurdesem die ons brood een unieke smaak geeft.",
+      "afbeelding": "zuurdesembrood.jpg"
+    }
   }
 ]

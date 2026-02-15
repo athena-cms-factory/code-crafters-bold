@@ -74,6 +74,36 @@ async function fetchJSON(endpoint) {
     }
 }
 
+async function showManual(filename) {
+    const title = filename.replace(/_/g, ' ').replace('.md', '');
+    openModal('tool-info-modal');
+    document.getElementById('tool-info-title').innerText = `📖 Handleiding: ${title}`;
+    const body = document.getElementById('tool-info-body');
+    body.innerHTML = '<p class="loading-msg">📡 Bezig met ophalen van documentatie...</p>';
+
+    try {
+        const res = await fetch(`${API}/docs/${filename}`);
+        const data = await res.json();
+        if (data.content) {
+            // Simpele markdown naar HTML conversie
+            let html = data.content
+                .replace(/^# (.*$)/gim, '<h1 style="color:#fff; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px;">$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2 style="color:var(--accent); margin-top:30px; margin-bottom:15px;">$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3 style="color:#fff; margin-top:20px; margin-bottom:10px;">$1</h3>')
+                .replace(/\*\*(.*)\*\*/gim, '<strong class="accent">$1</strong>')
+                .replace(/^- (.*$)/gim, '<li style="margin-left: 20px; margin-bottom: 5px;">$1</li>')
+                .replace(/```env([\s\S]*?)```/gim, '<pre class="code-box" style="background:#000; padding:15px; border-radius:8px; margin:15px 0;">$1</pre>')
+                .replace(/\n/g, '<br>');
+            
+            body.innerHTML = `<div class="markdown-content">${html}</div>`;
+        } else {
+            body.innerHTML = `<p class="error">Kon de handleiding niet laden: ${data.error}</p>`;
+        }
+    } catch (e) {
+        body.innerHTML = `<p class="error">Netwerkfout bij laden van documentatie.</p>`;
+    }
+}
+
 // --- NAVIGATION ---
 function showSection(id, btn) {
     // Verberg alle secties
@@ -123,6 +153,152 @@ function showSection(id, btn) {
     if (id === 'settings') loadSettings();
     if (id === 'sitetypes') loadSiteTypes();
     if (id === 'servers') loadServerStatus();
+    if (id === 'storage') loadStorageStatus();
+}
+
+async function loadStorageStatus() {
+    const list = document.getElementById('storage-list');
+    list.innerHTML = '<p class="loading-msg">📡 Opslag status ophalen...</p>';
+
+    const sites = await fetchJSON('/storage/status') || [];
+    list.innerHTML = '';
+
+    const countEl = document.getElementById('storage-count-sites');
+    const savableEl = document.getElementById('storage-savable');
+    const diskPercentEl = document.getElementById('storage-disk-percent');
+    const diskBarEl = document.getElementById('storage-disk-bar');
+
+    countEl.innerText = sites.length;
+
+    let totalSavable = 0;
+    sites.forEach(site => {
+        if (site.policy === 'dormant' && site.hydration === 'hydrated') {
+            totalSavable += (site.storage - 10); // Schatting: node_modules is meestal grootse deel
+        }
+    });
+    savableEl.innerText = `${totalSavable} MB`;
+
+    // System Disk Info
+    try {
+        const sys = await fetchJSON('/system-status');
+        if (sys) {
+            diskPercentEl.innerText = sys.percent;
+            diskBarEl.style.width = sys.percent;
+            // Kleur aanpassen op basis van vulling
+            const p = parseInt(sys.percent);
+            diskBarEl.style.background = p > 90 ? 'var(--error)' : (p > 70 ? 'var(--warning)' : 'var(--success)');
+        }
+    } catch (e) {}
+
+    if (sites.length === 0) {
+        list.innerHTML = '<div style="grid-column: 1/-1; padding: 50px; text-align: center; color: var(--text-muted); opacity: 0.5;">Geen sites gevonden om te beheren.</div>';
+        return;
+    }
+
+    sites.forEach(site => {
+        const isHydrated = site.hydration === 'hydrated';
+        const isDormant = site.hydration === 'dormant';
+        const needsAction = (site.policy === 'dormant' && isHydrated) || (site.policy === 'hydrated' && isDormant);
+
+        const card = document.createElement('div');
+        card.className = `site-card ${needsAction ? 'status-local' : (isHydrated ? 'status-live' : 'status-local')}`;
+        card.style.borderColor = needsAction ? 'var(--warning)' : '';
+
+        card.innerHTML = `
+            <div class="site-card-content">
+                <div class="card-header" style="justify-content: space-between;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <i class="fa-solid fa-hard-drive" style="font-size:1.2rem; color: ${isHydrated ? 'var(--success)' : 'var(--text-muted)'};"></i>
+                        <h4 style="font-weight:700; letter-spacing:0.5px; font-size:1.05rem;">${site.site}</h4>
+                    </div>
+                    <span class="badge ${isHydrated ? 'badge-live' : 'badge-local'}">
+                        ${isHydrated ? 'HYDRATED' : 'DORMANT'}
+                    </span>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:15px; margin-top:10px;">
+                    <div class="stat-mini">
+                        <small class="muted">Grootte</small>
+                        <p style="font-weight:800; font-size:1.1rem;">${site.storage} <span style="font-size:0.7rem; opacity:0.6;">MB</span></p>
+                    </div>
+                    <div class="stat-mini">
+                        <small class="muted">Beleid</small>
+                        <p style="font-weight:800; font-size:0.9rem; color: var(--accent);">${site.policy.toUpperCase()}</p>
+                    </div>
+                </div>
+
+                <div class="form-group mb-15">
+                    <label style="font-size: 0.7rem; margin-bottom: 5px;">Beleid Wijzigen</label>
+                    <select onchange="updateStoragePolicy('${site.site}', this.value)" style="width: 100%; padding: 5px; font-size: 0.8rem; background: var(--bg-darker); border-radius: 4px; color: #fff; border: 1px solid var(--border);">
+                        <option value="dormant" ${site.policy === 'dormant' ? 'selected' : ''}>🌵 Dormant (Bespaar ruimte)</option>
+                        <option value="hydrated" ${site.policy === 'hydrated' ? 'selected' : ''}>💧 Hydrated (Ready to dev)</option>
+                    </select>
+                </div>
+
+                <div style="display:flex; gap:8px; margin-top:auto; padding-top:12px; border-top:1px solid var(--border);">
+                    <button onclick="enforceStoragePolicy('${site.site}')" class="primary-btn ${needsAction ? 'pulse' : ''}" style="flex:1; padding:8px; font-size:0.75rem; font-weight:700; background: ${needsAction ? 'var(--warning)' : 'var(--accent)'}; color: #000;">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> ${needsAction ? 'FIX NU' : 'RE-SYNC'}
+                    </button>
+                    ${isHydrated ? `
+                    <button onclick="dehydrateSite('${site.site}')" class="secondary-btn" style="padding:8px; font-size:0.75rem; color: var(--error); border-color: var(--error);" title="Nu handmatig node_modules verwijderen">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>` : ''}
+                </div>
+            </div>
+        `;
+        list.appendChild(card);
+    });
+}
+
+async function updateStoragePolicy(siteName, policy) {
+    try {
+        const res = await fetch(`${API}/storage/policy`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ siteName, policy })
+        });
+        const data = await res.json();
+        if (data.success) {
+            loadStorageStatus();
+        }
+    } catch (e) { alert("Fout bij bijwerken beleid: " + e.message); }
+}
+
+async function enforceStoragePolicy(siteName) {
+    try {
+        const res = await fetch(`${API}/storage/enforce`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ siteName })
+        });
+        const data = await res.json();
+        if (data.success) {
+            loadStorageStatus();
+        }
+    } catch (e) { alert("Fout bij uitvoeren actie: " + e.message); }
+}
+
+async function dehydrateSite(siteName) {
+    if (!confirm(`Wil je node_modules van ${siteName} nu direct verwijderen?`)) return;
+    try {
+        // We kunnen de policy tijdelijk op dormant zetten en dan enforcen, 
+        // of direct een dehydrate endpoint aanroepen als we die hadden. 
+        // Voor nu gebruiken we de enforce methode nadat we de policy hebben gezet.
+        await updateStoragePolicy(siteName, 'dormant');
+        await enforceStoragePolicy(siteName);
+    } catch (e) { alert("Fout: " + e.message); }
+}
+
+async function pruneAllDormant() {
+    if (!confirm("Dit verwijdert ALLE node_modules mappen van sites die op 'Dormant' staan. Dit maakt veel ruimte vrij op je Chromebook. Doorgaan?")) return;
+    try {
+        const res = await fetch(`${API}/storage/prune-all`, { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+            alert(`Succes! ${data.actions.length} sites opgeschoond.`);
+            loadStorageStatus();
+        }
+    } catch (e) { alert("Fout bij bulk-opruimen: " + e.message); }
 }
 
 async function loadServerStatus() {
@@ -989,6 +1165,36 @@ async function startSiteTypeFromProject(projectName) {
 }
 
 async function loadTodo() {
+    // 1. Load Roadmaps (Tracks)
+    const roadmapsData = await fetchJSON('/roadmaps');
+    const menu = document.getElementById('roadmap-menu');
+    const activeView = document.getElementById('active-roadmap');
+    
+    if (roadmapsData && roadmapsData.tracks) {
+        menu.classList.remove('hidden');
+        activeView.classList.add('hidden');
+        menu.innerHTML = '';
+        
+        roadmapsData.tracks.forEach(track => {
+            const card = document.createElement('div');
+            card.className = 'tool-card';
+            card.onclick = () => showRoadmapTrack(track);
+            card.innerHTML = `
+                <div class="card-header">
+                    <i class="fa-solid fa-route accent"></i>
+                    <div class="flex-row gap-5">
+                        <span class="badge" style="font-size:0.6rem; opacity:0.8;">${track.difficulty}</span>
+                        <span class="badge" style="font-size:0.6rem; opacity:0.8;">${track.time}</span>
+                    </div>
+                </div>
+                <h4 style="margin-top:10px;">${track.title}</h4>
+                <p class="small muted">${track.description}</p>
+            `;
+            menu.appendChild(card);
+        });
+    }
+
+    // 2. Load General TODO
     const data = await fetchJSON('/todo');
     const container = document.getElementById('todo-content');
     if (data && data.content) {
@@ -1002,6 +1208,66 @@ async function loadTodo() {
     } else {
         container.innerText = "Kon de roadmap niet laden.";
     }
+}
+
+function showRoadmapTrack(track) {
+    const menu = document.getElementById('roadmap-menu');
+    const activeView = document.getElementById('active-roadmap');
+    const content = document.getElementById('roadmap-content');
+    
+    menu.classList.add('hidden');
+    activeView.classList.remove('hidden');
+    
+    content.innerHTML = `
+        <div class="track-header mb-20">
+            <h2 class="mb-5 text-accent">${track.title}</h2>
+            <div class="flex-row gap-15 mb-15">
+                <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-muted);">
+                    <i class="fa-solid fa-gauge-high mr-5"></i> ${track.difficulty}
+                </span>
+                <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-muted);">
+                    <i class="fa-solid fa-clock mr-5"></i> ${track.time}
+                </span>
+            </div>
+            <p class="muted">${track.description}</p>
+        </div>
+
+        <div class="steps-list">
+            ${track.steps.map((step, idx) => `
+                <div class="step-card-wrap mb-15">
+                    <div class="step-box bg-surface p-15 rounded-xl border border-border" 
+                         ${step.details ? `onclick="this.parentElement.classList.toggle('is-expanded')" style="cursor:pointer;"` : ''}>
+                        <div class="flex-row align-center justify-between">
+                            <div class="flex-row align-center gap-15">
+                                <span class="step-num" style="background:var(--accent); color:#000; width:28px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem;">${idx + 1}</span>
+                                <h4 style="margin:0; font-size:1.05rem;">${step.title}</h4>
+                            </div>
+                            ${step.details ? '<i class="fa-solid fa-chevron-down muted expand-icon transition-all" style="font-size:0.8rem;"></i>' : ''}
+                        </div>
+                        <p class="small muted mt-10 ml-40">${step.description}</p>
+                        
+                        <div class="step-extra-content ml-40 overflow-hidden transition-all" style="max-height: 0; opacity: 0;">
+                            <div class="pt-15 pb-5">
+                                <div class="p-15 bg-darker rounded-lg border border-border/50 text-sm leading-relaxed" style="border-left: 3px solid var(--accent);">
+                                    ${step.details}
+                                </div>
+                                ${step.action ? `
+                                    <button onclick="${step.action}; event.stopPropagation();" class="primary-btn mt-15" style="padding:8px 15px; font-size:0.75rem; font-weight:700;">
+                                        <i class="fa-solid fa-arrow-right-to-bracket"></i> START DEZE STAP
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function backToRoadmapMenu() {
+    document.getElementById('roadmap-menu').classList.remove('hidden');
+    document.getElementById('active-roadmap').classList.add('hidden');
 }
 
 // --- MODALS ---
@@ -1091,23 +1357,23 @@ async function loadSites() {
                 </p>
 
                 <div class="site-actions-grid">
-                    <!-- Row 1: Execution -->
+                    <!-- Row 1: Build (The Action Loop) -->
                     <div class="action-row">
                         <button onclick="previewSite('${name}', event, ${isRunning})" class="action-btn execution-btn ${isRunning ? 'active-glow' : ''}" title="${isRunning ? 'Open preview' : 'Start dev server'}">
                             <i class="fa-solid ${isRunning ? 'fa-external-link' : 'fa-play'}"></i> <span>${isRunning ? 'OPEN' : 'DEV'}</span>
                         </button>
-                        <button onclick="stopSiteServerFromCard('${name}', ${isRunning ? activeServer.port : 0}, event)" class="action-btn stop-btn" ${isRunning ? '' : 'disabled'} title="Stop dev server">
-                            <i class="fa-solid fa-stop"></i> <span>STOP</span>
-                        </button>
                         <button onclick="openDockForSite('${name}', event)" class="action-btn dock-btn" title="Open Athena Dock">
                             <i class="fa-solid fa-anchor"></i> <span>DOCK</span>
                         </button>
-                        <button onclick="goToDeployForSite('${name}', event)" class="action-btn deploy-btn" title="Naar Deployment">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> <span>DEPLOY</span>
+                        <button onclick="openMediaVisualizerForSite('${name}', event)" class="action-btn media-btn" style="color: #e91e63;" title="Visual Media Mapper">
+                            <i class="fa-solid fa-images"></i> <span>MEDIA</span>
+                        </button>
+                        <button onclick="stopSiteServerFromCard('${name}', ${isRunning ? activeServer.port : 0}, event)" class="action-btn stop-btn" ${isRunning ? '' : 'disabled'} title="Stop dev server">
+                            <i class="fa-solid fa-stop"></i> <span>STOP</span>
                         </button>
                     </div>
                     
-                    <!-- Row 2: Management -->
+                    <!-- Row 2: Content (Data & AI) -->
                     <div class="action-row">
                         <button onclick="openToolModal('data-injector'); setTimeout(() => { document.getElementById('tool-project-select').value = '${name}'; }, 100);" class="action-btn sync-btn" style="color: var(--purple);">
                             <i class="fa-solid fa-bolt"></i> <span>SYNC</span>
@@ -1115,11 +1381,24 @@ async function loadSites() {
                         <button onclick="openSheetModal('${name}', event)" class="action-btn data-btn">
                             <i class="fa-solid fa-database"></i> <span>DATA</span>
                         </button>
+                        <button onclick="generateBlogUI('${name}', event)" class="action-btn blog-btn" style="color: #ff9800;" title="AI Blog Genereren">
+                            <i class="fa-solid fa-pen-nib"></i> <span>BLOG</span>
+                        </button>
+                        <button onclick="generateSEO('${name}', event)" class="action-btn seo-btn" style="color: #00bcd4;" title="AI SEO Optimalisatie">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i> <span>SEO</span>
+                        </button>
+                    </div>
+
+                    <!-- Row 3: Project (Config & Finalize) -->
+                    <div class="action-row">
                         <button onclick="openVariantModal('${name}', event)" class="action-btn style-btn" style="color: var(--accent);">
                             <i class="fa-solid fa-palette"></i> <span>STIJL</span>
                         </button>
                         <button onclick="openSettingsModal('${name}', '${status}', '${site.deployData?.liveUrl || ''}', '${site.deployData?.repoUrl || ''}', event)" class="action-btn settings-btn">
                             <i class="fa-solid fa-sliders"></i> <span>INSTEL.</span>
+                        </button>
+                        <button onclick="goToDeployForSite('${name}', event)" class="action-btn deploy-btn" style="background: rgba(76, 175, 80, 0.05); border-color: var(--success); color: var(--success);" title="Naar Deployment">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> <span>DEPLOY</span>
                         </button>
                     </div>
                 </div>
@@ -1216,6 +1495,88 @@ async function generateVariantsDashboard() {
     } catch (e) {
         log.innerHTML = `<span style="color: var(--error);">❌ Netwerkfout: ${e.message}</span>`;
     }
+}
+
+// --- MARKETING ACTIONS ---
+async function generateSEO(name, event) {
+    if (event) { event.preventDefault(); event.stopPropagation(); }
+    const btn = event.currentTarget;
+    const originalContent = btn.innerHTML;
+    
+    if (!confirm(`Wil je AI SEO metadata genereren voor '${name}'? Dit synchroniseert ook direct naar de Google Sheet.`)) return;
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>...</span>';
+
+    try {
+        const res = await fetch(`${API}/marketing/generate-seo`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ projectName: name })
+        });
+        const data = await res.json();
+        if (data.success) {
+            alert(`✅ SEO Metadata gegenereerd!\n\nTitel: ${data.seo.title}\nDescription: ${data.seo.description}`);
+        } else {
+            alert(`❌ Fout: ${data.error}`);
+        }
+    } catch (e) {
+        alert(`❌ Netwerkfout: ${e.message}`);
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalContent;
+    }
+}
+
+async function generateBlogUI(name, event) {
+    if (event) { event.preventDefault(); event.stopPropagation(); }
+    const btn = event.currentTarget;
+    const originalContent = btn.innerHTML;
+
+    const topic = prompt("Waarover moet de blog gaan?", "De toekomst van AI in webdesign");
+    if (!topic) return;
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>...</span>';
+
+    try {
+        const res = await fetch(`${API}/marketing/generate-blog`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ projectName: name, topic })
+        });
+        const data = await res.json();
+        if (data.success) {
+            alert(`✅ Blog gegenereerd: ${data.blog.title}`);
+        } else {
+            alert(`❌ Fout: ${data.error}`);
+        }
+    } catch (e) {
+        alert(`❌ Netwerkfout: ${e.message}`);
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalContent;
+    }
+}
+
+async function openMediaVisualizerForSite(name, event) {
+    if (event) { event.preventDefault(); event.stopPropagation(); }
+    if (!systemConfig) await loadSystemConfig();
+    const port = systemConfig.ports.media;
+
+    // Set de actieve site in de visualizer backend
+    await fetch(`${API}/set-site`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ site: name })
+    });
+
+    // Start de server
+    fetch(`${API}/start-media-server`, { method: 'POST' });
+
+    setTimeout(() => {
+        window.open(`http://${window.location.hostname}:${port}`, '_blank');
+    }, 1000);
 }
 
 // --- VIEW: CREATE ---

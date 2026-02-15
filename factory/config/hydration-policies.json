@@ -1,0 +1,12 @@
+{
+    "globalDefault": "dormant",
+    "groups": {
+        "production": "hydrated",
+        "demo": "hydrated",
+        "archive": "dormant"
+    },
+    "sites": {
+        "athena-promo": "hydrated",
+        "athena-hub": "dormant"
+    }
+}
