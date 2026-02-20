@@ -1722,9 +1722,12 @@ async function loadSites() {
                     </div>
                 </div>
                 
-                <p style="font-size: 0.75rem; color: var(--text-muted); min-height: 1.2em; line-height: 1.4; font-weight: 500; margin-bottom:10px;">
-                    ${isRunning ? `<span style="color:#4ade80; font-weight:700;">Online (Port ${activeServer.port})</span>` : (status === 'live' ? `Gepubliceerd via GitHub Pages (Port ${assignedPort})` : `Lokaal project (Port ${assignedPort})`)}
-                    ${emptyBadgeHtml}
+                <p style="font-size: 0.75rem; color: var(--text-muted); min-height: 1.2em; line-height: 1.4; font-weight: 500; margin-bottom:10px; display: flex; justify-content: space-between; align-items: center;">
+                    <span>
+                         ${isRunning ? `<span style="color:#4ade80; font-weight:700;">Online</span>` : (status === 'live' ? 'Gepubliceerd via GitHub Pages' : 'Lokaal project')}
+                         ${emptyBadgeHtml}
+                    </span>
+                    <span style="opacity: 0.6; font-family: monospace; font-weight: 800;">:${isRunning ? activeServer.port : assignedPort}</span>
                 </p>
 
                 <div class="site-actions-grid">
