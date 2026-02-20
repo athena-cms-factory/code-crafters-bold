@@ -7,7 +7,7 @@ export default function Footer({ data }) {
   const settings = Array.isArray(data?.site_settings) ? data.site_settings[0] : (data?.site_settings || {});
   const contactInfo = Array.isArray(data?.contact) ? data.contact[0] : (data?.contact || {});
   const navigation = data?.navigation || [];
-  // Intelligent Deployment Trigger v2
+  // Intelligent Deployment Trigger v3 (Robust)
   const siteTitle = settings.site_title || settings.site_name || 'Karel Webdesign';
   const email = contactInfo.contact_email || contactInfo.email || settings.contact_email || '';
   const btw = contactInfo.btw || contactInfo.btw_nummer || '';
