@@ -1,5 +1,18 @@
 # Changelog - Athena CMS Factory
 
+## [7.9.6] - 2026-02-21
+### Added
+- **Centralized Live Manager**: Introduced a new dashboard section to manage Live URLs and GitHub repositories for all sites in one place.
+- **Automated Registry Sync**: Added `sync-sites-registry.js` to automatically keep the central `sites.json` up-to-date with individual `deployment.json` files.
+- **Link Resolver Utility**: Created `resolve-localhost-links.js` to batch-convert localhost URLs to live production URLs in site data.
+- **Refined Dock Link Picker**: Replaced "pills" with a searchable dropdown menu in the Dock's `VisualEditor`, showing full URLs for better clarity.
+- **Fallback URL Intelligence**: Enhanced `SiteController` to provide smart fallback URLs (GitHub Pages/Repo) for sites marked as "live" but missing explicit configuration.
+
+### Fixed
+- **Dock Editing Restore**: Fixed broken editing functionality in `athena-hub` by upgrading components to v7.9.2 and adding `SITE_CLICK` event handling to `dock-connector.js`.
+- **API Route Priority**: Fixed 404 errors in the dashboard by re-ordering API routes to prevent parameterized routes from intercepting specific endpoints.
+- **UI Responsiveness**: Optimized the Live Manager table to stretch and fill the available screen width.
+
 ## [7.9.5] - 2026-02-17
 ### Added
 - **Athena Data Hub**: Transformed the legacy "Projects" view into a centralized, 4-stage visual pipeline (Ingestion -> Extraction -> Core -> Cloud).

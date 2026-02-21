@@ -75,6 +75,13 @@ This is the "living" phase of the project, managed via the **Data Gateway**.
     - **Pull from local input folder:** Re-injects data from local TSV files into the site's JSON.
 - **Schema Refresh:** You can adjust the blueprint at any time (e.g., add a 'price' column) and re-sync via the Gateway.
 
+### 5. Deployment & Live Management Phase
+Once a site is ready for the world, it is moved to production.
+- **GitHub Pages:** Sites are published to the `athena-cms-factory` organization.
+- **Live Manager:** Use the centralized Dashboard tool to manage Live URLs and repository links.
+- **Link Resolution:** The `resolve-localhost-links.js` utility ensures all internal links (e.g., in a portfolio) point to the live `https://...` versions instead of development ports.
+- **Central Registry:** All live sites are tracked in `dock/public/sites.json` for easy cross-linking within the Athena Dock.
+
 ## 🚀 Key Advantages
 1.  **Gemini 3.0 Ready:** Robust handling of "thought signatures".
 2.  **Two-Track Policy:** Choice between `docked` (lightweight, managed via Dock) and `autonomous` (independent).

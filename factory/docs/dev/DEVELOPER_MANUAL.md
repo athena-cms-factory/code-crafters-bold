@@ -236,3 +236,9 @@ Integrated directly into the interface, allowing one-click execution of `Marketi
 
 ### 3. Server Management
 The sidebar now includes status indicators for all core services (Dashboard, Dock, Layout Architect, Media Visualizer).
+
+### 4. Live Manager & URL Registry
+Centralized control over production deployments.
+*   **Live Manager Tab**: View and edit the `liveUrl` and `repoUrl` for every project in the `sites/` folder.
+*   **Automated Sync**: The "Sync Registry" button scans all folders and updates the central `dock/public/sites.json`.
+*   **Fallback Intelligence**: If a site is marked as "live" but has no URL, the system automatically predicts the correct GitHub Pages URL.

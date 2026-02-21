@@ -1,5 +1,21 @@
 # ✅ DONE - Athena CMS
 
+## Live Manager & Link Resolution - 2026-02-21
+- [x] **Centralized Live Manager GUI**
+    - Toegevoegd nieuwe "Live Manager" tab in het Dashboard.
+    - Ondersteuning voor het inline bewerken en opslaan van Live URLs en Repo URLs.
+    - Visuele feedback voor automatisch gegenereerde fallback URLs (italic).
+- [x] **Automated Registry Sync**
+    - Ontwikkeld `factory/5-engine/sync-sites-registry.js` om de centrale `sites.json` te synchroniseren met alle `deployment.json` bestanden.
+- [x] **Dock UI Refinement**
+    - Vervangen van "pills" door een compact dropdown-menu in de `VisualEditor` voor live site suggesties.
+    - Weergave van volledige `https://...` URLs in de dropdown voor maximale duidelijkheid.
+- [x] **Localhost Link Resolver Utility**
+    - Ontwikkeld `factory/6-utilities/resolve-localhost-links.js` voor batch-migratie van lokale links naar productie URLs.
+- [x] **Athena Hub Restoration**
+    - Hersteld van Dock editing functionaliteit in de centrale hub site.
+    - Bijgewerkt van alle showcase links naar de werkelijke live locaties.
+
 ## Data Hub & Workflow Orchestration - 2026-02-17
 - [x] **Athena Data Hub Implementation**
     - Ombouw van de "Projecten" tab naar een visuele 4-traps pipeline (Ingestie -> Extractie -> Site Core -> Cloud).
