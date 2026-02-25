@@ -9,6 +9,7 @@
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "cover_large [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/cover_large.jpg] [/LINK]"
+    "raw_text": "cover_large [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/cover_large.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

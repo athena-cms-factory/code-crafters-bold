@@ -6,7 +6,7 @@
 - **Created**: 2026-02-17
 
 ## Objective
-Extract the AI waterfall system from the Athena CMS Factory into a standalone, portable module located in `~/karelsassistant`. This module should be usable in other projects and include its own configuration and dependency management.
+Extract the AI waterfall system from the Athena CMS Factory into a standalone, portable module located in `~/aiga`. This module should be usable in other projects and include its own configuration and dependency management.
 
 ## Context
 The AI waterfall system provides a robust way to generate content by falling back through multiple AI providers (Google, Groq, OpenRouter, Hugging Face) if one fails or hits a rate limit.
@@ -22,14 +22,14 @@ The AI waterfall system provides a robust way to generate content by falling bac
 - `factory/5-engine/ai-engine.js` (Source)
 - `factory/5-engine/env-loader.js` (Source)
 - `factory/config/ai-models.json` (Source)
-- `~/karelsassistant/ai-waterfall/index.js` (Target)
-- `~/karelsassistant/ai-waterfall/package.json` (Target)
-- `~/karelsassistant/ai-waterfall/ai-models.json` (Target)
-- `~/karelsassistant/ai-waterfall/.env` (Target)
-- `~/karelsassistant/ai-waterfall/README.md` (Target)
+- `~/aiga/ai-waterfall/index.js` (Target)
+- `~/aiga/ai-waterfall/package.json` (Target)
+- `~/aiga/ai-waterfall/ai-models.json` (Target)
+- `~/aiga/ai-waterfall/.env` (Target)
+- `~/aiga/ai-waterfall/README.md` (Target)
 
 ## Plan
-1. [x] Scaffold `~/karelsassistant` directory.
+1. [x] Scaffold `~/aiga` directory.
 2. [x] Create `package.json` and install dependencies.
 3. [x] Copy and refactor `ai-engine.js` into `index.js`.
 4. [x] Implement simplified env loading.
