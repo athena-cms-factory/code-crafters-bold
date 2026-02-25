@@ -4,10 +4,10 @@
     "path": "/wat-als-therapie-niet-met-woorden-begint-beelden-als-brug-naar-contact",
     "title": "wat als therapie niet met woorden begint beelden als brug naar contact",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2025/09/False.png",
-      "https://www.fpcnv.be/wp-content/uploads/2025/09/True.png",
-      "https://www.fpcnv.be/wp-content/uploads/2025/09/Voorbeeld.png"
+      "logo_share.jpg",
+      "False.png",
+      "True.png",
+      "Voorbeeld.png"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

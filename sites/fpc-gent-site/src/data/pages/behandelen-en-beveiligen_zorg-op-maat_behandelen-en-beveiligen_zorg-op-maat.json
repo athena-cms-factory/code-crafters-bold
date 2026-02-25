@@ -4,11 +4,12 @@
     "path": "/behandelen-en-beveiligen/zorg-op-maat/behandelen-en-beveiligen_zorg-op-maat",
     "title": "behandelen en beveiligen_zorg op maat",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Behandelen en beveiligen_Zorg op maat [LINK: https://www.fpcnv.be/wp-content/uploads/2017/08/Behandelen-en-beveiligen_Zorg-op-maat-e1501667022544.jpg] [/LINK]"
+    "raw_text": "Behandelen en beveiligen_Zorg op maat [LINK: https://www.fpcnv.be/wp-content/uploads/2017/08/Behandelen-en-beveiligen_Zorg-op-maat-e1501667022544.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

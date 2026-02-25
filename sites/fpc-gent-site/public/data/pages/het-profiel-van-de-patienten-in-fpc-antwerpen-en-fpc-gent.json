@@ -4,10 +4,10 @@
     "path": "/het-profiel-van-de-patienten-in-fpc-antwerpen-en-fpc-gent",
     "title": "het profiel van de patienten in fpc antwerpen en fpc gent",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2024/07/Onderzoek-1_Tabel-2.png",
-      "https://www.fpcnv.be/wp-content/uploads/2024/07/Onderzoek-2_Grafiek.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/Re-integratie-e1502096881805-1920x1280.jpg"
+      "logo_share.jpg",
+      "Onderzoek-1_Tabel-2.png",
+      "Onderzoek-2_Grafiek.png",
+      "Re-integratie-e1502096881805-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

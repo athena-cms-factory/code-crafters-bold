@@ -4,11 +4,12 @@
     "path": "/jobs/jobs_waarom-kiezen-voor",
     "title": "jobs_waarom kiezen voor",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Jobs_Waarom-kiezen voor [LINK: https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Waarom-kiezen-voor-e1504605765475.jpg] [/LINK]"
+    "raw_text": "Jobs_Waarom-kiezen voor [LINK: https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Waarom-kiezen-voor-e1504605765475.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

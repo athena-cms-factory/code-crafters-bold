@@ -4,11 +4,11 @@
     "path": "/over-ons",
     "title": "over ons",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Over-ons_Aandeelhouders-met-expertise-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Over-ons_Ombudsdienst-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/contact-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/Over-ons_Publicaties-e1501684699206-1920x1280.jpg"
+      "logo_share.jpg",
+      "Over-ons_Aandeelhouders-met-expertise-626x150.jpg",
+      "Over-ons_Ombudsdienst-626x150.jpg",
+      "contact-626x150.jpg",
+      "Over-ons_Publicaties-e1501684699206-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -20,7 +20,8 @@
         "content": {
           "titel": "Over ons",
           "tagline": "FPC Antwerpen en FPC Gent: Beveiliging van de samenleving door behandeling van forensisch psychiatrische patiënten.",
-          "cta_text": null
+          "cta_text": null,
+          "image": "Over-ons_Aandeelhouders-met-expertise-626x150.jpg"
         }
       },
       {
@@ -57,6 +58,7 @@
           "tekst": "Patiënten kunnen met vragen of opmerkingen in verband met de uitoefening van de patiëntenrechten terecht bij een bevoegde ombudsdienst."
         }
       }
-    ]
+    ],
+    "afbeelding": "Over-ons_Aandeelhouders-met-expertise-626x150.jpg"
   }
 }

@@ -4,11 +4,12 @@
     "path": "/over-ons/klokkenluiderskanaal/klokkenluider",
     "title": "klokkenluider",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Klokkenluider [LINK: https://www.fpcnv.be/wp-content/uploads/2023/03/Klokkenluider.jpg] [/LINK]"
+    "raw_text": "Klokkenluider [LINK: https://www.fpcnv.be/wp-content/uploads/2023/03/Klokkenluider.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

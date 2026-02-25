@@ -4,11 +4,12 @@
     "path": "/home/fpc-gent-logo-liggend",
     "title": "fpc gent logo liggend",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "fpc-gent-logo-liggend [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-gent-logo-liggend.png] [/LINK]"
+    "raw_text": "fpc-gent-logo-liggend [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-gent-logo-liggend.png] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

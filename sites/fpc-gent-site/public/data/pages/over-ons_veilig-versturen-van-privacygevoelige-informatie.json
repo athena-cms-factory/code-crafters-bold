@@ -4,12 +4,12 @@
     "path": "/over-ons/veilig-versturen-van-privacygevoelige-informatie",
     "title": "veilig versturen van privacygevoelige informatie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2023/03/FPC-Antwerpen_pagina1-1024x530.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/03/FPC-Gent_pagina1-300x155.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/03/FPC-Gent_pagina2-300x155.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/03/FPC-Antwerpen_pagina2-300x155.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/03/Veilig-mailen.jpg"
+      "logo_share.jpg",
+      "FPC-Antwerpen_pagina1-1024x530.png",
+      "FPC-Gent_pagina1-300x155.png",
+      "FPC-Gent_pagina2-300x155.png",
+      "FPC-Antwerpen_pagina2-300x155.png",
+      "Veilig-mailen.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

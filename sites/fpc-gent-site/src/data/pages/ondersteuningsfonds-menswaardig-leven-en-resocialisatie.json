@@ -4,8 +4,8 @@
     "path": "/ondersteuningsfonds-menswaardig-leven-en-resocialisatie",
     "title": "ondersteuningsfonds menswaardig leven en resocialisatie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/FPC_Barbara-Joseph.jpg"
+      "logo_share.jpg",
+      "FPC_Barbara-Joseph.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Een ondersteuningsfonds voor een menswaardig leven en resocialisatie",
           "tagline": "Het Magis3 fonds van FPC Gent bevordert re-integratie en zelfredzaamheid door middel van zinvolle dagbesteding.",
-          "cta_text": "Ontdek Magis3"
+          "cta_text": "Ontdek Magis3",
+          "image": "FPC_Barbara-Joseph.jpg"
         }
       },
       {
@@ -35,12 +36,14 @@
             {
               "titel": "Voorzien in Basismiddelen",
               "beschrijving": "Hulpbehoevende patiënten voorzien van basismiddelen middels een tegemoetkoming voor afgewerkte blokken arbeidstherapie.",
-              "icoon": "hand-holding-heart"
+              "icoon": "hand-holding-heart",
+              "image": "FPC_Barbara-Joseph.jpg"
             },
             {
               "titel": "Bevorderen van Zelfredzaamheid en Financiële Geletterdheid",
               "beschrijving": "Patiënten zelfredzaam maken, afbetalingen aan gebeurlijke schuldeisers mogelijk maken en patiënten leren omgaan met financiële middelen.",
-              "icoon": "piggy-bank"
+              "icoon": "piggy-bank",
+              "image": "FPC_Barbara-Joseph.jpg"
             }
           ]
         }
@@ -73,6 +76,7 @@
           "tekst": "Ondanks de positieve evolutie van het ondersteuningsfonds kunnen – mede omwille van het psychiatrisch ziektebeeld, de soms grote somatische zorg en de specifiek forensische behandeltrajecten die de patiënten volgen – zijn de opbrengsten van Magis3 vooralsnog niet toereikend om de tegemoetkoming voor patiënten te garanderen. Gezien het therapeutisch belang, de overtuiging van het belang in het kader van resocialisatie en de wil om ook patiënten zonder middelen in staat te stellen om een menswaardig leven te leiden, heeft FPC Gent dan ook beslist om de maandelijkse tekorten van het ondersteuningsfonds bij te passen. Meer lezen over Magis3 of wat zoals in de ateliers vervaardigd wordt? Surf naar www.magis3.be."
         }
       }
-    ]
+    ],
+    "afbeelding": "FPC_Barbara-Joseph.jpg"
   }
 }

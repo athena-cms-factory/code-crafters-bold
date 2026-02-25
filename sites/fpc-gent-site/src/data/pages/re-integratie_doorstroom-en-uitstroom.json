@@ -4,8 +4,8 @@
     "path": "/re-integratie/doorstroom-en-uitstroom",
     "title": "doorstroom en uitstroom",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/Re-integratie_Doorstroom-en-uitstroom-e1501667002376-1920x1280.jpg"
+      "logo_share.jpg",
+      "Re-integratie_Doorstroom-en-uitstroom-e1501667002376-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Doorstroom en uitstroom",
           "tagline": null,
-          "cta_text": null
+          "cta_text": null,
+          "image": "Re-integratie_Doorstroom-en-uitstroom-e1501667002376-1920x1280.jpg"
         }
       },
       {
@@ -35,17 +36,20 @@
             {
               "titel": "Afdeling Observatie en Oriëntatie",
               "beschrijving": "De patiënt wordt opgenomen op de afdeling observatie en oriëntatie. De doelstelling van de opname is kennismaking met het forensisch psychiatrisch centrum, de medepatiënten en de afdelingsstaf, stabilisatie en diagnostiek. Het resultaat van het verblijf op de opnameafdeling is een individueel behandelplan.",
-              "icoon": null
+              "icoon": null,
+              "image": "Re-integratie_Doorstroom-en-uitstroom-e1501667002376-1920x1280.jpg"
             },
             {
               "titel": "Afdeling Doorgedreven Behandeling",
               "beschrijving": "Indien de patiënt voldoende gestabiliseerd is, kan hij doorstromen naar de afdeling doorgedreven behandeling. Op deze afdeling neemt de patiënt volop deel aan zijn behandelprogramma.",
-              "icoon": null
+              "icoon": null,
+              "image": "Re-integratie_Doorstroom-en-uitstroom-e1501667002376-1920x1280.jpg"
             },
             {
               "titel": "Resocialisatieafdeling",
               "beschrijving": "Wanneer de patiënt voldoende vorderingen heeft gemaakt in zijn risicomanagement en behandeling kan hij doorstromen naar de resocialisatieafdeling. Belangrijk hierbij is dat de patiënt zijn eigen risicogedrag voldoende onder controle heeft om veilig en verantwoord om te gaan met de grotere vrijheid binnen de muren van het centrum. De meeste patiënten op de resocialisatieafdeling hebben ook reeds stappen gezet in hun stappenplan omtrent uitgaansvergunningen.",
-              "icoon": null
+              "icoon": null,
+              "image": "Re-integratie_Doorstroom-en-uitstroom-e1501667002376-1920x1280.jpg"
             }
           ]
         }
@@ -57,6 +61,7 @@
           "tekst": "Er wordt tot IOP geadviseerd aan de bevoegde Kamer voor de Bescherming van de maatschappij indien de patiënt over een uitgewerkt re-integratieplan beschikt. Dit kan geïnitieerd worden op elke afdeling binnen het forensisch psychiatrisch centrum. De belangrijkste leidraad in het toewerken naar een IOP is de inschatting van het risico op herval: “Is, gezien het risico op herval, een forensisch psychiatrisch centrum de meest aangewezen behandelsetting?” is hierbij de cruciale vraag die continu geëvalueerd dient te worden. Het is steeds de KBM die beslist over de toekenning van vrijheden en invrijheidsstellingen op proef en die de hieraan gekoppelde voorwaarden stelt. Om hen toe te laten hierin weloverwogen beslissingen te kunnen nemen informeren FPC Antwerpen en FPC Gent de KBM’s aan de hand van een uitgebreide rapportage op uniforme wijze over het verblijf en het behandelverloop in relatie tot de vooropgestelde doelstellingen en adviseren hen aangaande vrijheden."
         }
       }
-    ]
+    ],
+    "afbeelding": "Re-integratie_Doorstroom-en-uitstroom-e1501667002376-1920x1280.jpg"
   }
 }

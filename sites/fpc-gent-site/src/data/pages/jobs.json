@@ -4,17 +4,17 @@
     "path": "/jobs",
     "title": "jobs",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/filter/fpc-logo.png",
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/filter/fpc-gent-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/filter/fpc-antwerpen-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/jobs_aandeslag-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/jobs_getuigenis-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/jobs_solliciteren-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Stages-e1504604472350-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/jobs_solliciatie-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/Jobs-e1502115484135-1920x1059.jpg"
+      "logo_share.jpg",
+      "fpc-logo.png",
+      "fpc-gent-logo-liggend.png",
+      "fpc-antwerpen-logo-liggend.png",
+      "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg",
+      "jobs_aandeslag-626x150.jpg",
+      "jobs_getuigenis-626x150.jpg",
+      "jobs_solliciteren-626x150.jpg",
+      "Jobs_Stages-e1504604472350-626x150.jpg",
+      "jobs_solliciatie-626x150.jpg",
+      "Jobs-e1502115484135-1920x1059.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -27,7 +27,8 @@
           "title": "Job in de kijker",
           "tagline": "Verpleegkundige",
           "cta_text": "Meer lezen",
-          "link": "https://www.fpcnv.be/jobs/verpleegkundige/104"
+          "link": "https://www.fpcnv.be/jobs/verpleegkundige/104",
+          "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
         }
       },
       {
@@ -45,67 +46,80 @@
             {
               "titel": "Arbeidstherapeut (tuin)",
               "beschrijving": "Behandeling FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/arbeidstherapeut-tuin/7847"
+              "link": "https://www.fpcnv.be/jobs/arbeidstherapeut-tuin/7847",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Groepsbegeleider/ Therapeutisch assistent",
               "beschrijving": "Behandeling FPC Gent",
-              "link": "https://www.fpcnv.be/jobs/groepsbegeleider-therapeutisch-assistent/1454"
+              "link": "https://www.fpcnv.be/jobs/groepsbegeleider-therapeutisch-assistent/1454",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "HR Medewerker",
               "beschrijving": "Niet-zorg FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/hr-medewerker/7874"
+              "link": "https://www.fpcnv.be/jobs/hr-medewerker/7874",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Interne Auditor (m/v/x) voor het structureel uitvoeren van interne audits in FPC Antwerpen (interne vacature)",
               "beschrijving": "N/A FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/interne-auditor-m-v-x-voor-het-structureel-uitvoeren-van-interne-audits-in-fpc-antwerpen-interne-vacature/7842"
+              "link": "https://www.fpcnv.be/jobs/interne-auditor-m-v-x-voor-het-structureel-uitvoeren-van-interne-audits-in-fpc-antwerpen-interne-vacature/7842",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Medewerker activiteiten dagelijks leven m/v/x (vervangingscontract)",
               "beschrijving": "Behandeling FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/medewerker-activiteiten-dagelijks-leven-m-v-x-vervangingscontract/7876"
+              "link": "https://www.fpcnv.be/jobs/medewerker-activiteiten-dagelijks-leven-m-v-x-vervangingscontract/7876",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Medewerker bedrijfsopvangteam (BOT) (Interne vacature)",
               "beschrijving": "Behandeling FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/medewerker-bedrijfsopvangteam-bot-interne-vacature/7869"
+              "link": "https://www.fpcnv.be/jobs/medewerker-bedrijfsopvangteam-bot-interne-vacature/7869",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Psychiater (m/v/x)",
               "beschrijving": "Behandeling FPC Gent",
-              "link": "https://www.fpcnv.be/jobs/psychiater-m-v-x/3614"
+              "link": "https://www.fpcnv.be/jobs/psychiater-m-v-x/3614",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Psycholoog behandelaanbod en diagnostiek (m/v/x) Vervangingsovereenkomst",
               "beschrijving": "Behandeling FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/psycholoog-behandelaanbod-en-diagnostiek-m-v-x-vervangingsovereenkomst/7872"
+              "link": "https://www.fpcnv.be/jobs/psycholoog-behandelaanbod-en-diagnostiek-m-v-x-vervangingsovereenkomst/7872",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Psychomotorisch therapeut / Bewegings-of Lichaamsgericht therapeut (m/v/x)",
               "beschrijving": "Behandeling FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/psychomotorisch-therapeut-bewegings-of-lichaamsgericht-therapeut-m-v-x/7870"
+              "link": "https://www.fpcnv.be/jobs/psychomotorisch-therapeut-bewegings-of-lichaamsgericht-therapeut-m-v-x/7870",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Therapeutisch assistent ZIZ (zeer intensieve zorg)",
               "beschrijving": "FPC Gent",
-              "link": "https://www.fpcnv.be/jobs/therapeutisch-assistent-ziz-zeer-intensieve-zorg/7871"
+              "link": "https://www.fpcnv.be/jobs/therapeutisch-assistent-ziz-zeer-intensieve-zorg/7871",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Verpleegkundige",
               "beschrijving": "Behandeling FPC Antwerpen",
-              "link": "https://www.fpcnv.be/jobs/verpleegkundige/5705"
+              "link": "https://www.fpcnv.be/jobs/verpleegkundige/5705",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Verpleegkundige",
               "beschrijving": "Behandeling FPC Gent",
-              "link": "https://www.fpcnv.be/jobs/verpleegkundige/104"
+              "link": "https://www.fpcnv.be/jobs/verpleegkundige/104",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             },
             {
               "titel": "Verpleegkundige ZIZ (zeer intensieve zorg)",
               "beschrijving": "Behandeling FPC Gent",
-              "link": "https://www.fpcnv.be/jobs/verpleegkundige-ziz-zeer-intensieve-zorg/7873"
+              "link": "https://www.fpcnv.be/jobs/verpleegkundige-ziz-zeer-intensieve-zorg/7873",
+              "image": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
             }
           ]
         }
@@ -124,6 +138,7 @@
           ]
         }
       }
-    ]
+    ],
+    "afbeelding": "Jobs_Waarom-kiezen-voor-e1504605765475-626x150.jpg"
   }
 }

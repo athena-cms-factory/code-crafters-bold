@@ -4,8 +4,8 @@
     "path": "/tevredenheidsonderzoek-familieleden-van-geinterneerden",
     "title": "tevredenheidsonderzoek familieleden van geinterneerden",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2020/03/Online-vragenlijst.jpg"
+      "logo_share.jpg",
+      "Online-vragenlijst.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -20,7 +20,8 @@
           "cta_text": {
             "text": "Vul de online vragenlijst in",
             "link": "https://kuleuven.eu.qualtrics.com/jfe/form/SV_cYEazCFXMG34oSx"
-          }
+          },
+          "image": "Online-vragenlijst.jpg"
         }
       },
       {
@@ -48,6 +49,7 @@
           ]
         }
       }
-    ]
+    ],
+    "afbeelding": "Online-vragenlijst.jpg"
   }
 }

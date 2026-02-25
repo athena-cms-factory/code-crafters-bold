@@ -4,11 +4,12 @@
     "path": "/behandelen-en-beveiligen/_behandeling-cropped",
     "title": "_behandeling cropped",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "_behandeling-cropped [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/behandeling-cropped.jpg] [/LINK]"
+    "raw_text": "_behandeling-cropped [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/behandeling-cropped.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

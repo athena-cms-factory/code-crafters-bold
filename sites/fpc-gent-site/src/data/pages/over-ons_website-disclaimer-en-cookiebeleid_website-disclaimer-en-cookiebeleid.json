@@ -4,11 +4,12 @@
     "path": "/over-ons/website-disclaimer-en-cookiebeleid/website-disclaimer-en-cookiebeleid",
     "title": "website disclaimer en cookiebeleid",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Website disclaimer en cookiebeleid [LINK: https://www.fpcnv.be/wp-content/uploads/2019/01/Website-disclaimer-en-cookiebeleid.jpg] [/LINK]"
+    "raw_text": "Website disclaimer en cookiebeleid [LINK: https://www.fpcnv.be/wp-content/uploads/2019/01/Website-disclaimer-en-cookiebeleid.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

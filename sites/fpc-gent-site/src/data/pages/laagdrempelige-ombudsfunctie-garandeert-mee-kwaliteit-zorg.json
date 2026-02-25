@@ -4,8 +4,8 @@
     "path": "/laagdrempelige-ombudsfunctie-garandeert-mee-kwaliteit-zorg",
     "title": "laagdrempelige ombudsfunctie garandeert mee kwaliteit zorg",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/Vergezicht-FPC-Gent-1920x996.jpg"
+      "logo_share.jpg",
+      "Vergezicht-FPC-Gent-1920x996.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "title": "Laagdrempelige ombudsfunctie garandeert kwaliteit",
           "tagline": "Kwaliteitsvolle zorg",
-          "cta_text": ""
+          "cta_text": "",
+          "image": "Vergezicht-FPC-Gent-1920x996.jpg"
         }
       },
       {
@@ -62,6 +63,7 @@
           "text": "Bovenstaande informatie is gebaseerd op het jaarverslag (2016) van de ombudsfunctie van FPC Gent, dat werd voorgelegd aan en besproken met de directie van FPC Gent en het opvolgingscomité."
         }
       }
-    ]
+    ],
+    "afbeelding": "Vergezicht-FPC-Gent-1920x996.jpg"
   }
 }

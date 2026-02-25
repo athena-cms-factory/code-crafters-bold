@@ -4,11 +4,12 @@
     "path": "/uitmuntendheid-in-forensische-psychiatrie-internationaal-onderzoek-naar-kwaliteiten-en-correlaties/bjpsych-open",
     "title": "bjpsych open",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "bjpsych-open [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/bjpsych-open.jpg] [/LINK]"
+    "raw_text": "bjpsych-open [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/bjpsych-open.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

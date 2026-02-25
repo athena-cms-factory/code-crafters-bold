@@ -4,8 +4,8 @@
     "path": "/uitstroom-fpc-gent",
     "title": "uitstroom fpc gent",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/informatie-van-patie%CC%88nten-1920x1280.jpg"
+      "logo_share.jpg",
+      "informatie-van-patie%CC%88nten-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

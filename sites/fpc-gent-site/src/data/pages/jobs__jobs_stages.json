@@ -4,11 +4,12 @@
     "path": "/jobs/_jobs_stages",
     "title": "_jobs_stages",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "_jobs_stages [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/jobs_stages.jpg] [/LINK]"
+    "raw_text": "_jobs_stages [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/jobs_stages.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

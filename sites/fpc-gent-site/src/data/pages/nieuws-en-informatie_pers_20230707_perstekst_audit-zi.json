@@ -4,11 +4,12 @@
     "path": "/nieuws-en-informatie/pers/20230707_perstekst_audit-zi",
     "title": "20230707_perstekst_audit zi",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "20230707_PERSTEKST_Audit ZI [LINK: https://www.fpcnv.be/wp-content/uploads/2023/07/20230707_PERSTEKST_Audit-ZI.pdf] 20230707_PERSTEKST_Audit ZI [/LINK]"
+    "raw_text": "20230707_PERSTEKST_Audit ZI [LINK: https://www.fpcnv.be/wp-content/uploads/2023/07/20230707_PERSTEKST_Audit-ZI.pdf] 20230707_PERSTEKST_Audit ZI [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

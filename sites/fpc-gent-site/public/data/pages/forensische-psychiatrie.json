@@ -4,10 +4,10 @@
     "path": "/forensische-psychiatrie",
     "title": "forensische psychiatrie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/link-img-1-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/link-img-2-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/header-1-1920x387.jpg"
+      "logo_share.jpg",
+      "link-img-1-626x150.jpg",
+      "link-img-2-626x150.jpg",
+      "header-1-1920x387.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

@@ -4,11 +4,12 @@
     "path": "/jobs/kiezen-voor-fpc-antwerpen-of-fpc-gent/deskundig",
     "title": "deskundig",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Deskundig [LINK: https://www.fpcnv.be/wp-content/uploads/2022/05/Deskundig.png] [/LINK]"
+    "raw_text": "Deskundig [LINK: https://www.fpcnv.be/wp-content/uploads/2022/05/Deskundig.png] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

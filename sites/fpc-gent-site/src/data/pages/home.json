@@ -4,14 +4,14 @@
     "path": "/home",
     "title": "home",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-gent-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-blok1.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-blok2.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/FPCG_Inkom-e1502112948421.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/Jobs-e1502115484135-1920x1059.jpg"
+      "logo_share.jpg",
+      "fpc-antwerpen-logo-liggend.png",
+      "fpc-gent-logo-liggend.png",
+      "fpc-blok1.jpg",
+      "fpc-blok2.jpg",
+      "fpc-antwerpen.jpg",
+      "FPCG_Inkom-e1502112948421.jpg",
+      "Jobs-e1502115484135-1920x1059.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -24,7 +24,8 @@
           "titel": "Zorg op maat voor geïnterneerden in een klinische setting",
           "tagline": null,
           "cta_text": "Meer over onze aanpak",
-          "link": "/behandelcentra/"
+          "link": "/behandelcentra/",
+          "image": "FPCG_Inkom-e1502112948421.jpg"
         }
       },
       {
@@ -36,13 +37,15 @@
               "titel": "FPC Antwerpen",
               "beschrijving": "biedt plaats aan 182 patiënten, zowel mannen als vrouwen, die omwille van een psychische stoornis strafbare feiten hebben gepleegd maar niet thuishoren in een gevangenis.",
               "link": "/behandelcentra/fpc-antwerpen/",
-              "icoon": null
+              "icoon": null,
+              "image": "fpc-blok1.jpg"
             },
             {
               "titel": "FPC Gent",
               "beschrijving": "biedt plaats aan 264 mannelijke patiënten die omwille van een psychische stoornis strafbare feiten hebben gepleegd maar niet thuishoren in een gevangenis.",
               "link": "/behandelcentra/fpc-gent/",
-              "icoon": null
+              "icoon": null,
+              "image": "fpc-blok1.jpg"
             }
           ]
         }
@@ -63,7 +66,8 @@
               "titel": "Verpleegkundige",
               "beschrijving": null,
               "link": "/jobs/",
-              "icoon": null
+              "icoon": null,
+              "image": "fpc-blok1.jpg"
             }
           ]
         }
@@ -77,25 +81,29 @@
               "titel": "Meer dan meubels: hoe een huiselijke leefgroep voor meer contact en welzijn zorgt",
               "beschrijving": "Kwaliteitsvolle zorg, Projecten en activiteiten/evenementen 15 december 2025",
               "link": "/meer-dan-meubels-hoe-een-huiselijke-leefgroep-voor-meer-contact-en-welzijn-zorgt/",
-              "icoon": null
+              "icoon": null,
+              "image": "fpc-blok1.jpg"
             },
             {
               "titel": "Hoofdgeneesheer FPC Gent in ‘De volksjury achter de crime scene’",
               "beschrijving": "Getuigenissen 09 december 2025",
               "link": "/hoofgeneesheer-fpc-gent-in-de-volksjury-achter-de-crime-scene/",
-              "icoon": null
+              "icoon": null,
+              "image": "fpc-blok1.jpg"
             },
             {
               "titel": "Officiële erkenning voor kwaliteitsbeleid binnen de zorg",
               "beschrijving": "Kwaliteitsvolle zorg 09 december 2025",
               "link": "/officiele-erkenning-voor-kwaliteitsbeleid-binnen-de-zorg-2/",
-              "icoon": null
+              "icoon": null,
+              "image": "fpc-blok1.jpg"
             },
             {
               "titel": "Evolutie van het risico op herval in geweldsdelicten: bestaan er verschillende trajecten?",
               "beschrijving": "Wetenschappelijk onderzoek 01 december 2025",
               "link": "/evolutie-van-het-risico-op-herval-in-geweldsdelicten-bestaan-er-verschillende-trajecten/",
-              "icoon": null
+              "icoon": null,
+              "image": "FPCG_Inkom-e1502112948421.jpg"
             }
           ]
         }
@@ -114,6 +122,7 @@
           "tekst": "Bij FPC Antwerpen en FPC Gent zijn we ervan overtuigd dat het succes van een forensisch psychiatrisch centrum bij haar medewerkers ligt. Stuk voor stuk gedreven, enthousiaste krachten die elke dag alles in het werk stellen om kwalitatief hoogstaande en veilige zorg te bieden. Een nieuwe uitdaging?"
         }
       }
-    ]
+    ],
+    "afbeelding": "fpc-blok1.jpg"
   }
 }

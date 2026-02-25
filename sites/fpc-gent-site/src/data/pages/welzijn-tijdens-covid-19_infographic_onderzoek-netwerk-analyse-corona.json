@@ -4,11 +4,12 @@
     "path": "/welzijn-tijdens-covid-19/infographic_onderzoek-netwerk-analyse-corona",
     "title": "infographic_onderzoek netwerk analyse corona",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Infographic_Onderzoek netwerk-analyse corona [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/Infographic_Onderzoek-netwerk-analyse-corona-scaled-e1755165432227.jpg] [/LINK]"
+    "raw_text": "Infographic_Onderzoek netwerk-analyse corona [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/Infographic_Onderzoek-netwerk-analyse-corona-scaled-e1755165432227.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

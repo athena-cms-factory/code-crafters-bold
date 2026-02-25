@@ -4,11 +4,12 @@
     "path": "/behandelcentra/fpc-antwerpen-cropped",
     "title": "fpc antwerpen cropped",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "fpc-antwerpen-cropped [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen-cropped.jpg] [/LINK]"
+    "raw_text": "fpc-antwerpen-cropped [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen-cropped.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

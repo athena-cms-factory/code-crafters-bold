@@ -4,12 +4,12 @@
     "path": "/forensische-psychiatrie/forensisch-psychiatrisch-centrum",
     "title": "forensisch psychiatrisch centrum",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-gent-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/header-2-1920x387.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-blok4.jpg"
+      "logo_share.jpg",
+      "fpc-antwerpen-logo-liggend.png",
+      "fpc-gent-logo-liggend.png",
+      "header-2-1920x387.jpg",
+      "fpc-antwerpen.jpg",
+      "fpc-blok4.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

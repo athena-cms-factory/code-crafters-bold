@@ -4,11 +4,12 @@
     "path": "/over-ons/privacybeleid/hoe-kan-u-ons-contacteren",
     "title": "hoe kan u ons contacteren",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Hoe kan u ons contacteren [LINK: https://www.fpcnv.be/wp-content/uploads/2021/02/Hoe-kan-u-ons-contacteren.png] [/LINK]"
+    "raw_text": "Hoe kan u ons contacteren [LINK: https://www.fpcnv.be/wp-content/uploads/2021/02/Hoe-kan-u-ons-contacteren.png] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

@@ -4,8 +4,8 @@
     "path": "/expertisecentrum/opleidingen",
     "title": "opleidingen",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2025/08/Learning-scaled-e1754653412733-1920x691.jpg"
+      "logo_share.jpg",
+      "Learning-scaled-e1754653412733-1920x691.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

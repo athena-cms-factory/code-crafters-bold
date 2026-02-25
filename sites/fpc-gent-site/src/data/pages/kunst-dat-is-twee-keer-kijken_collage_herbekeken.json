@@ -4,11 +4,12 @@
     "path": "/kunst-dat-is-twee-keer-kijken/collage_herbekeken",
     "title": "collage_herbekeken",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "[LINK: https://www.fpcnv.be/nieuws-en-informatie/] Terug naar overzicht [/LINK]"
+    "raw_text": "[LINK: https://www.fpcnv.be/nieuws-en-informatie/] Terug naar overzicht [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

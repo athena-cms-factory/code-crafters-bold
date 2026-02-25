@@ -4,8 +4,8 @@
     "path": "/jobs/aan-de-slag-in",
     "title": "aan de slag in",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Behandeling.jpg"
+      "logo_share.jpg",
+      "Jobs_Behandeling.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

@@ -4,11 +4,11 @@
     "path": "/behandelen-en-beveiligen",
     "title": "behandelen en beveiligen",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/zorg-op-maat-cropped-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Behandelen-en-beveiligen_Behandelingsconcept-e1504603568603-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Behandelen-en-beveiligen_Behandelingstraject-e1504604292942-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/Behandelen-en-beveiligen-1920x1280.jpg"
+      "logo_share.jpg",
+      "zorg-op-maat-cropped-626x150.jpg",
+      "Behandelen-en-beveiligen_Behandelingsconcept-e1504603568603-626x150.jpg",
+      "Behandelen-en-beveiligen_Behandelingstraject-e1504604292942-626x150.jpg",
+      "Behandelen-en-beveiligen-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -19,7 +19,8 @@
         "type": "hero",
         "content": {
           "titel": "Behandelen en beveiligen",
-          "tagline": "FPC Antwerpen en FPC Gent hebben de ambitie om niet alleen kwalitatief hoogstaande, maar ook veilige zorg te leveren. Dit vertaalt zich in een uitgesproken visie van behandelen en beveiligen."
+          "tagline": "FPC Antwerpen en FPC Gent hebben de ambitie om niet alleen kwalitatief hoogstaande, maar ook veilige zorg te leveren. Dit vertaalt zich in een uitgesproken visie van behandelen en beveiligen.",
+          "image": "zorg-op-maat-cropped-626x150.jpg"
         }
       },
       {
@@ -36,19 +37,23 @@
           "items": [
             {
               "titel": "Zorg op maat",
-              "beschrijving": "FPC Antwerpen en FPC Gent bieden zorg op maat in een klinische setting aan geïnterneerden met een psychiatrische stoornis of een verstandelijke beperking."
+              "beschrijving": "FPC Antwerpen en FPC Gent bieden zorg op maat in een klinische setting aan geïnterneerden met een psychiatrische stoornis of een verstandelijke beperking.",
+              "image": "zorg-op-maat-cropped-626x150.jpg"
             },
             {
               "titel": "Behandelingsconcept",
-              "beschrijving": "Gezien de samenhang tussen stoornis en delict, zit de kracht van het behandelingsconcept in de geïntegreerde aanpak van behandeling en risicomanagement."
+              "beschrijving": "Gezien de samenhang tussen stoornis en delict, zit de kracht van het behandelingsconcept in de geïntegreerde aanpak van behandeling en risicomanagement.",
+              "image": "Behandelen-en-beveiligen_Behandelingsconcept-e1504603568603-626x150.jpg"
             },
             {
               "titel": "Behandeltraject",
-              "beschrijving": "De behandeling is gebaseerd op wetenschappelijk onderbouwde patiëntprofielen en een daarbij horende visie op behandeling. Per patiëntprofiel is er een behandeltraject."
+              "beschrijving": "De behandeling is gebaseerd op wetenschappelijk onderbouwde patiëntprofielen en een daarbij horende visie op behandeling. Per patiëntprofiel is er een behandeltraject.",
+              "image": "zorg-op-maat-cropped-626x150.jpg"
             }
           ]
         }
       }
-    ]
+    ],
+    "afbeelding": "zorg-op-maat-cropped-626x150.jpg"
   }
 }

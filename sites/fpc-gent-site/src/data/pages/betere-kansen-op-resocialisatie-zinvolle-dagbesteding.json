@@ -4,8 +4,8 @@
     "path": "/betere-kansen-op-resocialisatie-zinvolle-dagbesteding",
     "title": "betere kansen op resocialisatie zinvolle dagbesteding",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/FPC_Barbara-Joseph-8-van-67-e1481280223271.jpg"
+      "logo_share.jpg",
+      "FPC_Barbara-Joseph-8-van-67-e1481280223271.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Betere kansen op resocialisatie door een zinvolle dagbesteding",
           "tagline": "Kwaliteitsvolle zorg in FPC Gent voor een veilige terugkeer naar de maatschappij.",
-          "cta_text": ""
+          "cta_text": "",
+          "image": "FPC_Barbara-Joseph-8-van-67-e1481280223271.jpg"
         }
       },
       {
@@ -35,17 +36,20 @@
             {
               "titel": "Individueel Dagprogramma",
               "beschrijving": "Conform de behandelvisie en passend in de multidisciplinaire aanpak krijgt elke patiënt een individueel ‘blokkenrooster’, een dagprogramma afgestemd op de mogelijkheden en draagkracht van de patiënt. Dit bestaat naast therapie uit blokken leren, sporten en arbeid.",
-              "icoon": "clipboard-check"
+              "icoon": "clipboard-check",
+              "image": "FPC_Barbara-Joseph-8-van-67-e1481280223271.jpg"
             },
             {
               "titel": "Arbeidsblokken en Werkervaring",
               "beschrijving": "Bij de arbeidsblokken leert men specifieke arbeidsvaardigheden aan en wordt de arbeidsattitude aangescherpt. Er worden werkervaringsplekken aangeboden, waardoor patiënten de beroepservaring opdoen die ze voorheen niet hadden. Dit gaat van gespecialiseerd werk in een metaal- of houtatelier, over creatieve bezigheden, tot zeer repetitief werk in assemblage. Het multidisciplinair team indiceert patiënten voor de blokken waar ze het meest bij gebaat zijn. Naast interne arbeidsactiviteiten binnen de atelierwerking (zoals keuken, schoonmaakploeg, tuinonderhoud), wordt ook actief gezocht naar externe tewerkstellingsmogelijkheden.",
-              "icoon": "hammer-wrench"
+              "icoon": "hammer-wrench",
+              "image": "FPC_Barbara-Joseph-8-van-67-e1481280223271.jpg"
             },
             {
               "titel": "Arbeidskansen en Maatschappelijke Bijdrage",
               "beschrijving": "Het aanleren van een positieve arbeidsattitude en de benodigde vaardigheden vertalen zich in betere arbeidskansen bij re-integratie. Het geeft patiënten bovendien de gelegenheid om net zoals de burgers in de vrije samenleving daadwerkelijk een bijdrage te leveren.",
-              "icoon": "handshake"
+              "icoon": "handshake",
+              "image": "FPC_Barbara-Joseph-8-van-67-e1481280223271.jpg"
             }
           ]
         }
@@ -64,6 +68,7 @@
           "tekst": "Dat ze in een behandelsetting verblijven, waar therapie voorrang heeft op andere dagbesteding en waar alle blokken – zo ook arbeidsblokken – een therapeutische inslag hebben, maakt dat hun dagbesteding wezenlijk verschilt van wat ze vroeger kenden. Voor de ene patiënt betekent het actiever zijn, voor de andere vertaalt dit zich net in minder arbeid. Wat een dagbesteding in FPC Gent ook voor de individuele patiënt mag betekenen, het heeft voor elk van hen exacte dezelfde bedoeling, namelijk gedrag normaliseren en hun kansen op re-integratie en zelfredzaamheid maximaliseren."
         }
       }
-    ]
+    ],
+    "afbeelding": "FPC_Barbara-Joseph-8-van-67-e1481280223271.jpg"
   }
 }

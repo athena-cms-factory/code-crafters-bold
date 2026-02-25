@@ -4,11 +4,12 @@
     "path": "/behandelen-en-beveiligen/behandelen-en-beveiligen-2",
     "title": "behandelen en beveiligen 2",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Behandelen en beveiligen [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/Behandelen-en-beveiligen.jpg] [/LINK]"
+    "raw_text": "Behandelen en beveiligen [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/Behandelen-en-beveiligen.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

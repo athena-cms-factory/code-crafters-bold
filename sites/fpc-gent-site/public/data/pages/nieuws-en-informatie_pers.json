@@ -4,8 +4,8 @@
     "path": "/nieuws-en-informatie/pers",
     "title": "pers",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/pers-cropped.jpg"
+      "logo_share.jpg",
+      "pers-cropped.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

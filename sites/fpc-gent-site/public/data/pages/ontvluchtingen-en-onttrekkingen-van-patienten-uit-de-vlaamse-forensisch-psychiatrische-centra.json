@@ -4,10 +4,10 @@
     "path": "/ontvluchtingen-en-onttrekkingen-van-patienten-uit-de-vlaamse-forensisch-psychiatrische-centra",
     "title": "ontvluchtingen en onttrekkingen van patienten uit de vlaamse forensisch psychiatrische centra",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2024/09/Absconding_Tabel-1.png",
-      "https://www.fpcnv.be/wp-content/uploads/2024/09/Conclusie.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2024/05/Onderzoeksresultaten.jpg"
+      "logo_share.jpg",
+      "Absconding_Tabel-1.png",
+      "Conclusie.jpg",
+      "Onderzoeksresultaten.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

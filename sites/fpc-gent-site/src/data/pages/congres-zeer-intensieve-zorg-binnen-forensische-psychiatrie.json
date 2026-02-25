@@ -4,8 +4,8 @@
     "path": "/congres-zeer-intensieve-zorg-binnen-forensische-psychiatrie",
     "title": "congres zeer intensieve zorg binnen forensische psychiatrie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/fpc-gent-gebouw.jpg"
+      "logo_share.jpg",
+      "fpc-gent-gebouw.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "title": "Congres “Zeer intensieve zorg binnen de forensische psychiatrie”",
           "tagline": "Het zoeken naar een evenwicht tussen behandelen en beheersen",
-          "cta_text": "Ben je actief in de forensische psychiatrie en wil je deze congresdag niet missen? Klik dan hier voor het gedetailleerde programma en de praktische info."
+          "cta_text": "Ben je actief in de forensische psychiatrie en wil je deze congresdag niet missen? Klik dan hier voor het gedetailleerde programma en de praktische info.",
+          "image": "fpc-gent-gebouw.jpg"
         }
       },
       {
@@ -34,6 +35,7 @@
           "tekst": "Op de afdeling ‘zeer intensieve zorg’ (ZIZ) in FPC Gent verblijven geïnterneerde patiënten die zich, omwille van de ernst van hun forensisch-psychiatrische problematiek, tijdelijk, niet kunnen handhaven op een reguliere afdeling: forensische zorg binnen een hoog beveiligde setting ten voeten uit. In deze context leidt het zoeken naar een evenwicht tussen behandelen en beheersen (of beveiligen) tot dagdagelijkse dilemma’s. Op deze congresdag wordt het behandelaanbod voor deze uiterst kwetsbare groep, en ruimer het hanteren van vrijheidsbeperkende maatregelen binnen een therapeutisch kader, vanuit verschillende disciplines en invalshoeken belicht. Op ‘microniveau’ wordt toegelicht hoe de forensisch-psychiatrische behandeling op deze afdeling – en ruimer binnen FPC Gent – vorm krijgt; op ‘macroniveau’ wordt stilgestaan bij de ethische dilemma’s en het juridisch kader waar in de dagelijkse praktijk mee gewerkt wordt. Ook de zorg die binnen Justitie aan patiënten met een intensieve zorgnood geboden wordt, komt aan bod. Diverse sprekers hebben zich geëngageerd en leveren stuk voor stuk een essentiële bijdrage aan deze boeiende en vooral leerrijke dag. Ook de Nederlandse afdelingen Zeer Intensieve Zorg, in het bijzonder de ZIZ-afdeling Olivijn van FPC de Kijvelanden, hebben dit congres – vanuit de inhoudelijke samenwerking mee vorm gegeven."
         }
       }
-    ]
+    ],
+    "afbeelding": "fpc-gent-gebouw.jpg"
   }
 }

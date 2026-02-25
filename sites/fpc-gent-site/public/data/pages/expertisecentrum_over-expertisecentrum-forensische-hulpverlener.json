@@ -4,10 +4,10 @@
     "path": "/expertisecentrum/over-expertisecentrum-forensische-hulpverlener",
     "title": "over expertisecentrum forensische hulpverlener",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2025/06/Onderzoek-scaled.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2024/12/MG_9219-scaled.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2025/06/Expertisecentrum-1920x1282.jpg"
+      "logo_share.jpg",
+      "Onderzoek-scaled.jpg",
+      "MG_9219-scaled.jpg",
+      "Expertisecentrum-1920x1282.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

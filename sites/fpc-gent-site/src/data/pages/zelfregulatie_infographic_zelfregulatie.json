@@ -4,11 +4,12 @@
     "path": "/zelfregulatie/infographic_zelfregulatie",
     "title": "infographic_zelfregulatie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Infographic_zelfregulatie [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/Infographic_zelfregulatie-scaled-e1755164498720.jpg] [/LINK]"
+    "raw_text": "Infographic_zelfregulatie [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/Infographic_zelfregulatie-scaled-e1755164498720.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

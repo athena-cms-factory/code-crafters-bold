@@ -4,11 +4,12 @@
     "path": "/jobs/job-landingspagina-sociotherapie/banner-wlb-1",
     "title": "banner wlb 1",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Banner WLB (1) [LINK: https://www.fpcnv.be/wp-content/uploads/2026/01/Banner-WLB-1.png] [/LINK]"
+    "raw_text": "Banner WLB (1) [LINK: https://www.fpcnv.be/wp-content/uploads/2026/01/Banner-WLB-1.png] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

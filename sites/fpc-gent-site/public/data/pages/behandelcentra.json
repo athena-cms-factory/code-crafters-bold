@@ -4,13 +4,13 @@
     "path": "/behandelcentra",
     "title": "behandelcentra",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/aangemeld-cropped.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-gent-logo-liggend.png",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/Hoog-beveiligde-centra-e1502114074858-1920x1080.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-antwerpen.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-blok4.jpg"
+      "logo_share.jpg",
+      "aangemeld-cropped.jpg",
+      "fpc-antwerpen-logo-liggend.png",
+      "fpc-gent-logo-liggend.png",
+      "Hoog-beveiligde-centra-e1502114074858-1920x1080.jpg",
+      "fpc-antwerpen.jpg",
+      "fpc-blok4.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

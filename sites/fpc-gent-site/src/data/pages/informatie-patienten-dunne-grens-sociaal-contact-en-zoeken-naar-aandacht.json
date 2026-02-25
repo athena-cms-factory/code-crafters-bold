@@ -4,8 +4,8 @@
     "path": "/informatie-patienten-dunne-grens-sociaal-contact-en-zoeken-naar-aandacht",
     "title": "informatie patienten dunne grens sociaal contact en zoeken naar aandacht",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/informatie-van-patie%CC%88nten-1920x1280.jpg"
+      "logo_share.jpg",
+      "informatie-van-patie%CC%88nten-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Informatie van patiënten: de dunne grens tussen sociaal contact en zoeken naar aandacht",
           "tagline": null,
-          "cta_text": null
+          "cta_text": null,
+          "image": "informatie-van-patie%CC%88nten-1920x1280.jpg"
         }
       },
       {
@@ -49,21 +50,25 @@
             {
               "titel": "'Buiten naar binnen halen'",
               "beschrijving": "Op die manier krijgen patiënten een beeld van het leven buiten.",
-              "icoon": null
+              "icoon": null,
+              "image": "informatie-van-patie%CC%88nten-1920x1280.jpg"
             },
             {
               "titel": "Bezoeken van buitenaf",
               "beschrijving": "Onder meer bezoeken van buitenaf kaderen in de resocialisatie van de patiënt.",
-              "icoon": null
+              "icoon": null,
+              "image": "informatie-van-patie%CC%88nten-1920x1280.jpg"
             },
             {
               "titel": "Samenwerking met vrijwilligersorganisaties",
               "beschrijving": "In dit kader staan wij bv. ook open voor projecten met vrijwilligersorganisaties. Enerzijds vervreemdt de patiënt hierdoor niet van de buitenwereld, anderzijds helpt het de samenleving om inzicht te krijgen in wat er gebeurt achter de gesloten muren van een forensisch psychiatrisch centrum.",
-              "icoon": null
+              "icoon": null,
+              "image": "informatie-van-patie%CC%88nten-1920x1280.jpg"
             }
           ]
         }
       }
-    ]
+    ],
+    "afbeelding": "informatie-van-patie%CC%88nten-1920x1280.jpg"
   }
 }

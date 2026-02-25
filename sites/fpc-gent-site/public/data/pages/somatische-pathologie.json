@@ -4,11 +4,11 @@
     "path": "/somatische-pathologie",
     "title": "somatische pathologie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2024/05/Onderzoeksresultaten.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2024/05/Somatische-pathologie-FPCA_Tabel-1.png",
-      "https://www.fpcnv.be/wp-content/uploads/2024/05/Somatische-pathologie-FPCA_Tabel-2.png",
-      "https://www.fpcnv.be/wp-content/uploads/2024/05/FPCA-27-1920x1440.jpg"
+      "logo_share.jpg",
+      "Onderzoeksresultaten.jpg",
+      "Somatische-pathologie-FPCA_Tabel-1.png",
+      "Somatische-pathologie-FPCA_Tabel-2.png",
+      "FPCA-27-1920x1440.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

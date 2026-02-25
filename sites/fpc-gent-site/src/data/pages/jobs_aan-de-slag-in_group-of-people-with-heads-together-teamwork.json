@@ -4,11 +4,12 @@
     "path": "/jobs/aan-de-slag-in/group-of-people-with-heads-together-teamwork",
     "title": "group of people with heads together teamwork",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Group of people with heads together-teamwork [LINK: https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Behandeling.jpg] [/LINK]"
+    "raw_text": "Group of people with heads together-teamwork [LINK: https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Behandeling.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

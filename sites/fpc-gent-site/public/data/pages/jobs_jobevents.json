@@ -4,10 +4,10 @@
     "path": "/jobs/jobevents",
     "title": "jobevents",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/jobs-cropped-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Jobs_Behandeling-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/collegas-getuigen-header-1920x1048.png"
+      "logo_share.jpg",
+      "jobs-cropped-626x150.jpg",
+      "Jobs_Behandeling-626x150.jpg",
+      "collegas-getuigen-header-1920x1048.png"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

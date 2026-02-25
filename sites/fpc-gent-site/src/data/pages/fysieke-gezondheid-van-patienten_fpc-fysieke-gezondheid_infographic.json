@@ -4,11 +4,12 @@
     "path": "/fysieke-gezondheid-van-patienten/fpc-fysieke-gezondheid_infographic",
     "title": "fpc fysieke gezondheid_infographic",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "FPC-Fysieke gezondheid_Infographic [LINK: https://www.fpcnv.be/wp-content/uploads/2025/06/FPC-Fysieke-gezondheid_Infographic-e1754655091367.jpg] [/LINK]"
+    "raw_text": "FPC-Fysieke gezondheid_Infographic [LINK: https://www.fpcnv.be/wp-content/uploads/2025/06/FPC-Fysieke-gezondheid_Infographic-e1754655091367.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

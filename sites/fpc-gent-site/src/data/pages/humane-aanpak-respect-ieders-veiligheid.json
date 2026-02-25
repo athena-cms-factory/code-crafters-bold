@@ -4,8 +4,8 @@
     "path": "/humane-aanpak-respect-ieders-veiligheid",
     "title": "humane aanpak respect ieders veiligheid",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/fpc-gent-gebouw-2.jpg"
+      "logo_share.jpg",
+      "fpc-gent-gebouw-2.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -16,7 +16,8 @@
         "type": "hero",
         "content": {
           "titel": "Een humane aanpak met respect voor ieders veiligheid",
-          "tagline": "Kwaliteitsvolle zorg"
+          "tagline": "Kwaliteitsvolle zorg",
+          "image": "fpc-gent-gebouw-2.jpg"
         }
       },
       {
@@ -65,6 +66,7 @@
           "tekst": "Om – conform de behandelvisie – 264 patiënten te kunnen opnemen op éénpersoonskamers, werden daarom 8 van de 23 prikkelarme kamers (PAK) omgebouwd tot gewone patiëntenkamers. Rekening houdende met het gevoerde beleid en gebaseerd op een analyse van het aantal gebruikte prikkelarme kamers (PAK) per dag blijkt immers dat het ombouwen ervan niet tot een verlies aan kwaliteit van zorg leidt, aangezien er voldoende PAK’s beschikbaar blijven. In de geëvalueerde periode van één jaar werden maximaal 7 prikkelarme kamers en separeerruimtes gelijktijdig gebruikt. Er blijven dus voldoende PAK’s en separeerkamers ter beschikking om ieders veiligheid te garanderen."
         }
       }
-    ]
+    ],
+    "afbeelding": "fpc-gent-gebouw-2.jpg"
   }
 }

@@ -4,8 +4,8 @@
     "path": "/warmlopen-goede-doel-en-re-integratie",
     "title": "warmlopen goede doel en re integratie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Warmlopen-voor-het-goede-doel-en-re-integratie-1920x1050.jpg"
+      "logo_share.jpg",
+      "Warmlopen-voor-het-goede-doel-en-re-integratie-1920x1050.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Warmlopen voor het goede doel en re-integratie",
           "tagline": "FPC Gent patiënten zetten een mooie stap in hun resocialisatie tijdens de Warmathon voor Music For Life. (10 januari 2017)",
-          "cta_text": ""
+          "cta_text": "",
+          "image": "Warmlopen-voor-het-goede-doel-en-re-integratie-1920x1050.jpg"
         }
       },
       {
@@ -55,6 +56,7 @@
           "tekst": "Het is dankzij de onvermoeibare inzet van de medewerkers van FPC Gent dat sommige van de patiënten inmiddels dermate geëvolueerd zijn, dat dergelijke initiatieven mogelijk worden. En natuurlijk ook dankzij de patiënten zelf, die – met vallen en opstaan – de nodige motivatie en moed aan de dag leggen om hard te werken aan de weg naar hun re-integratie!"
         }
       }
-    ]
+    ],
+    "afbeelding": "Warmlopen-voor-het-goede-doel-en-re-integratie-1920x1050.jpg"
   }
 }

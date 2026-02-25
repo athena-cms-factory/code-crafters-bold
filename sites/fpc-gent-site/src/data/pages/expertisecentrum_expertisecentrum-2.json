@@ -4,11 +4,12 @@
     "path": "/expertisecentrum/expertisecentrum-2",
     "title": "expertisecentrum 2",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Expertisecentrum [LINK: https://www.fpcnv.be/wp-content/uploads/2025/06/Expertisecentrum-scaled.jpg] [/LINK]"
+    "raw_text": "Expertisecentrum [LINK: https://www.fpcnv.be/wp-content/uploads/2025/06/Expertisecentrum-scaled.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

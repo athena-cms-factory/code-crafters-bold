@@ -4,9 +4,9 @@
     "path": "/integrin-duurzaamheid-en-sociale-integratie-gaan-hand-in-hand",
     "title": "integrin duurzaamheid en sociale integratie gaan hand in hand",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2019/06/Inspire-5-Integrin-1.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2019/06/Inspire-5-Integrin-5.jpg"
+      "logo_share.jpg",
+      "Inspire-5-Integrin-1.jpg",
+      "Inspire-5-Integrin-5.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "type": "hero",
         "content": {
           "titel": "Integr’In: duurzaamheid en sociale integratie gaan hand in hand",
-          "tagline": "Een samenwerking tussen het Forensisch Psychiatrisch Centrum te Gent en Antwerpen en Sodexo, is een mooi voorbeeld van een maatschappelijk relevant project dat bijdraagt aan de re-integratie van kwetsbare groepen. De patiënten in FPC Antwerpen en FPC Gent gaan creatief aan de slag met traditionele ambachten. Zo maakte FPC Antwerpen onlangs 50 plantenbakken voor het personeelsrestaurant van het UZA."
+          "tagline": "Een samenwerking tussen het Forensisch Psychiatrisch Centrum te Gent en Antwerpen en Sodexo, is een mooi voorbeeld van een maatschappelijk relevant project dat bijdraagt aan de re-integratie van kwetsbare groepen. De patiënten in FPC Antwerpen en FPC Gent gaan creatief aan de slag met traditionele ambachten. Zo maakte FPC Antwerpen onlangs 50 plantenbakken voor het personeelsrestaurant van het UZA.",
+          "image": "Inspire-5-Integrin-1.jpg"
         }
       },
       {
@@ -41,6 +42,7 @@
           "tekst": "Het werk voor het UZA is maar één voorbeeld van het creatieve werk dat de patiënten van FPC Antwerpen en Gent in het kader van Integr’In maken. “We naaien kussens, maken stoelen en banken. Ik ben steeds in de wolken wanneer ik een opdracht volbracht heb”, aldus Adu, een van de patiënten. De projecten maken deel uit van de dagbesteding van de patiënt. Therapie wordt gecombineerd met sport, onderwijs en arbeidsactiviteiten in huis of de atelierwerking. Het uiteindelijke doel van de behandeling is dat patiënten op een veilige en verantwoorde manier terugkeren naar de maatschappij of naar een minder beveiligde omgeving. De website magis3.be toont een paar voorbeelden van hun creatieve werk. Terug naar overzicht."
         }
       }
-    ]
+    ],
+    "afbeelding": "Inspire-5-Integrin-1.jpg"
   }
 }

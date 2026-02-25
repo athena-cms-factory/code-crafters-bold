@@ -4,11 +4,12 @@
     "path": "/jobs/collegas-getuigen/collegas-getuigen-header",
     "title": "collegas getuigen header",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "collegas-getuigen-header [LINK: https://www.fpcnv.be/wp-content/uploads/2017/08/collegas-getuigen-header.png] [/LINK]"
+    "raw_text": "collegas-getuigen-header [LINK: https://www.fpcnv.be/wp-content/uploads/2017/08/collegas-getuigen-header.png] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

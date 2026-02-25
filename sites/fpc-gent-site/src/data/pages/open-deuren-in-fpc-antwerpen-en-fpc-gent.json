@@ -4,8 +4,8 @@
     "path": "/open-deuren-in-fpc-antwerpen-en-fpc-gent",
     "title": "open deuren in fpc antwerpen en fpc gent",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2018/02/IMG_20180318_094052821-e1550044114918.png"
+      "logo_share.jpg",
+      "IMG_20180318_094052821-e1550044114918.png"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Open deuren in FPC Antwerpen en FPC Gent",
           "tagline": "Krijg een uniek inzicht in de forensische psychiatrie.",
-          "cta_text": "Ontdek onze open deuren"
+          "cta_text": "Ontdek onze open deuren",
+          "image": "IMG_20180318_094052821-e1550044114918.png"
         }
       },
       {
@@ -48,6 +49,7 @@
           "tekst": "Woensdag 4 maart 2020 – Het kabinet van minister Beke en het kabinet van minister De Block hebben op basis van de input van het Vlaams Agentschap Zorg en Gezondheid beslist dat de opendeurdag Dag van de Zorg niet kan doorgaan n.a.v. het coronavirus dat momenteel ook in België actief aanwezig is. Zij achten het niet verantwoord om een grote massa mensen in contact te laten komen met o.a. zieke en bejaarde mensen in ziekenhuizen, woonzorgcentra,… Vandaar de beslissing tot algemene aflassing van het evenement Dag van de Zorg. Het is met pijn in het hart dat we deze boodschap brengen, want jullie enthousiasme om tijdens Dag van de Zorg FPC Antwerpen / FPC Gent te leren kennen, was groot. In ieder geval bedankt daarvoor. Wij ontvangen jullie graag bij een volgende gelegenheid!"
         }
       }
-    ]
+    ],
+    "afbeelding": "IMG_20180318_094052821-e1550044114918.png"
   }
 }

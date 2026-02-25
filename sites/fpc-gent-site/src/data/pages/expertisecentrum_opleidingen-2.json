@@ -4,11 +4,12 @@
     "path": "/expertisecentrum/opleidingen-2",
     "title": "opleidingen 2",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Opleidingen [LINK: https://www.fpcnv.be/wp-content/uploads/2025/06/Opleidingen-scaled.jpg] [/LINK]"
+    "raw_text": "Opleidingen [LINK: https://www.fpcnv.be/wp-content/uploads/2025/06/Opleidingen-scaled.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

@@ -4,9 +4,9 @@
     "path": "/over-ons/privacybeleid",
     "title": "privacybeleid",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2021/02/Hoe-kan-u-ons-contacteren.png",
-      "https://www.fpcnv.be/wp-content/uploads/2019/01/Privacy-policy-1920x1280.jpg"
+      "logo_share.jpg",
+      "Hoe-kan-u-ons-contacteren.png",
+      "Privacy-policy-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

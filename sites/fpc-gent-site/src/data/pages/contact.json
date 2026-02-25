@@ -4,8 +4,8 @@
     "path": "/contact",
     "title": "contact",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/contact.jpg"
+      "logo_share.jpg",
+      "contact.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -48,6 +48,7 @@
           ]
         }
       }
-    ]
+    ],
+    "afbeelding": "contact.jpg"
   }
 }

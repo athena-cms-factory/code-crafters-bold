@@ -4,8 +4,8 @@
     "path": "/ontdek-tijdens-de-open-geestdagen-wat-er-achter-onze-deuren-gebeurt",
     "title": "ontdek tijdens de open geestdagen wat er achter onze deuren gebeurt",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2023/08/Logo.png"
+      "logo_share.jpg",
+      "Logo.png"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Ontdek tijdens de Open Geestdagen wat er achter onze deuren gebeurt",
           "tagline": "Maak geestelijke gezondheid bespreekbaar en vergroot het maatschappelijk draagvlak voor de behandeling en resocialisatie van onze patiëntenpopulatie.",
-          "cta_text": "Ontdek meer over de Open Geestdagen"
+          "cta_text": "Ontdek meer over de Open Geestdagen",
+          "image": "logo_share.jpg"
         }
       },
       {
@@ -48,6 +49,7 @@
           "tekst": "5-10: het is helaas niet meer mogelijk om in te schrijven. Wij ontvangen jullie graag bij een volgende gelegenheid!"
         }
       }
-    ]
+    ],
+    "afbeelding": "logo_share.jpg"
   }
 }

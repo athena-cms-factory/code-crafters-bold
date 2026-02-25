@@ -4,13 +4,13 @@
     "path": "/inspectiebezoek-fpc-antwerpen-en-fpc-gent-een-positief-rapport-met-groeikansen-voor-organisatie-en-sector",
     "title": "inspectiebezoek fpc antwerpen en fpc gent een positief rapport met groeikansen voor organisatie en sector",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2023/07/Conclusie-inspectieverslag-1.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/07/Conclusie-inspectieverslag-2.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/07/Conclusie-inspectieverslag-3.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/07/Conclusie-inspectieverslag-4.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/07/Conclusie-inspectieverslag-5.png",
-      "https://www.fpcnv.be/wp-content/uploads/2023/07/Audit.jpg"
+      "logo_share.jpg",
+      "Conclusie-inspectieverslag-1.png",
+      "Conclusie-inspectieverslag-2.png",
+      "Conclusie-inspectieverslag-3.png",
+      "Conclusie-inspectieverslag-4.png",
+      "Conclusie-inspectieverslag-5.png",
+      "Audit.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -22,7 +22,8 @@
         "content": {
           "titel": "Inspectiebezoek FPC Antwerpen en FPC Gent: een positief rapport met groeikansen voor organisatie en sector",
           "tagline": null,
-          "cta_text": null
+          "cta_text": null,
+          "image": "Conclusie-inspectieverslag-1.png"
         }
       },
       {
@@ -60,6 +61,7 @@
           "tekst": ""
         }
       }
-    ]
+    ],
+    "afbeelding": "Conclusie-inspectieverslag-1.png"
   }
 }

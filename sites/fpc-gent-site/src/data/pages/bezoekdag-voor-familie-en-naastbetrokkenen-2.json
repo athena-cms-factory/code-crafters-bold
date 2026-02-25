@@ -4,8 +4,8 @@
     "path": "/bezoekdag-voor-familie-en-naastbetrokkenen-2",
     "title": "bezoekdag voor familie en naastbetrokkenen 2",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/zorg-op-maat-cropped.jpg"
+      "logo_share.jpg",
+      "zorg-op-maat-cropped.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Bezoekdag voor familie en naastbetrokkenen",
           "tagline": "FPC Gent organiseert een bezoekdag om naasten te informeren over de werking en de belangrijke rol van familie te benadrukken.",
-          "cta_text": null
+          "cta_text": null,
+          "image": "zorg-op-maat-cropped.jpg"
         }
       },
       {
@@ -35,22 +36,26 @@
             {
               "titel": "Infomoment",
               "beschrijving": "We leggen uit waarvoor FPC Gent staat en hoe we te werk gaan.",
-              "icoon": null
+              "icoon": null,
+              "image": "zorg-op-maat-cropped.jpg"
             },
             {
               "titel": "Rondleiding",
               "beschrijving": "De afdeling en kamers van de patiënten kennen bezoekers van patiënten al, maar we tonen ook graag de rest van het behandelcentrum.",
-              "icoon": null
+              "icoon": null,
+              "image": "zorg-op-maat-cropped.jpg"
             },
             {
               "titel": "Koffiemoment",
               "beschrijving": "Bij een tasje koffie en stukje taart gaan we graag in gesprek. Er staan medewerkers van verschillende diensten klaar om vragen te beantwoorden en/of ervaringen te delen.",
-              "icoon": null
+              "icoon": null,
+              "image": "zorg-op-maat-cropped.jpg"
             },
             {
               "titel": "Bezoek",
               "beschrijving": "Nadien is er de mogelijkheid om op bezoek te gaan bij het familielid of de naastbetrokkene die in FPC Gent verblijft (aan te duiden bij inschrijving).",
-              "icoon": null
+              "icoon": null,
+              "image": "zorg-op-maat-cropped.jpg"
             }
           ]
         }
@@ -62,6 +67,7 @@
           "tekst": "De inschrijvingen voor deze bezoekdag zijn afgesloten."
         }
       }
-    ]
+    ],
+    "afbeelding": "zorg-op-maat-cropped.jpg"
   }
 }

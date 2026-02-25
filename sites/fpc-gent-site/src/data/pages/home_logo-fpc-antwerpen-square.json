@@ -4,11 +4,12 @@
     "path": "/home/logo-fpc-antwerpen-square",
     "title": "logo fpc antwerpen square",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "logo-fpc-antwerpen-square [LINK: https://www.fpcnv.be/wp-content/uploads/2017/08/logo-fpc-antwerpen-square.png] [/LINK]"
+    "raw_text": "logo-fpc-antwerpen-square [LINK: https://www.fpcnv.be/wp-content/uploads/2017/08/logo-fpc-antwerpen-square.png] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

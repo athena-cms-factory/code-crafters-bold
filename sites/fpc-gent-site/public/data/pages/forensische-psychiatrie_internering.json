@@ -4,9 +4,9 @@
     "path": "/forensische-psychiatrie/internering",
     "title": "internering",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-blok7.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/Forensische-psychiatrie_Internering-e1502193764364-1920x1272.jpg"
+      "logo_share.jpg",
+      "fpc-blok7.jpg",
+      "Forensische-psychiatrie_Internering-e1502193764364-1920x1272.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

@@ -4,11 +4,12 @@
     "path": "/behandelcentra/fpc-gent/fpc-gebouw",
     "title": "fpc gebouw",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "fpc-gebouw [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-gebouw.jpg] [/LINK]"
+    "raw_text": "fpc-gebouw [LINK: https://www.fpcnv.be/wp-content/uploads/2017/07/fpc-gebouw.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

@@ -4,11 +4,11 @@
     "path": "/re-integratie",
     "title": "re integratie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/integratie_doorstroom-cropped-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/integratie_ketenpartner-cropped-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/07/integratie_kennisdelen-cropped-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/Re-integratie-e1502096881805-1920x1280.jpg"
+      "logo_share.jpg",
+      "integratie_doorstroom-cropped-626x150.jpg",
+      "integratie_ketenpartner-cropped-626x150.jpg",
+      "integratie_kennisdelen-cropped-626x150.jpg",
+      "Re-integratie-e1502096881805-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -20,7 +20,8 @@
         "content": {
           "title": "Re-integratie",
           "tagline": null,
-          "cta_text": null
+          "cta_text": null,
+          "image": "integratie_doorstroom-cropped-626x150.jpg"
         }
       },
       {
@@ -38,21 +39,25 @@
             {
               "titel": "Doorstroom en uitstroom",
               "beschrijving": "Aan uitstroom (statuut invrijheidsstelling op proef, hetzij IOP) gaat een traject vooraf. Enerzijds is er de uitwerking van het re-integratietraject, anderzijds de interne doorstroom van de patiënt binnen het centrum.",
-              "icoon": null
+              "icoon": null,
+              "image": "integratie_doorstroom-cropped-626x150.jpg"
             },
             {
               "titel": "Samenwerking ketenpartners",
               "beschrijving": "Omdat de patiënt pas maximale slaagkansen krijgt wanneer er sprake is van een geïntegreerd netwerk binnen het zorgcircuit, streven FPC Antwerpen en FPC Gent naar een optimale samenwerking met ketenpartners.",
-              "icoon": null
+              "icoon": null,
+              "image": "integratie_doorstroom-cropped-626x150.jpg"
             },
             {
               "titel": "Kennisdelen",
               "beschrijving": "Een forensisch psychiatrisch centrum heeft een belangrijke rol in het organiseren van wederzijds kennisdelen.",
-              "icoon": null
+              "icoon": null,
+              "image": "integratie_kennisdelen-cropped-626x150.jpg"
             }
           ]
         }
       }
-    ]
+    ],
+    "afbeelding": "integratie_doorstroom-cropped-626x150.jpg"
   }
 }

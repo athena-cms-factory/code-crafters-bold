@@ -4,8 +4,8 @@
     "path": "/buiten-naar-binnen-halen-sporten",
     "title": "buiten naar binnen halen sporten",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/buiten-naar-binnen-halen-door-te-sporten-1920x1137.jpg"
+      "logo_share.jpg",
+      "buiten-naar-binnen-halen-door-te-sporten-1920x1137.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Buiten naar binnen halen door te sporten",
           "tagline": "Projecten en activiteiten/evenementen",
-          "cta_text": "Contacteer ons voor deelname"
+          "cta_text": "Contacteer ons voor deelname",
+          "image": "buiten-naar-binnen-halen-door-te-sporten-1920x1137.jpg"
         }
       },
       {
@@ -64,6 +65,7 @@
           "email": "info@fpcgent.be"
         }
       }
-    ]
+    ],
+    "afbeelding": "buiten-naar-binnen-halen-door-te-sporten-1920x1137.jpg"
   }
 }

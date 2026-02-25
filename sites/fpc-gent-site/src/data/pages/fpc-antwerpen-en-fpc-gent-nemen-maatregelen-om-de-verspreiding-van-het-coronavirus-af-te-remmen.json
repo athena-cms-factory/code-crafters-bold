@@ -4,8 +4,8 @@
     "path": "/fpc-antwerpen-en-fpc-gent-nemen-maatregelen-om-de-verspreiding-van-het-coronavirus-af-te-remmen",
     "title": "fpc antwerpen en fpc gent nemen maatregelen om de verspreiding van het coronavirus af te remmen",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2020/03/Covid-19.jpg"
+      "logo_share.jpg",
+      "Covid-19.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "FPC Antwerpen en FPC Gent nemen maatregelen om de verspreiding van het coronavirus af te remmen",
           "tagline": "Kwaliteitsvolle zorg",
-          "cta_text": null
+          "cta_text": null,
+          "image": "Covid-19.jpg"
         }
       },
       {
@@ -35,12 +36,14 @@
             {
               "titel": "Bezoekregeling",
               "beschrijving": "Er is geen bezoek meer toegelaten tot na de Paasvakantie. Het netwerk van patiënten dat in de komende dagen op bezoek zou komen, wordt hierover persoonlijk ingelicht. Patiënten hebben uiteraard de mogelijkheid om telefonisch contact op te nemen met hun netwerk; er wordt bovendien extra telefoniebudget voorzien, zodat patiënten minstens in de zijn hun netwerk te informeren over de maatregel.",
-              "icoon": null
+              "icoon": null,
+              "image": "Covid-19.jpg"
             },
             {
               "titel": "Invoer van goederen",
               "beschrijving": "Wat invoer van goederen voor patiënten betreft, raden wij aan dit via postpakket te regelen. Wie er toch op staat goederen persoonlijk af te leveren, kan dit op zaterdag en zondag tussen 13 u. en 16 u., op dinsdag en donderdag tussen 17.30 u. en 19 u., op een daarvoor voorziene plaats vooraan het gebouw, mits de goederen in een afgesloten kartonnen doos met een maximale afmeting van 60 cm B x 35 cm H x 80 cm D zitten en de naam van de patiënt én de naam van de persoon die het aflevert duidelijk op de doos vermeld staan.",
-              "icoon": null
+              "icoon": null,
+              "image": "Covid-19.jpg"
             }
           ]
         }
@@ -61,6 +64,7 @@
           "tekst": "Wij hopen op deze manier samen de verspreiding van het coronavirus af te remmen en kwetsbare personen te beschermen."
         }
       }
-    ]
+    ],
+    "afbeelding": "Covid-19.jpg"
   }
 }

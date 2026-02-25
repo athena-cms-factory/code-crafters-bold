@@ -4,8 +4,8 @@
     "path": "/preventief-werken-om-incidenten-voorkomen",
     "title": "preventief werken om incidenten voorkomen",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/preventief-werken-voorkomt-incidenten-1920x1022.jpg"
+      "logo_share.jpg",
+      "preventief-werken-voorkomt-incidenten-1920x1022.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Preventief werken voorkomt incidenten",
           "tagline": "Kwaliteitsvolle zorg",
-          "cta_text": ""
+          "cta_text": "",
+          "image": "preventief-werken-voorkomt-incidenten-1920x1022.jpg"
         }
       },
       {
@@ -35,7 +36,8 @@
             {
               "titel": "Vroegsignalering",
               "beschrijving": "Ter preventie van (ernstige) agressieve incidenten werkt FPC Gent bovendien met de methode vroegsignalering. Bij de toepassing hiervan leren patiënten hun vroege waarschuwingssignalen van agressie te herkennen. In een vroegsignaleringplan worden de vroege voortekenen en de acties om gedrag te stabiliseren en een dreigende crisis te voorkomen, beschreven.",
-              "icoon": ""
+              "icoon": "",
+              "image": "preventief-werken-voorkomt-incidenten-1920x1022.jpg"
             }
           ]
         }
@@ -61,6 +63,7 @@
           "tekst": "Omdat incidenten deel uitmaken van de high risk setting waarin we werken, zullen we incidenten nooit helemaal kunnen uitsluiten. Het spreekt evenwel voor zich dat FPC Gent alles in het werk stelt om het aantal incidenten terug te dringen, met als ultieme doelstelling nul. Elk incident kan immers een belangrijke impact hebben op de betrokkene."
         }
       }
-    ]
+    ],
+    "afbeelding": "preventief-werken-voorkomt-incidenten-1920x1022.jpg"
   }
 }

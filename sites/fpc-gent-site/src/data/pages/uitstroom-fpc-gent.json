@@ -4,8 +4,8 @@
     "path": "/uitstroom-fpc-gent",
     "title": "uitstroom fpc gent",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/informatie-van-patie%CC%88nten-1920x1280.jpg"
+      "logo_share.jpg",
+      "informatie-van-patie%CC%88nten-1920x1280.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
@@ -17,7 +17,8 @@
         "content": {
           "titel": "Uitstroom uit FPC Gent",
           "tagline": "Feiten en cijfers (2 juni 2016)",
-          "cta_text": null
+          "cta_text": null,
+          "image": "informatie-van-patie%CC%88nten-1920x1280.jpg"
         }
       },
       {
@@ -41,6 +42,7 @@
           "tekst": "FPC Gent is graag bereid om zich ook na uitstroom van de patiënt te engageren en in verdere fases van het behandeltraject een consultfunctie op zich te nemen, om zo de behandelaars van een vervolgvoorziening te ondersteunen m.b.t. de specifieke forensische problematiek van de patiënt. Wanneer het met de patiënt even niet goed gaat in de vervolgvoorziening is het wenselijk dat de patiënt terug in FPC Gent kan opgenomen worden, zodat hij opnieuw in de behandeling kan ingeschakeld worden. Dit zou het mogelijk moeten maken om de intensiteit van zorg en het beveiligingsniveau zo laag mogelijk te houden, wat de patiënt ten goede komt."
         }
       }
-    ]
+    ],
+    "afbeelding": "informatie-van-patie%CC%88nten-1920x1280.jpg"
   }
 }

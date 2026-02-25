@@ -4,11 +4,12 @@
     "path": "/somatische-pathologie-bij-high-security-geinterneerden/patientenprofielen_infographic",
     "title": "patientenprofielen_infographic",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "Patiëntenprofielen_Infographic [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/Patientenprofielen_Infographic-scaled-e1754658097745.jpg] [/LINK]"
+    "raw_text": "Patiëntenprofielen_Infographic [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/Patientenprofielen_Infographic-scaled-e1754658097745.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

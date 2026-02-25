@@ -4,9 +4,9 @@
     "path": "/nieuws-en-informatie",
     "title": "nieuws en informatie",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/pers-cropped-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/09/Nieuws-e1504605919737-1920x991.jpg"
+      "logo_share.jpg",
+      "pers-cropped-626x150.jpg",
+      "Nieuws-e1504605919737-1920x991.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

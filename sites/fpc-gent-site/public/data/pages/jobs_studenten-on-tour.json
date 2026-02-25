@@ -4,9 +4,9 @@
     "path": "/jobs/studenten-on-tour",
     "title": "studenten on tour",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2021/09/Pic1.png",
-      "https://www.fpcnv.be/wp-content/uploads/2021/09/Pic3-e1632215748985.png"
+      "logo_share.jpg",
+      "Pic1.png",
+      "Pic3-e1632215748985.png"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

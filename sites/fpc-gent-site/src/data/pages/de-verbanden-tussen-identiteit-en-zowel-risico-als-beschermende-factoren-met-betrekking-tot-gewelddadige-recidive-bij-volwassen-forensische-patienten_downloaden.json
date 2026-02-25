@@ -4,11 +4,12 @@
     "path": "/de-verbanden-tussen-identiteit-en-zowel-risico-als-beschermende-factoren-met-betrekking-tot-gewelddadige-recidive-bij-volwassen-forensische-patienten/downloaden",
     "title": "downloaden",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "downloaden [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/downloaden.jpg] [/LINK]"
+    "raw_text": "downloaden [LINK: https://www.fpcnv.be/wp-content/uploads/2025/08/downloaden.jpg] [/LINK]",
+    "afbeelding": "logo_share.jpg"
   }
 }

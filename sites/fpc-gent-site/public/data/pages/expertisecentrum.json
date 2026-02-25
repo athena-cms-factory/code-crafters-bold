@@ -4,11 +4,11 @@
     "path": "/expertisecentrum",
     "title": "expertisecentrum",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2025/06/Expertisecentrum-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2025/06/Opleidingen-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2025/06/Onderzoek-626x150.jpg",
-      "https://www.fpcnv.be/wp-content/uploads/2017/08/preventief-werken-voorkomt-incidenten-1920x1022.jpg"
+      "logo_share.jpg",
+      "Expertisecentrum-626x150.jpg",
+      "Opleidingen-626x150.jpg",
+      "Onderzoek-626x150.jpg",
+      "preventief-werken-voorkomt-incidenten-1920x1022.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },

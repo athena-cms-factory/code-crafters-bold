@@ -4,11 +4,12 @@
     "path": "/category/getuigenissen",
     "title": "getuigenissen",
     "images": [
-      "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
+      "logo_share.jpg"
     ],
     "logo": "https://www.fpcnv.be/wp-content/themes/fpc/images/logo_share.jpg"
   },
   "content": {
-    "raw_text": "De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden."
+    "raw_text": "De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden. De pagina werd niet gevonden.",
+    "afbeelding": "logo_share.jpg"
   }
 }
