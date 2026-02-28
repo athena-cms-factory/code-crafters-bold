@@ -27,7 +27,7 @@ export default defineConfig(async ({ command }) => {
 
   return {
     // Gebruik de projectnaam als base in dev mode voor dashboard compatibiliteit
-    base: isDev ? `/${path.basename(__dirname)}/` : './',
+    base: isDev ? `/${path.basename(__dirname)}/` : `/${path.basename(__dirname)}/`,
     plugins: [
       react(),
       tailwindcss(),
