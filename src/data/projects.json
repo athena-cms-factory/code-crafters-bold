@@ -1,9 +1,9 @@
 [
   {
-    "client_name": null,
-    "project_title": "LogiTrack",
-    "summary": "Real-time logistiek monitoring systeem.",
+    "client_name": "LogiTrack",
+    "project_title": "Real-time logistiek monitoring systeem",
+    "summary": "",
     "result": "20% efficiënter transport.",
-    "image_url": null
+    "image_url": "https://images.unsplash.com/photo-1586528116311-ad86d015c795?w=800"
   }
 ]
