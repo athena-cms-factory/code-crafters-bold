@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 // This import will fail because generateClientInstructions is not exported yet
-import { generateClientInstructions } from '../factory.js';
+import { generateClientInstructions } from '../core/factory.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

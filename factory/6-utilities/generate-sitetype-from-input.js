@@ -2,10 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import fs from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { generateWithAI } from '../5-engine/ai-engine.js';
+import { generateWithAI } from '../5-engine/core/ai-engine.js';
 import { loadEnv } from '../5-engine/env-loader.js';
 
 const __filename = fileURLToPath(import.meta.url);

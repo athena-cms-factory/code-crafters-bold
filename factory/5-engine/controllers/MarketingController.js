@@ -6,7 +6,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { generateWithAI } from '../ai-engine.js';
+import { generateWithAI } from '../core/ai-engine.js';
 import { AthenaDataManager } from '../lib/DataManager.js';
 
 export class MarketingController {

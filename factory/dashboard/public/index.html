@@ -1571,6 +1571,30 @@
         </div>
     </div>
 
+    <!-- TERMINAL MODAL (Voor Installatie Feedback) -->
+    <div id="terminal-modal" class="modal hidden">
+        <div class="modal-content" style="max-width: 800px; background: #1e1e1e; color: #fff; border: 1px solid #333;">
+            <div class="modal-header" style="border-bottom: 1px solid #333; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; color: #4ade80; font-family: monospace;"><i class="fa-solid fa-terminal"></i> Athena Terminal</h3>
+                <span class="close-btn" onclick="closeModal('terminal-modal')" style="color: #666;">&times;</span>
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <p id="terminal-title" style="font-weight: bold; margin-bottom: 10px; font-family: monospace;"></p>
+                <div id="terminal-output" 
+                    style="height: 350px; background: #000; color: #d4d4d4; font-family: 'Fira Code', 'Courier New', monospace; padding: 15px; border-radius: 4px; overflow-y: auto; font-size: 0.85rem; line-height: 1.4; border: 1px solid #333;">
+                </div>
+            </div>
+
+            <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                <div id="terminal-status" style="font-family: monospace; font-size: 0.8rem;">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Bezig...
+                </div>
+                <button id="terminal-close-btn" onclick="closeModal('terminal-modal')" class="secondary-btn" style="background: #333; border-color: #444; color: #eee;">Sluiten</button>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 

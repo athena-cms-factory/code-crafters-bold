@@ -112,7 +112,7 @@
 
 @layer components {
     .btn-primary {
-        @apply px-5 py-2 text-white font-medium transition-colors hover:bg-opacity-90 active:translate-y-[1px];
+        @apply px-5 py-2 text-white font-medium transition-colors hover:opacity-90 active:translate-y-[1px];
         background-color: var(--color-button-bg);
         border-radius: var(--radius-custom);
     }

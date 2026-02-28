@@ -1,0 +1,16 @@
+[
+  {
+    "service_name": "Sauna Sessie",
+    "description": "Privé sauna met aromatherapie.",
+    "price": 40,
+    "duration": "60 min",
+    "image_url": ""
+  },
+  {
+    "service_name": "Voetreflexologie",
+    "description": "Herstel de balans in uw lichaam.",
+    "price": 50,
+    "duration": "50 min",
+    "image_url": ""
+  }
+]

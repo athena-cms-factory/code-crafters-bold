@@ -2,8 +2,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { createProject } from './5-engine/factory.js';
-import { loadEnv } from './5-engine/env-loader.js';
+import { createProject } from '../5-engine/core/factory.js';
+import { loadEnv } from '../5-engine/env-loader.js';
 import { 
     generateDataStructureAPI, 
     generateDesignSuggestionAPI, 

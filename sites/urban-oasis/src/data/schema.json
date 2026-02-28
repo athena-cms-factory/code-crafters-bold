@@ -1,0 +1,123 @@
+{
+  "blueprint_name": "wellness-spa",
+  "track": "docked",
+  "data_structure": [
+    {
+      "table_name": "basis",
+      "columns": [
+        {
+          "name": "name",
+          "description": "Naam van de spa"
+        },
+        {
+          "name": "tagline",
+          "description": "Korte slagzin"
+        },
+        {
+          "name": "address",
+          "description": "Adresgegevens"
+        },
+        {
+          "name": "phone",
+          "description": "Telefoonnummer"
+        },
+        {
+          "name": "email",
+          "description": "E-mailadres"
+        }
+      ]
+    },
+    {
+      "table_name": "services",
+      "columns": [
+        {
+          "name": "service_name",
+          "description": "Naam van de behandeling"
+        },
+        {
+          "name": "description",
+          "description": "Beschrijving van de behandeling"
+        },
+        {
+          "name": "price",
+          "description": "Prijs in Euro"
+        },
+        {
+          "name": "duration",
+          "description": "Duur van de behandeling"
+        },
+        {
+          "name": "image_url",
+          "description": "URL naar een afbeelding"
+        }
+      ]
+    },
+    {
+      "table_name": "team",
+      "columns": [
+        {
+          "name": "name",
+          "description": "Naam van het teamlid"
+        },
+        {
+          "name": "role",
+          "description": "Specialisatie of rol"
+        },
+        {
+          "name": "bio",
+          "description": "Korte bio"
+        },
+        {
+          "name": "image_url",
+          "description": "Profielfoto URL"
+        }
+      ]
+    },
+    {
+      "table_name": "reviews",
+      "columns": [
+        {
+          "name": "customer_name",
+          "description": "Naam van de klant"
+        },
+        {
+          "name": "rating",
+          "description": "Score (1-5)"
+        },
+        {
+          "name": "comment",
+          "description": "Klantbeoordeling"
+        }
+      ]
+    }
+  ],
+  "design_system": {
+    "colors": {
+      "primary": "#d4b39a",
+      "secondary": "#7c6a5a",
+      "accent": "#f5ece5",
+      "background": "#ffffff",
+      "surface": "#faf9f8"
+    },
+    "radius": "1.5rem",
+    "font_sans": "'Inter', sans-serif",
+    "font_serif": "'Playfair Display', serif"
+  },
+  "sections": [
+    {
+      "id": "basis"
+    },
+    {
+      "id": "services"
+    },
+    {
+      "id": "team"
+    },
+    {
+      "id": "reviews"
+    }
+  ],
+  "recommended_layout": "standard",
+  "recommended_style": "warm",
+  "version": "2.0"
+}

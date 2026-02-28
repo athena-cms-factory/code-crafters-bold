@@ -1,0 +1,18 @@
+{
+  "--color-primary": "#D48C70",
+  "--color-secondary": "#E9C46A",
+  "--color-accent": "#264653",
+  "--color-button-bg": "#D48C70",
+  "--color-card-bg": "#ffffff",
+  "--color-header-bg": "#ffffff",
+  "--color-background": "#FDFCDC",
+  "--color-text": "#2A1B12",
+  "--color-heading": "#D48C70",
+  "--color-title": "#2A1B12",
+  "--color-surface": "#FDFCDC",
+  "--font-sans": "'Lato', system-ui, sans-serif",
+  "--font-serif": "'Merriweather', serif",
+  "--radius-custom": "1.5rem",
+  "--shadow-main": "0 4px 12px rgba(100, 50, 20, 0.08)",
+  "--animate-reveal": "reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Cloud Migratie",
+    "description": "Wij verhuizen uw legacy systemen veilig naar de cloud.",
+    "icon": "cloud"
+  },
+  {
+    "title": "Cyber Security",
+    "description": "Bescherm uw data tegen moderne dreigingen.",
+    "icon": "shield"
+  },
+  {
+    "title": "DevOps",
+    "description": "Versnel uw release cycles met automatisering.",
+    "icon": "terminal"
+  }
+]

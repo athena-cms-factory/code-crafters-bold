@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createProject, validateProjectName } from './factory.js';
+import { createProject, validateProjectName } from './core/factory.js';
 import { loadEnv } from './env-loader.js';
 
 const __filename = fileURLToPath(import.meta.url);

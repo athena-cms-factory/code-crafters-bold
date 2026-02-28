@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ffffff;
+  --color-accent: #00ffcc;
+  --color-button-bg: #00ffcc;
+  --color-card-bg: #1a1a1a;
+  --color-header-bg: #000000;
+  --color-surface: #1a1a1a;
+  --color-background: #000000;
+  --color-text: #ffffff;
+  --radius-custom: 2rem;
+  --shadow-main: 0 10px 40px rgba(0, 255, 200, 0.2);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --color-primary: #ffffff;
+    --color-heading: #ffffff;
+    --color-title: #ffffff;
+    --color-accent: #00ffcc;
+    --color-button-bg: #00ffcc;
+    --color-card-bg: #1a1a1a;
+    --color-header-bg: #000000;
+    --color-surface: #1a1a1a;
+    --color-background: #000000;
+    --color-text: #ffffff;
+    --radius-custom: 2rem;
+    --shadow-main: 0 10px 40px rgba(0, 255, 200, 0.2);
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+
+  .btn-primary {
+    background: var(--color-button-bg);
+    border-radius: 999px;
+    color: #000;
+    font-weight: bold;
+    padding: 12px 24px;
+  }
+
+  .card {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-custom);
+    padding: 30px;
+    box-shadow: var(--shadow-main);
+  }
+}

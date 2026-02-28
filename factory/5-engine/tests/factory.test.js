@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { validateProjectName } from '../factory.js';
+import { validateProjectName } from '../core/factory.js';
 
 describe('factory.js', () => {
     describe('validateProjectName', () => {

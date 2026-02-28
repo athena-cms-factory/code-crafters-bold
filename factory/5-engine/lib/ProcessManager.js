@@ -101,11 +101,19 @@ export class AthenaProcessManager {
             return true;
         }
 
-        // Fallback: use fuser if not in registry
+        // Fallback: use ss to find PID if not in registry (fuser is often missing)
         try {
-            console.log(`🔍 Port ${port} not in registry. Using fuser fallback...`);
-            execSync(`fuser -k ${port}/tcp`, { stdio: 'ignore' });
-            return true;
+            console.log(`🔍 Port ${port} not in registry. Using ss fallback...`);
+            const pidMatch = execSync(`ss -tunlp | grep :${port}`, { encoding: 'utf8' })
+                .match(/users:\(\(".*",pid=(\d+),/);
+            
+            if (pidMatch && pidMatch[1]) {
+                const pid = parseInt(pidMatch[1]);
+                process.kill(pid);
+                console.log(`🛑 Stopped external process ${pid} on port ${port}`);
+                return true;
+            }
+            return false;
         } catch (e) {
             return false;
         }

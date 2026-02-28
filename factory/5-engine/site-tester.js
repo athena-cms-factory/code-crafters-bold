@@ -21,8 +21,8 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { createProject } from './factory.js';
-import { generateWithAI } from './ai-engine.js';
+import { createProject } from './core/factory.js';
+import { generateWithAI } from './core/ai-engine.js';
 import { QualityChecker } from './lib/quality-check.js';
 import { loadEnv } from './env-loader.js';
 

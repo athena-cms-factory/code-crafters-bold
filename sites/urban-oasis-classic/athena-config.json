@@ -1,0 +1,11 @@
+{
+  "projectName": "urban-oasis-classic",
+  "siteType": "wellness-spa",
+  "layoutName": "standard",
+  "siteModel": "SPA",
+  "styleName": "classic",
+  "blueprintFile": "wellness-spa.json",
+  "safeName": "urban-oasis-classic",
+  "generatedAt": "2026-02-27T18:40:05.197Z",
+  "variantOf": "urban-oasis"
+}

@@ -1,4 +1,4 @@
-import { createProject } from './factory.js';
+import { createProject } from './core/factory.js';
 
 const projectName = process.argv[2];
 

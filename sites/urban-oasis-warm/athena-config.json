@@ -1,0 +1,11 @@
+{
+  "projectName": "urban-oasis-warm",
+  "siteType": "wellness-spa",
+  "layoutName": "standard",
+  "siteModel": "SPA",
+  "styleName": "warm",
+  "blueprintFile": "wellness-spa.json",
+  "safeName": "urban-oasis-warm",
+  "generatedAt": "2026-02-27T18:40:05.208Z",
+  "variantOf": "urban-oasis"
+}

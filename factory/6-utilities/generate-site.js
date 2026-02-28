@@ -1,4 +1,4 @@
-import { createProject } from '../5-engine/factory.js';
+import { createProject } from '../5-engine/core/factory.js';
 import path from 'path';
 
 const args = process.argv.slice(2);

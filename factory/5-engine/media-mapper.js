@@ -17,7 +17,7 @@ dotenv.config({ path: path.resolve(root, '.env') });
 import express from 'express';
 import fs from 'fs';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { generateWithAI } from './ai-engine.js';
+import { generateWithAI } from './core/ai-engine.js';
 
 let activeProject = null;
 

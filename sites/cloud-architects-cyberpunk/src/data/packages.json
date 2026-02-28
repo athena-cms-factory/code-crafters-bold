@@ -1,0 +1,12 @@
+[
+  {
+    "package_name": "Cloud Audit",
+    "features": "Grondige analyse van uw huidige architectuur",
+    "price": 1500
+  },
+  {
+    "package_name": "Managed Services",
+    "features": "24/7 monitoring en support",
+    "price": 500
+  }
+]

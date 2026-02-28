@@ -5,7 +5,7 @@
 
 import { execSync } from 'child_process';
 import path from 'path';
-import { deleteRemoteRepo } from '../cleanup-wizard.js';
+import { deleteRemoteRepo } from '../wizards/cleanup-wizard.js';
 
 export class GithubController {
     constructor(configManager, executionService) {

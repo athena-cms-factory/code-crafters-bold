@@ -1,0 +1,76 @@
+@import "tailwindcss";
+/* Athena Cyberpunk Theme - Tailwind CSS v4 */
+
+@theme {
+    --color-primary: #00F3FF;
+    /* Cyan Neon */
+    --color-secondary: #BC00FF;
+    /* Purple Neon */
+    --color-accent: #FF0055;
+    /* Pink Neon */
+    --color-button-bg: #000000;
+    --color-card-bg: #0A0A0B;
+    --color-header-bg: rgba(0, 0, 0, 0.85);
+    --color-background: #050505;
+    --color-text: #E0E0E0;
+    --color-heading: #00F3FF;
+    --color-title: #FFFFFF;
+    --color-surface: #121214;
+
+    --font-sans: 'Space Grotesk', sans-serif;
+    --font-serif: 'Orbitron', sans-serif;
+
+    --radius-custom: 0px;
+    /* Sharp corners for industrial look */
+    --shadow-neon: 0 0 15px rgba(0, 243, 255, 0.3);
+
+    --animate-glitch: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@layer base {
+    :root {
+        color-scheme: dark;
+        --color-primary: #00F3FF;
+        --color-heading: #00F3FF;
+        --color-title: #FFFFFF;
+        --color-accent: #FF0055;
+        --color-background: #050505;
+        --color-surface: #121214;
+        --color-text: #E0E0E0;
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-family: var(--font-sans);
+        background-image: linear-gradient(transparent 95%, rgba(0, 243, 255, 0.03) 0%),
+            linear-gradient(90deg, transparent 95%, rgba(0, 243, 255, 0.03) 0%);
+        background-size: 40px 40px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: var(--font-serif);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 0px var(--color-accent);
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply px-8 py-3 border-2 border-primary text-primary bg-transparent font-serif transition-all hover:bg-primary hover:text-black hover:shadow-[0_0_20px_#00F3FF];
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0% 30%);
+    }
+
+    .card {
+        @apply p-8 bg-surface border-l-4 border-primary shadow-lg transition-all hover:border-accent hover:-translate-y-1;
+        position: relative;
+    }
+
+    .card::before {
+        content: '';
+        @apply absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary opacity-30;
+    }
+}

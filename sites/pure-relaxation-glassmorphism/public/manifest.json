@@ -1,0 +1,15 @@
+{
+  "short_name": "pure-relaxation",
+  "name": "pure-relaxation",
+  "icons": [
+    {
+      "src": "athena-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

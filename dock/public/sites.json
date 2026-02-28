@@ -1,5 +1,15 @@
 [
   {
+    "id": "portfolio-kbm",
+    "name": "portfolio-kbm",
+    "siteType": "portfolio-kbm",
+    "generatedAt": "2026-02-26T21:05:00.000Z",
+    "governance_mode": "dev-mode",
+    "repoUrl": "https://github.com/KarelTestSpecial/portfolio-kbm",
+    "liveUrl": null,
+    "port": 6107
+  },
+  {
     "id": "athena-promo",
     "name": "athena-promo",
     "siteType": "professional-service-provider",

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { generateWithAI } from './ai-engine.js';
+import { generateWithAI } from './core/ai-engine.js';
 import * as cheerio from 'cheerio';
 
 const __filename = fileURLToPath(import.meta.url);

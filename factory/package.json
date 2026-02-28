@@ -3,7 +3,7 @@
   "version": "4.5.0",
   "type": "module",
   "scripts": {
-    "start": "node ./5-engine/athena.js",
+    "start": "node dashboard/athena.js",
     "onboard": "node 5-engine/onboarding-wizard.js",
     "wizard": "node 5-engine/site-wizard.js",
     "test": "vitest run",

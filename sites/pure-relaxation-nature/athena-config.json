@@ -1,0 +1,11 @@
+{
+  "projectName": "pure-relaxation-nature",
+  "siteType": "wellness-spa",
+  "layoutName": "standard",
+  "siteModel": "SPA",
+  "styleName": "nature",
+  "blueprintFile": "wellness-spa.json",
+  "safeName": "pure-relaxation-nature",
+  "generatedAt": "2026-02-27T18:40:43.517Z",
+  "variantOf": "pure-relaxation"
+}

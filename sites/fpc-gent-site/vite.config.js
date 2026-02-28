@@ -27,7 +27,7 @@ export default defineConfig(async ({ command }) => {
 
   return {
     // Gebruik relatieve paden voor maximale compatibiliteit (Dock & GitHub Pages)
-    base: process.env.NODE_ENV === 'production' ? '/fpc-gent-site/' : '/', 
+    base: process.env.NODE_ENV === 'production' ? '/fpc-gent-site/' : '/',
     plugins: [
       react(),
       tailwindcss(),
@@ -35,9 +35,9 @@ export default defineConfig(async ({ command }) => {
     ].filter(Boolean),
     server: {
       host: true,
-      port: 3000,
+      port: 6103,
       watch: {
-          // src/data wordt niet genegeerd voor HMR
+        // src/data wordt niet genegeerd voor HMR
       }
     },
     build: {

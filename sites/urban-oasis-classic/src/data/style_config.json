@@ -1,0 +1,14 @@
+{
+  "--color-primary": "#1a1a1a",
+  "--color-accent": "#c5a059",
+  "--color-button-bg": "#c5a059",
+  "--color-card-bg": "#ffffff",
+  "--color-header-bg": "#f4f4f4",
+  "--color-surface": "#ffffff",
+  "--color-background": "#ffffff",
+  "--color-text": "#1a1a1a",
+  "--radius-custom": "0px",
+  "--shadow-main": "0 2px 5px rgba(0,0,0,0.1)",
+  "--color-heading": "#1a1a1a",
+  "--color-title": "#1a1a1a"
+}

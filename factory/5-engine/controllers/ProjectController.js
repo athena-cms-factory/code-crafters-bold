@@ -5,9 +5,9 @@
 
 import fs from 'fs';
 import path from 'path';
-import { validateProjectName } from '../factory.js';
+import { validateProjectName } from '../core/factory.js';
 import { execSync } from 'child_process';
-import { deleteLocalProject, deleteRemoteRepo } from '../cleanup-wizard.js';
+import { deleteLocalProject, deleteRemoteRepo } from '../wizards/cleanup-wizard.js';
 
 export class ProjectController {
     constructor(configManager, executionService) {

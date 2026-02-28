@@ -1,4 +1,4 @@
-import { createProject } from './factory.js';
+import { createProject } from './core/factory.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

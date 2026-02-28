@@ -1,0 +1,23 @@
+[
+  {
+    "service_name": "Ontspanningsmassage",
+    "description": "Een zachte massage voor het hele lichaam.",
+    "price": 60,
+    "duration": "60 min",
+    "image_url": "https://images.unsplash.com/photo-1544161515-4af6b1d462c2?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "service_name": "Gelaatsverzorging",
+    "description": "Verjongende behandeling voor de huid.",
+    "price": 45,
+    "duration": "45 min",
+    "image_url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "service_name": "Hot Stone Therapie",
+    "description": "Diepe ontspanning met warme stenen.",
+    "price": 75,
+    "duration": "90 min",
+    "image_url": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800"
+  }
+]

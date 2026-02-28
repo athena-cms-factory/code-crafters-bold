@@ -1,0 +1,19 @@
+{
+  "--color-primary": "#3D5A50",
+  "--color-secondary": "#9DB4A9",
+  "--color-accent": "#E29578",
+  "--color-button-bg": "#3D5A50",
+  "--color-card-bg": "#ffffff",
+  "--color-header-bg": "#ffffff",
+  "--color-background": "#F8F9F5",
+  "--color-text": "#2C3531",
+  "--color-heading": "#3D5A50",
+  "--color-title": "#2C3531",
+  "--color-surface": "#F0F2EB",
+  "--font-sans": "'Inter', sans-serif",
+  "--font-serif": "'Fraunces', serif",
+  "--radius-custom": "1.25rem",
+  "--radius-organic": "30% 70% 70% 30% / 30% 30% 70% 70%",
+  "--shadow-main": "0 10px 30px -10px rgba(61, 90, 80, 0.1)",
+  "--animate-reveal": "reveal 1s cubic-bezier(0.4, 0, 0.2, 1) forwards"
+}

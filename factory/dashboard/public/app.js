@@ -1571,6 +1571,37 @@ function closeModal(id) {
     if (modal) modal.classList.add('hidden');
 }
 
+// --- TERMINAL MODAL HELPERS ---
+function openTerminal(title) {
+    document.getElementById('terminal-title').innerText = title;
+    document.getElementById('terminal-output').innerHTML = '<div style="color: #888;">Wachten op output...</div>';
+    document.getElementById('terminal-status').innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Bezig...';
+    document.getElementById('terminal-close-btn').disabled = true;
+    openModal('terminal-modal');
+}
+
+function updateTerminal(log, statusMsg, isFinished = false) {
+    const output = document.getElementById('terminal-output');
+    
+    // Kleurcodes (simpel)
+    let formattedLog = (log || "")
+        .replace(/ERR!/g, '<span style="color: #f87171;">ERR!</span>')
+        .replace(/WARN/g, '<span style="color: #fbbf24;">WARN</span>')
+        .replace(/success/gi, '<span style="color: #4ade80;">success</span>')
+        .replace(/Done/gi, '<span style="color: #4ade80;">Done</span>');
+
+    output.innerHTML = `<pre style="margin:0; white-space: pre-wrap;">${formattedLog}</pre>`;
+    output.scrollTop = output.scrollHeight;
+
+    if (statusMsg) {
+        document.getElementById('terminal-status').innerHTML = statusMsg;
+    }
+
+    if (isFinished) {
+        document.getElementById('terminal-close-btn').disabled = false;
+    }
+}
+
 // --- DATA GATEWAY ---
 let currentGatewayProject = null;
 
@@ -2235,17 +2266,16 @@ function openSettingsModal(name, status, liveUrl, repoUrl, event) {
     openModal('settings-modal');
 }
 
-async function previewSite(name, event, isRunning = false) {
+async function previewSite(name, event, isRunning = false, isInternal = false) {
     if (event) { event.preventDefault(); event.stopPropagation(); }
     const btn = event ? event.target.closest('button') : null;
-    if (!btn) return;
+    if (!btn && !isInternal) return;
 
     const originalText = isRunning ? '<i class="fa-solid fa-external-link"></i> OPEN' : '<i class="fa-solid fa-play"></i> DEV';
 
     // 0. Re-open logic (Snelste pad)
     if (isRunning) {
         try {
-            // We halen de actuele URL op via de preview endpoint (die geeft de URL terug als hij al draait)
             const res = await fetch(`${API}/sites/${name}/preview`, { method: 'POST' });
             const data = await res.json();
             if (data.url) {
@@ -2258,25 +2288,27 @@ async function previewSite(name, event, isRunning = false) {
     }
 
     // 1. Check Status
-    btn.disabled = true;
+    if (btn) btn.disabled = true;
     try {
         const statusRes = await fetch(`${API}/sites/${name}/status`);
         const status = await statusRes.json();
 
         if (status.isInstalling) {
-            btn.innerHTML = '<i class="fa-solid fa-sync fa-spin"></i> Bezig...';
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-sync fa-spin"></i> Bezig...';
+            openTerminal(`pnpm install [${name}]`);
             waitForInstall(name, btn, originalText);
             return;
         }
 
         if (!status.isInstalled) {
-            btn.innerHTML = '📦 Installeren...';
+            if (btn) btn.innerHTML = '📦 Installeren...';
+            openTerminal(`pnpm install [${name}]`);
             await startInstall(name, btn, originalText);
             return;
         }
 
         // 2. Start Preview (als alles geïnstalleerd is)
-        btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Starten...';
+        if (btn) btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Starten...';
 
         const res = await fetch(`${API}/sites/${name}/preview`, { method: 'POST' });
         const data = await res.json();
@@ -2284,20 +2316,26 @@ async function previewSite(name, event, isRunning = false) {
         if (data.success) {
             setTimeout(() => {
                 window.open(data.url, '_blank');
-                btn.disabled = false;
-                btn.innerHTML = originalText;
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }
                 loadSites();
             }, 3000);
         } else {
             alert("Fout: " + data.error);
-            btn.disabled = false;
-            btn.innerHTML = originalText;
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
         }
 
     } catch (e) {
         alert("Fout: " + e.message);
-        btn.disabled = false;
-        btn.innerHTML = originalText;
+        if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
     }
 }
 
@@ -2308,14 +2346,18 @@ async function startInstall(name, btn, originalText) {
         if (data.success) {
             waitForInstall(name, btn, originalText);
         } else {
-            alert("Installatie fout: " + data.error);
+            updateTerminal("❌ Fout bij starten van installatie: " + data.error, "Fout", true);
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+    } catch (e) {
+        updateTerminal("❌ Netwerkfout bij starten van installatie.", "Fout", true);
+        if (btn) {
             btn.disabled = false;
             btn.innerHTML = originalText;
         }
-    } catch (e) {
-        alert("Kon installatie niet starten.");
-        btn.disabled = false;
-        btn.innerHTML = originalText;
     }
 }
 
@@ -2325,28 +2367,37 @@ function waitForInstall(name, btn, originalText) {
             const res = await fetch(`${API}/sites/${name}/status`);
             const status = await res.json();
 
+            // Update terminal met log tail
+            updateTerminal(status.installLog, status.isInstalling ? '<i class="fa-solid fa-cog fa-spin"></i> Bezig met installeren van dependencies...' : 'Installatie voltooid');
+
             if (!status.isInstalling) {
                 clearInterval(interval);
                 if (status.isInstalled) {
-                    // Klaar! Start nu automatisch de preview
-                    previewSite(name, null, btn);
-                } else {
-                    btn.innerText = "❌ Mislukt";
+                    updateTerminal(status.installLog, '<span style="color: #4ade80;">✅ Installatie succesvol!</span> Preview wordt gestart...', true);
+                    // Klaar! Start nu automatisch de preview na een korte pauze voor de gebruiker
                     setTimeout(() => {
-                        btn.disabled = false;
-                        btn.innerHTML = originalText;
-                    }, 2000);
+                        previewSite(name, null, false, true);
+                    }, 1500);
+                } else {
+                    updateTerminal(status.installLog, '<span style="color: #f87171;">❌ Installatie mislukt.</span> Controleer de logs hierboven.', true);
+                    if (btn) {
+                        btn.innerText = "❌ Mislukt";
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            btn.innerHTML = originalText;
+                        }, 2000);
+                    }
                 }
-            } else {
-                // Nog bezig... update tekst evt
-                btn.innerHTML = '<i class="fa-solid fa-cog fa-spin"></i> Installeren...';
             }
         } catch (e) {
             clearInterval(interval);
-            btn.disabled = false;
-            btn.innerHTML = originalText;
+            updateTerminal("⚠️ Fout bij ophalen installatie status.", "Verbinding verloren", true);
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
         }
-    }, 2000);
+    }, 1500);
 }
 
 async function saveSiteSettings() {

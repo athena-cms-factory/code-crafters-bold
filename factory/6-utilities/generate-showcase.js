@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createProject } from './5-engine/factory.js';
-import { deployProject } from './5-engine/deploy-wizard.js';
-import { loadEnv } from './5-engine/env-loader.js';
+import { createProject } from '../5-engine/core/factory.js';
+import { deployProject } from '../5-engine/wizards/deploy-wizard.js';
+import { loadEnv } from '../5-engine/env-loader.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

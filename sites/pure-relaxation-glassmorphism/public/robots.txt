@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pure-relaxation.netlify.app/sitemap.xml

@@ -12,8 +12,7 @@
  * 3. De site wordt aangemaakt in ../sites/[projectName]
  */
 
-import { createProject } from './factory.js';
-import { validateProjectName } from './factory.js';
+import { createProject, validateProjectName } from '../5-engine/core/factory.js';
 import 'dotenv/config';
 
 async function run() {

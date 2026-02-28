@@ -16,7 +16,7 @@ $NODE_BIN 6-utilities/rotate-logs.js
 FINAL_PORT=$($NODE_BIN cli/config-cli.js ports.dashboard)
 
 # Controleer of poort al in gebruik is en herstart (Force Reload)
-if fuser $FINAL_PORT/tcp >/dev/null 2>&1 ; then
+if ss -tuln | grep -q ":$FINAL_PORT " ; then
     echo "Recyclen van bestaand proces op poort $FINAL_PORT..."
     $NODE_BIN cli/pm-cli.js stop $FINAL_PORT
     sleep 1

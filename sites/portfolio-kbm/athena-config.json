@@ -1,0 +1,11 @@
+{
+  "projectName": "portfolio-kbm",
+  "siteType": "portfolio-kbm",
+  "layoutName": "standard",
+  "styleName": "modern",
+  "siteModel": "SPA",
+  "autoSheet": false,
+  "blueprintFile": "portfolio-kbm.json",
+  "safeName": "portfolio-kbm",
+  "generatedAt": "2026-02-26T19:03:20.978Z"
+}

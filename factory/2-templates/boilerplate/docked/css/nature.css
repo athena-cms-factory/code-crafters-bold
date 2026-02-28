@@ -1,0 +1,84 @@
+@import "tailwindcss";
+/* Athena Nature Theme - Tailwind CSS v4 */
+
+@theme {
+    --color-primary: #3D5A50;
+    /* Deep Moss Green */
+    --color-secondary: #9DB4A9;
+    /* Sage */
+    --color-accent: #E29578;
+    /* Teracotta */
+    --color-button-bg: #3D5A50;
+    --color-card-bg: #ffffff;
+    --color-header-bg: #ffffff;
+    --color-background: #F8F9F5;
+    /* Bone / Off-white */
+    --color-text: #2C3531;
+    --color-heading: #3D5A50;
+    --color-title: #111827;
+    --color-surface: #F0F2EB;
+
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Fraunces', serif;
+
+    --radius-custom: 1.25rem;
+    --radius-organic: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    --shadow-main: 0 10px 30px -10px rgba(61, 90, 80, 0.1);
+
+    --animate-reveal: reveal 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@layer base {
+    :root {
+        color-scheme: light;
+        --color-primary: #3D5A50;
+        --color-heading: #3D5A50;
+        --color-title: #2C3531;
+        --color-accent: #E29578;
+        --color-background: #F8F9F5;
+        --color-surface: #F0F2EB;
+        --color-text: #2C3531;
+    }
+
+    :root.dark {
+        color-scheme: dark;
+        --color-primary: #8AB17D;
+        --color-heading: #B7D3AC;
+        --color-title: #F1F4F0;
+        --color-accent: #E29578;
+        --color-background: #1B241E;
+        --color-surface: #242E27;
+        --color-text: #E8EDE9;
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-family: var(--font-sans);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: var(--font-serif);
+        font-weight: 600;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply px-8 py-3 text-white transition-all hover:opacity-90;
+        background-color: var(--color-button-bg);
+        border-radius: var(--radius-organic);
+    }
+
+    .card {
+        @apply p-8 bg-white rounded-[2rem] border border-stone-100 shadow-main transition-all hover:shadow-xl;
+    }
+
+    .leaf-decoration {
+        @apply absolute -z-10 opacity-10 pointer-events-none;
+        filter: hue-rotate(20deg);
+    }
+}

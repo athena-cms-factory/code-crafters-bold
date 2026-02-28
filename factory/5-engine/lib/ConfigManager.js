@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 export class AthenaConfigManager {
     constructor(root) {
-        this.root = root || path.resolve(__dirname, '../../..');
+        this.root = root || path.resolve(__dirname, '../../../..');
         this.config = this._loadConfig();
     }
 

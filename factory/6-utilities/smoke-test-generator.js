@@ -1,9 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createProject } from '../5-engine/factory.js';
+import { createProject } from '../5-engine/core/factory.js';
 import { loadEnv } from '../5-engine/env-loader.js';
-import { generateWithAI } from '../5-engine/ai-engine.js';
+import { generateWithAI } from '../5-engine/core/ai-engine.js';
 import { logToFile } from '../5-engine/lib/logger.js';
 import {
     generateDataStructureAPI,

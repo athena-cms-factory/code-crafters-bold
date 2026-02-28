@@ -1,0 +1,11 @@
+{
+  "projectName": "pure-relaxation-warm",
+  "siteType": "wellness-spa",
+  "layoutName": "standard",
+  "siteModel": "SPA",
+  "styleName": "warm",
+  "blueprintFile": "wellness-spa.json",
+  "safeName": "pure-relaxation-warm",
+  "generatedAt": "2026-02-27T18:40:05.043Z",
+  "variantOf": "pure-relaxation"
+}

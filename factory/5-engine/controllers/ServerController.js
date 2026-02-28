@@ -24,8 +24,8 @@ export class ServerController {
             const active = this.pm.listActive();
             if (active[port]) return { online: true };
             
-            // Fallback check via system fuser
-            const res = this.execService.runSync(`fuser ${port}/tcp`, { label: 'Port Check', silent: true });
+            // Fallback check via system ss (fuser is often missing on Chromebooks)
+            const res = this.execService.runSync(`ss -tuln | grep :${port}`, { label: 'Port Check', silent: true });
             return { online: res.success };
         } catch (e) {
             return { online: false };
@@ -87,7 +87,7 @@ export class ServerController {
 
                 if (activeMap.has(port)) continue;
 
-                const res = this.execService.runSync(`fuser ${port}/tcp`, { label: 'Port Discovery', silent: true });
+                const res = this.execService.runSync(`ss -tuln | grep :${port}`, { label: 'Port Discovery', silent: true });
                 if (res.success) {
                     addServer(port, {
                         siteName: site,

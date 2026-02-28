@@ -6,10 +6,11 @@
 import fs from 'fs';
 import path from 'path';
 import { execSync, spawn } from 'child_process';
-import { createProject, validateProjectName } from '../factory.js';
-import { deployProject } from '../deploy-wizard.js';
+import { createProject, validateProjectName } from '../core/factory.js';
+import { deployProject } from '../wizards/deploy-wizard.js';
 import { AthenaDataManager } from '../lib/DataManager.js';
-import { AthenaInterpreter } from '../lib/Interpreter.js';
+import { AthenaInterpreter } from '../core/interpreter.js';
+import { InstallManager } from '../lib/InstallManager.js';
 
 export class SiteController {
     constructor(configManager, executionService, processManager) {
@@ -20,6 +21,7 @@ export class SiteController {
         this.sitesDir = configManager.get('paths.sites');
         this.dataManager = new AthenaDataManager(configManager.get('paths.factory'));
         this.interpreter = new AthenaInterpreter(configManager);
+        this.installManager = new InstallManager(this.root);
     }
 
     /**
@@ -202,32 +204,29 @@ export class SiteController {
     }
 
     /**
-     * Get installation status (node_modules existence)
+     * Get installation status (node_modules existence + active progress)
      */
     getStatus(name) {
         const siteDir = path.join(this.sitesDir, name);
         const nodeModules = path.join(siteDir, 'node_modules');
+        const installInfo = this.installManager.getStatus(name);
+        
         return { 
             isInstalled: fs.existsSync(nodeModules),
-            isInstalling: false // Simplified for now, activeInstalls is handled in dashboard memory
+            installStatus: installInfo.status,
+            installLog: installInfo.logTail,
+            isInstalling: installInfo.status === 'running'
         };
     }
 
     /**
      * Install dependencies for a site
      */
-    install(name) {
+    async install(name) {
         const siteDir = path.join(this.sitesDir, name);
         if (!fs.existsSync(siteDir)) throw new Error("Site niet gevonden");
 
-        const child = spawn('pnpm', ['install'], {
-            cwd: siteDir,
-            detached: true,
-            stdio: 'ignore',
-            env: { ...process.env }
-        });
-        child.unref();
-        return { success: true, message: "Installatie gestart op de achtergrond" };
+        return await this.installManager.install(name, siteDir);
     }
 
     /**

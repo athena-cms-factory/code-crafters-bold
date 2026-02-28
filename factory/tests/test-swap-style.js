@@ -1,4 +1,4 @@
-import { createProject } from '../5-engine/factory.js';
+import { createProject } from '../5-engine/core/factory.js';
 import fs from 'fs';
 import path from 'path';
 

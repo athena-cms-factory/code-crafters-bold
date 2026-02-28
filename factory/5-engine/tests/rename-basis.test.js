@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ProjectGenerator } from '../factory.js';
+import { ProjectGenerator } from '../core/factory.js';
 
 describe('Basis Rename Refactoring', () => {
     it('should have "basis" as the default primary table name in ProjectGenerator', () => {

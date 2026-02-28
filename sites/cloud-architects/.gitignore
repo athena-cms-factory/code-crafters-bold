@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+.pnpm-debug.log*
+
+# Build output
+dist/
+dist-ssr/
+
+# Security & Secrets (CRUCIAAL)
+.env
+.env.*
+
+# Local Data
+# src/data/*.json (Enable this if fetching dynamically, but for static build we need these)
+!src/data/schema.json
+
+# Systeem & Editor
+*.log
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,11 @@
+{
+  "projectName": "cloud-architects-corporate",
+  "siteType": "tech-consultancy",
+  "layoutName": "standard",
+  "siteModel": "SPA",
+  "styleName": "corporate",
+  "blueprintFile": "tech-consultancy.json",
+  "safeName": "cloud-architects-corporate",
+  "generatedAt": "2026-02-27T18:40:05.124Z",
+  "variantOf": "cloud-architects"
+}

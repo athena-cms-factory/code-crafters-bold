@@ -1,0 +1,11 @@
+{
+  "projectName": "cloud-architects-cyberpunk",
+  "siteType": "tech-consultancy",
+  "layoutName": "standard",
+  "siteModel": "SPA",
+  "styleName": "cyberpunk",
+  "blueprintFile": "tech-consultancy.json",
+  "safeName": "cloud-architects-cyberpunk",
+  "generatedAt": "2026-02-27T18:40:43.623Z",
+  "variantOf": "cloud-architects"
+}

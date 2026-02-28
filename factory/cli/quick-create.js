@@ -10,9 +10,9 @@ import path from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { parseArgs } from 'node:util';
-import { createProject, validateProjectName } from '../5-engine/factory.js';
+import { createProject, validateProjectName } from '../5-engine/core/factory.js';
 import { loadEnv } from '../5-engine/env-loader.js';
-import { generateVariants, getAvailableThemes } from '../5-engine/variant-generator.js';
+import { generateVariants, getAvailableThemes } from '../5-engine/core/variant-generator.js';
 
 import { Validator } from '../5-engine/lib/validator.js';
 

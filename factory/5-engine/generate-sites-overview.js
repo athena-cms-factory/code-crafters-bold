@@ -10,11 +10,12 @@ import { loadEnv } from './env-loader.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const root = path.resolve(__dirname, '..');
-const sitesDir = path.join(root, 'sites');
+const engineRoot = path.resolve(__dirname, '..');
+const monorepoRoot = path.resolve(engineRoot, '..');
+const sitesDir = path.join(monorepoRoot, 'sites');
 
 async function generateOverview() {
-    await loadEnv(path.join(root, '.env'));
+    await loadEnv(path.join(engineRoot, '.env'));
     const { GITHUB_USER, GITHUB_ORG } = process.env;
     const ORG = GITHUB_ORG || GITHUB_USER;
 
@@ -62,7 +63,11 @@ ${liveUrls.join('\n')}
 *Gegenereerd door Athena Factory Engine*
 `;
 
-    fs.writeFileSync(path.join(root, 'output', 'SITES_OVERZICHT.md'), content);
+    // Ensure output directory exists in monorepo root
+    const outputDir = path.join(monorepoRoot, 'output');
+    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
+
+    fs.writeFileSync(path.join(outputDir, 'SITES_OVERZICHT.md'), content);
     console.log("✅ SITES_OVERZICHT.md is bijgewerkt in output/!");
 }
 

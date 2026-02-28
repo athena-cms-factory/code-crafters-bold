@@ -1,13 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MarketingController } from '../controllers/MarketingController';
 import { AthenaDataManager } from '../lib/DataManager.js';
-import { generateWithAI } from '../ai-engine.js';
+import { generateWithAI } from '../core/ai-engine.js';
 import fs from 'fs';
 import path from 'path';
 
 // Mock dependencies
 vi.mock('../lib/DataManager.js');
-vi.mock('../ai-engine.js');
+vi.mock('../core/ai-engine.js');
 vi.mock('fs');
 
 describe('MarketingController', () => {

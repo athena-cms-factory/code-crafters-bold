@@ -5,21 +5,22 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const SITE_NAME = 'fpc-gent-site';
-const sitePath = path.resolve(__dirname, '../../sites', SITE_NAME);
+// Check if we are running in /tmp/fpc-fix
+const isTmpFix = process.cwd().includes('fpc-fix');
+const baseDir = isTmpFix ? process.cwd() : path.resolve(__dirname, '../../sites/fpc-gent-site');
+
 const dataPaths = [
-    path.join(sitePath, 'src/data/pages'),
-    path.join(sitePath, 'public/data/pages')
+    path.join(baseDir, 'src/data/pages'),
+    path.join(baseDir, 'public/data/pages'),
+    path.join(baseDir, 'dist/data/pages')
 ];
 
 function normalizeFields(obj) {
     let updated = false;
     const sourceKeys = ['image', 'foto', 'src'];
     
-    // Process current level
     for (let key of sourceKeys) {
         if (obj[key] !== undefined && obj[key] !== null) {
-            // If afbeelding is missing or empty, copy from sourceKey
             if (obj['afbeelding'] === undefined || obj['afbeelding'] === null || obj['afbeelding'] === "") {
                 obj['afbeelding'] = obj[key];
                 updated = true;
@@ -27,7 +28,6 @@ function normalizeFields(obj) {
         }
     }
 
-    // Recurse into objects and arrays
     for (let key in obj) {
         if (obj[key] && typeof obj[key] === 'object') {
             if (normalizeFields(obj[key])) updated = true;
@@ -39,7 +39,10 @@ function normalizeFields(obj) {
 
 async function main() {
     dataPaths.forEach(dataPath => {
-        if (!fs.existsSync(dataPath)) return;
+        if (!fs.existsSync(dataPath)) {
+            console.log('⚠️ Skipping ' + dataPath + ' (not found)');
+            return;
+        }
         const files = fs.readdirSync(dataPath).filter(f => f.endsWith('.json'));
         console.log('🚀 Normalizing fields in ' + dataPath + ' (' + files.length + ' files)...');
         
@@ -52,6 +55,6 @@ async function main() {
             }
         });
     });
-    console.log('🎉 Field Normalization Complete.');
+    console.log('🎉 Normalization Complete.');
 }
 main();

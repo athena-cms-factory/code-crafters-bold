@@ -18,9 +18,9 @@ const App = ({ data }) => {
       <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)] transition-colors duration-500">
           <StyleInjector siteSettings={data['site_settings']} />
-          
+
           <Header primaryTable={data[primaryTable]} tableName={primaryTable} siteSettings={data['site_settings']} />
-          
+
           <main style={{ paddingTop: 'var(--content-top-offset, 0px)' }}>
             <Section data={data} />
           </main>
@@ -35,9 +35,9 @@ const App = ({ data }) => {
   return <CartProvider>{content}</CartProvider>;
   /* {{SHOP_WRAPPER_END}} */
 
-  /* {{NON_SHOP_WRAPPER_START}}
+  /* {{NON_SHOP_WRAPPER_START}} */
   return content;
-  {{NON_SHOP_WRAPPER_END}} */
+  /* {{NON_SHOP_WRAPPER_END}} */
 };
 
 export default App;

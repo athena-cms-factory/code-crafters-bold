@@ -14,8 +14,14 @@ import { ask } from './cli-interface.js';
  */
 export async function loadEnv(defaultPath) {
     let result = dotenv.config({ path: defaultPath });
+    const isHeadless = process.argv.includes('--headless') || process.argv[1].includes('athena-agent.js');
 
     while (result.error || !process.env.GEMINI_API_KEY) {
+        if (isHeadless) {
+            console.error(`\n❌ [HEADLESS MODE] Kon de .env file niet vinden op '${defaultPath}' of de GEMINI_API_KEY ontbreekt.`);
+            process.exit(1);
+        }
+        
         console.log(`\n⚠️ Kon de .env file niet vinden op '${defaultPath}' of de GEMINI_API_KEY ontbreekt.`);
         const newPath = await ask('   Geef het correcte pad naar uw .env bestand (of druk op Enter om te stoppen): ');
 

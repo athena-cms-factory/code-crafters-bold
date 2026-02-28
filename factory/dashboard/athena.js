@@ -31,7 +31,7 @@ import {
     generateCompleteSiteType,
     getExistingSiteTypes
 } from './sitetype-api.js';
-import { generateWithAI } from '../5-engine/ai-engine.js';
+import { generateWithAI } from '../5-engine/core/ai-engine.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -192,7 +192,7 @@ app.post('/api/deploy', async (req, res) => res.json(await siteCtrl.deploy(req.b
 app.get('/api/sites/:id/theme-info', (req, res) => res.json(siteCtrl.getThemeInfo(req.params.id)));
 app.post('/api/sites/:id/update-data', (req, res) => res.json(siteCtrl.updateData(req.params.id, req.body)));
 app.get('/api/sites/:name/status', (req, res) => res.json(siteCtrl.getStatus(req.params.name)));
-app.post('/api/sites/:name/install', (req, res) => res.json(siteCtrl.install(req.params.name)));
+app.post('/api/sites/:name/install', async (req, res) => res.json(await siteCtrl.install(req.params.name)));
 app.post('/api/sites/:id/preview', async (req, res) => res.json(await siteCtrl.preview(req.params.id)));
 app.post('/api/sites/update-deployment', (req, res) => res.json(siteCtrl.updateDeployment(req.body)));
 app.post('/api/sites/:id/pull-from-sheet', async (req, res) => res.json(await siteCtrl.pullFromSheet(req.params.id)));
