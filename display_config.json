@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "klantinteractie": {
+      "visible_fields": ["rating_sterren", "naam_klant"],
+      "hidden_fields": ["interactie_id", "product_batch_id_fk", "datum_activiteit", "type_interactie"]
+    },
+    "productie_en_affinage": {
+      "visible_fields": ["rijpingstijd_dagen", "temperatuur_celsius"],
+      "hidden_fields": ["batch_id", "datum_start", "datum_eind"]
+    },
+    "team_en_expertise": {
+      "visible_fields": ["functie", "specialisatie"],
+      "hidden_fields": ["lid_id", "email"]
+    },
+    "basis": {
+      "visible_fields": ["adres", "telefoon", "openingstijden_json"],
+      "hidden_fields": ["id", "email_publiek"]
+    }
+  },
+  "_instructions": "Dit bestand controleert welke velden zichtbaar zijn op de website. 'visible_fields' worden altijd getoond, 'hidden_fields' worden altijd verborgen. Velden die in geen van beide lijsten staan worden automatisch getoond als ze niet-technisch zijn."
+}
