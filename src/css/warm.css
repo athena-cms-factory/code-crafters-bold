@@ -1,0 +1,141 @@
+@import "tailwindcss";
+/* Athena Warm Theme - Tailwind CSS v4 */
+
+@theme {
+    /* Warm Design Tokens */
+    --color-primary: #D48C70;
+    /* Warm Terracotta */
+    --color-secondary: #E9C46A;
+    /* Soft Muted Gold */
+    --color-accent: #264653;
+    /* Deep Teal/Green */
+    --color-button-bg: #D48C70;
+    --color-card-bg: #ffffff;
+    --color-header-bg: #ffffff;
+    --color-background: #FDFCDC;
+    /* Soft cream */
+    --color-text: #2A1B12;
+    /* Dark Brown */
+    --color-heading: #D48C70;
+    --color-title: #2A1B12;
+    --color-surface: #FDFCDC;
+
+    --font-sans: 'Lato', system-ui, sans-serif;
+    --font-serif: 'Merriweather', serif;
+
+    --radius-custom: 1.5rem;
+    /* Rounder */
+    --shadow-main: 0 4px 12px rgba(100, 50, 20, 0.08);
+
+    /* Animaties gelijk aan modern */
+    --animate-reveal: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@layer base {
+    :root {
+        color-scheme: light;
+        scroll-behavior: smooth;
+
+        --color-primary: #D48C70;
+        --color-heading: #D48C70;
+        --color-title: #2A1B12;
+        --color-accent: #264653;
+        --color-button-bg: #D48C70;
+        --color-card-bg: #ffffff;
+        --color-header-bg: #ffffff;
+        --color-surface: #FDFCDC;
+        --color-background: #FDFCDC;
+        --color-text: #2A1B12;
+        --radius-custom: 1.5rem;
+        --shadow-main: 0 4px 12px rgba(100, 50, 20, 0.08);
+    }
+
+    :root.dark {
+        color-scheme: dark;
+        --color-primary: #E76F51;
+        --color-heading: #F4A261;
+        --color-title: #F4A261;
+        --color-accent: #8AB17D;
+        --color-button-bg: #E76F51;
+        --color-card-bg: #2A1B12;
+        --color-header-bg: #2A1B12;
+        --color-surface: #2A1B12;
+        --color-background: #1a0f0a;
+        /* Darker brown */
+        --color-text: #FDFCDC;
+        --shadow-main: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+        color: var(--color-title);
+        font-family: var(--font-serif);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+    }
+
+    h2,
+    h3,
+    h4 {
+        color: var(--color-heading);
+        font-family: var(--font-serif);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+    }
+
+    /* Reveal animatie */
+    section {
+        @starting-style {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        transition: opacity 0.8s,
+        transform 0.8s;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: var(--radius-custom);
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply px-8 py-3 text-white rounded-full font-serif transition-all hover:scale-105 active:scale-95 shadow-lg;
+        background-color: var(--color-button-bg);
+        box-shadow: 0 8px 20px rgba(212, 140, 112, 0.3);
+    }
+
+    .card {
+        @apply p-8 rounded-[2rem] border border-stone-200 shadow-main transition-transform hover:-translate-y-1;
+        background-color: var(--color-card-bg);
+    }
+
+    .badge {
+        @apply px-3 py-1 bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest rounded-full;
+    }
+}

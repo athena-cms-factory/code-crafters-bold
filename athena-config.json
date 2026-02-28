@@ -1,0 +1,11 @@
+{
+  "projectName": "code-crafters-bold",
+  "siteType": "tech-consultancy",
+  "layoutName": "standard",
+  "siteModel": "SPA",
+  "styleName": "bold",
+  "blueprintFile": "tech-consultancy.json",
+  "safeName": "code-crafters-bold",
+  "generatedAt": "2026-02-27T18:40:05.305Z",
+  "variantOf": "code-crafters"
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Custom Software",
+    "description": "Maatwerk oplossingen die exact doen wat u nodig heeft.",
+    "icon": "code"
+  },
+  {
+    "title": "App Development",
+    "description": "Mobiele applicaties voor iOS en Android.",
+    "icon": "mobile"
+  }
+]
