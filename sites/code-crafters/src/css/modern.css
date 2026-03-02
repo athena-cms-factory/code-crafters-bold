@@ -15,20 +15,21 @@
   --color-heading: rgb(var(--color-heading-rgb, 15 23 42));
   --color-title: rgb(var(--color-title-rgb, 15 23 42));
   
-  --font-sans: var(--font-sans, 'Inter', ui-sans-serif, system-ui, sans-serif);
-  --font-serif: var(--font-serif, 'Playfair Display', ui-serif, Georgia, serif);
+  --font-sans: 'Arial', 'Helvetica', sans-serif;
+  --font-serif: 'Times New Roman', Times, serif;
+  --font-mono: 'Courier New', Courier, monospace;
   
   --radius-custom: var(--radius-custom, 1rem);
   --shadow-main: var(--shadow-main, 0 4px 20px -2px rgba(0, 0, 0, 0.05));
   --shadow-soft: var(--shadow-main);
   
   /* Animaties */
-  --animate-reveal: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  --animate-reveal: reveal 0.3s steps(4) forwards;
 }
 
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @layer base {
@@ -70,57 +71,63 @@
   body {
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: var(--font-sans);
-    line-height: 1.6;
+    font-family: var(--font-mono);
+    line-height: 1.4;
     -webkit-font-smoothing: antialiased;
   }
 
   h1 {
     color: var(--color-title);
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+    line-height: 1.1;
   }
 
   h2, h3, h4 {
     color: var(--color-heading);
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+    line-height: 1.1;
   }
 
   /* Reveal animatie bij binnenkomst (React 19 / Tailwind v4 friendly) */
   section {
     @starting-style {
       opacity: 0;
-      transform: translateY(20px);
     }
-    transition: opacity 0.8s, transform 0.8s;
+    transition: opacity 0.3s;
   }
 
   img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: var(--radius-custom);
+    border: 2px solid var(--color-text);
+    border-radius: 0;
+    box-shadow: var(--shadow-main);
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 text-white rounded-full font-semibold transition-all hover:scale-105 active:scale-95 shadow-xl;
+    @apply px-6 py-3 text-black font-black uppercase tracking-wider transition-transform hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0;
     background-color: var(--color-button-bg);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border: 2px solid var(--color-text);
+    box-shadow: var(--shadow-main);
   }
   
   .card {
-    @apply p-6 rounded-3xl border border-slate-100 shadow-soft transition-transform hover:-translate-y-1;
+    @apply p-6 border-2 border-black;
     background-color: var(--color-card-bg);
+    border-radius: 0;
+    box-shadow: var(--shadow-main);
   }
   
   .badge {
-    @apply px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full;
+    @apply px-2 py-1 bg-black text-white text-sm font-bold uppercase;
   }
 }
