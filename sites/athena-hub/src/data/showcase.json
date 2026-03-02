@@ -40,12 +40,12 @@
     "image": "1-1770476441932-1770476982985.jpg"
   },
   {
-    "name": "Athena Pro",
-    "category": "B2B / SaaS",
-    "description": "Een professionele showcase voor geavanceerde B2B diensten en SaaS oplossingen.",
+    "name": "Code Crafters",
+    "category": "Software / Agency",
+    "description": "Ambachtelijke software en op maat gemaakte weboplossingen voor moderne bedrijven.",
     "link": {
       "label": "BEKIJK DEMO",
-      "url": "https://athena-cms-factory.github.io/athena-pro/"
+      "url": "https://athena-cms-factory.github.io/code-crafters/"
     },
     "image": "showcase-athena-pro.jpg"
   },
