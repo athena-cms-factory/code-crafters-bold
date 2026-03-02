@@ -26,6 +26,9 @@ const Section = ({ data }) => {
         let items = data[sectionName] || [];
         if (items.length === 0) return null;
 
+        // Verberg de losse categorieen-sectie (de tekst-opsomming)
+        if (sectionName === 'categorieen') return null;
+
         if (sectionName === 'basisgegevens') {
           const hero = items[0];
           const heroTitle = hero.titel || hero.hero_header || hero.site_naam;
