@@ -12,7 +12,7 @@ const Layout = ({ data, children }) => (
       <StyleInjector siteSettings={data['site_settings']} />
 <Header data={data.basisgegevens || Object.values(data)[0]} siteSettings={data.site_settings} />
 <main className="pt-20">{children}</main>
-<Footer siteSettings={data.site_settings} />
+<Footer data={data} />
 <CartOverlay />
 </div>
 );
