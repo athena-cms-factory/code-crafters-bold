@@ -44,9 +44,9 @@ const App = ({ data: initialData }) => {
     }
   };
 
-  const filteredJets = selectedDecades.length === 0 
+  const filteredJets = (selectedDecades.length === 0 
     ? jets 
-    : jets.filter(jet => selectedDecades.includes(Math.floor(jet.introduction_year / 10) * 10));
+    : jets.filter(jet => selectedDecades.includes(Math.floor(jet.introduction_year / 10) * 10))).slice().reverse();
 
   return (
     <StyleProvider data={data}>
