@@ -44,8 +44,12 @@ jobs:
             fi
           else
             # Push trigger: alleen gewijzigde sites
-            # Gebruik git diff en verwijder witruimte met tr
-            RAW_SITES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep '^sites/' | cut -d/ -f2 | sort -u | tr -d '\r' | xargs)
+            # Fallback naar HEAD~1 als before-SHA leeg of nul is (force push / edge case)
+            BEFORE="${{ github.event.before }}"
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              BEFORE="HEAD~1"
+            fi
+            RAW_SITES=$(git diff --name-only "$BEFORE" ${{ github.event.after }} | grep '^sites/' | cut -d/ -f2 | sort -u | tr -d '\r' | xargs)
             CHANGED_SITES=$(echo "$RAW_SITES" | jq -R -s -c 'split(" ") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))')
           fi
           
