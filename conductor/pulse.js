@@ -1,36 +1,47 @@
 import fs from 'fs';
+import path from 'path';
+
 const role = process.argv[2] || 'unknown';
-const id = process.argv[3] || 'unknown';
+const id = process.argv[3] || 'ALL';
+const logFile = 'conductor/execution_log.md';
 
-// Sense for PINGs (Lead) or DIRECTIVES/APPROVALS (Agent)
-const targetTag = (role === 'lead') ? '[PING]' : `[DIRECTIVE] Agent (${id})`;
-const approvalTag = (role === 'agent') ? `[APPROVED] Agent (${id})` : '[PROPOSAL]';
-const globalTag = '[DIRECTIVE] ALL AGENTS';
+console.log('📡 Pulse v2.4 (Fleet-Aware) active for ' + role.toUpperCase() + ': ' + id);
 
-console.log(`📡 Pulse active for ${role.toUpperCase()}: ${id} (v2.3)`);
-console.log(`📂 Monitoring conductor/execution_log.md for: ${targetTag} or ${approvalTag}`);
-
-let lastContent = '';
-if (fs.existsSync('conductor/execution_log.md')) {
-  lastContent = fs.readFileSync('conductor/execution_log.md', 'utf8');
+if (!fs.existsSync(logFile)) {
+  fs.writeFileSync(logFile, '# Execution Log - Initialized\n');
 }
 
+let lastSize = fs.statSync(logFile).size;
+
+// Bepaal op welke tags we moeten "sensen"
+const isArchitect = (role === 'architect' || role === 'lead');
+const isAgent = (role === 'agent');
+
 const interval = setInterval(() => {
-  if (fs.existsSync('conductor/execution_log.md')) {
-    const currentContent = fs.readFileSync('conductor/execution_log.md', 'utf8');
-    if (currentContent !== lastContent) {
-      const diff = currentContent.replace(lastContent, '').trim();
-      
-      // Match the relevant sensing tags
-      if (diff.includes(targetTag) || 
-          diff.includes(approvalTag) || 
-          (role === 'agent' && diff.includes(globalTag))) {
-        console.log(`\n🔔 SIGNAL DETECTED:\n${diff}`);
-        console.log(`🛑 Pulse stopping for synchronization.`);
+  const stats = fs.statSync(logFile);
+  if (stats.size > lastSize) {
+    const fd = fs.openSync(logFile, 'r');
+    const buffer = Buffer.alloc(stats.size - lastSize);
+    fs.readSync(fd, buffer, 0, stats.size - lastSize, lastSize);
+    fs.closeSync(fd);
+
+    const diff = buffer.toString().trim();
+    lastSize = stats.size;
+
+    if (diff) {
+      // Architect wacht op [PING] of [PROPOSAL]
+      if (isArchitect && (diff.includes('[PING]') || diff.includes('[PROPOSAL]'))) {
+        console.log('\n🔔 SIGNAL DETECTED for Architect:\n' + diff);
         clearInterval(interval);
         process.exit(0);
       }
-      lastContent = currentContent;
+      
+      // Agent wacht op [DIRECTIVE] of [APPROVED] (voor zichzelf of ALL)
+      if (isAgent && (diff.includes('[DIRECTIVE] Agent (' + id + ')') || diff.includes('[DIRECTIVE] ALL') || diff.includes('[APPROVED] Agent (' + id + ')'))) {
+        console.log('\n🔔 SIGNAL DETECTED for Agent ' + id + ':\n' + diff);
+        clearInterval(interval);
+        process.exit(0);
+      }
     }
   }
 }, 1000);

@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "AfterAgent": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "athena-after-agent-hook",
+            "type": "command",
+            "command": "/home/kareltestspecial/0-IT/2-Productie/athena/athena-x/conductor/hooks/after-agent.sh",
+            "timeout": 30000
+          }
+        ]
+      }
+    ]
+  }
+}
