@@ -4,6 +4,7 @@ import DesignControls from './DesignControls';
 import VisualEditor from './VisualEditor';
 import PullModal from './PullModal';
 import SyncModal from './SyncModal';
+import HelpModal from './HelpModal';
 
 const DockFrame = () => {
   const [selectedSite, setSelectedSite] = useState('');
@@ -14,6 +15,7 @@ const DockFrame = () => {
   const [editingItem, setEditingItem] = useState(null);
   const [showPullModal, setShowPullModal] = useState(false);
   const [showSyncModal, setShowSyncModal] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const iframeRef = useRef(null);
 
@@ -759,7 +761,7 @@ const DockFrame = () => {
               className={`px-3 py-1 rounded text-xs flex items-center gap-1 transition-all ${historyIndex < 0 ? 'text-slate-600 cursor-not-allowed' : 'text-white hover:bg-slate-700'}`}
               title="Maak de laatste actie ongedaan. Gebruik dit als je per ongeluk iets hebt gewijzigd of verwijderd (Sneltoets: Ctrl+Z)."
             >
-              <i className="fa-solid fa-rotate-left"></i> Undo
+              <i className="fa-solid fa-rotate-left"></i>
             </button>
             <div className="w-px h-4 bg-slate-700 mx-1 self-center"></div>
             <button
@@ -768,7 +770,7 @@ const DockFrame = () => {
               className={`px-3 py-1 rounded text-xs flex items-center gap-1 transition-all ${historyIndex >= history.length - 1 ? 'text-slate-600 cursor-not-allowed' : 'text-white hover:bg-slate-700'}`}
               title="Voer de actie die je zojuist ongedaan hebt gemaakt opnieuw uit (Sneltoets: Ctrl+Y)."
             >
-              Redo <i className="fa-solid fa-rotate-right"></i>
+              <i className="fa-solid fa-rotate-right"></i>
             </button>
           </div>
 
@@ -777,7 +779,7 @@ const DockFrame = () => {
             className="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-xs text-white rounded shadow border border-slate-600"
             title="Herlaad de website-weergave in het midden van het scherm. Gebruik dit als wijzigingen niet direct zichtbaar zijn."
           >
-            ⟳ Refresh Preview
+            ⟳
           </button>
 
           {selectedSite && (
@@ -846,8 +848,18 @@ const DockFrame = () => {
               Connecting...
             </span>
           )}
+
+          <button
+            onClick={() => setShowHelpModal(true)}
+            className="w-8 h-8 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center text-sm transition-all shadow-lg shadow-blue-500/20"
+            title="Open het Save & Publish Protocol — uitleg over hoe je wijzigingen opslaat, synchroniseert en publiceert."
+          >
+            <i className="fa-solid fa-question"></i>
+          </button>
         </div>
       </header>
+
+      {showHelpModal && <HelpModal onClose={() => setShowHelpModal(false)} />}
 
       {/* Main Dock Area */}
       <div className="flex flex-1 overflow-hidden">
