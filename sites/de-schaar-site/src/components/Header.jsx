@@ -141,7 +141,7 @@ function Header({ primaryTable, tableName, hero = {}, headerSettings = {}, navDa
             )}
             <div className="flex gap-6 justify-center">
               <a href="#diensten_tarieven" className="btn-primary px-10 py-5 text-lg">Onze Diensten</a>
-              <a href="#locaties" className="px-10 py-5 border-2 border-white/30 rounded-full font-bold hover:bg-white hover:text-primary transition-all">Contact</a>
+              <a href="#footer" className="px-10 py-5 border-2 border-white/30 rounded-full font-bold hover:bg-white hover:text-primary transition-all">Contact</a>
             </div>
           </div>
         </div>

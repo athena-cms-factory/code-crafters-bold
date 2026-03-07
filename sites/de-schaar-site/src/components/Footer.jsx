@@ -33,6 +33,7 @@ export default function Footer({ primaryTable, socialData = [] }) {
 
   return (
     <footer
+      id="footer"
       className="py-24 text-slate-400 border-t border-white/5"
       style={{ backgroundColor: 'var(--color-footer-bg, #020617)' }}
     >
