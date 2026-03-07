@@ -1,66 +1,66 @@
 [
   {
-    "id": "basis",
-    "title": "Kapsalon Gent",
-    "subtitle": "Dok-Noord",
+    "id": "hero",
+    "title": "Onze Passie",
+    "subtitle": "Kappers met hart voor haar",
     "visible": true,
-    "padding": 36
+    "padding": 40
   },
   {
-    "id": "locaties",
-    "title": "Locatie",
-    "subtitle": ".",
-    "padding": 40,
-    "visible": true
+    "id": "missie",
+    "title": "Onze Missie",
+    "subtitle": "Waar we voor staan",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "locatie",
+    "title": "Onze Locatie",
+    "subtitle": "Breng ons een bezoek",
+    "visible": true,
+    "padding": 40
   },
   {
     "id": "stylist_gradatie",
-    "title": "Stylist gradatie",
-    "subtitle": "",
-    "visible": "",
-    "padding": ""
+    "title": "Stylist Gradaties",
+    "subtitle": "Gediplomeerd vakmanschap",
+    "visible": true,
+    "padding": 40
   },
   {
-    "id": "teamleden",
-    "title": "Team",
-    "subtitle": "Overzicht van teamleden",
-    "visible": "",
-    "padding": ""
+    "id": "team",
+    "title": "Ons Team",
+    "subtitle": "De makers van jouw stijl",
+    "visible": true,
+    "padding": 40
   },
   {
-    "id": "diensten_hoofdgroepen",
-    "title": "diensten hoofdgroepen",
-    "subtitle": "Overzicht van diensten_hoofdgroepen",
-    "visible": false,
-    "padding": ""
-  },
-  {
-    "id": "diensten_tarieven",
-    "title": "Onze Tarieven",
-    "subtitle": "Kwaliteit en vakmanschap voor een eerlijke prijs",
-    "visible": "",
-    "padding": ""
+    "id": "tarieven",
+    "title": "Diensten & Tarieven",
+    "subtitle": "Kwaliteit voor een eerlijke prijs",
+    "visible": true,
+    "padding": 40
   },
   {
     "id": "testimonials",
-    "title": "Testimonials",
-    "subtitle": "Overzicht van testimonials",
-    "visible": "",
-    "padding": ""
+    "title": "Wat klanten zeggen",
+    "subtitle": "Echte ervaringen",
+    "visible": true,
+    "padding": 40
   },
   {
-    "id": "aveda_informatie",
-    "title": "Aveda informatie",
-    "subtitle": "",
-    "visible": "",
-    "padding": ""
+    "id": "aveda",
+    "title": "Aveda Filosofie",
+    "subtitle": "Natuurlijke schoonheid",
+    "visible": true,
+    "padding": 40
   },
   {
-    "id": "social_media",
-    "title": "social media",
-    "subtitle": "Overzicht van social_media",
-    "visible": false,
-    "padding": ""
+    "id": "footer",
+    "title": "Contact & Info",
+    "subtitle": "We horen graag van je",
+    "visible": true,
+    "padding": 40
   },
   {
     "id": "paginastructuur",
