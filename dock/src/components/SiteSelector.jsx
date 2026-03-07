@@ -19,9 +19,10 @@ const SiteSelector = ({ selectedSite, onSelectSite }) => {
             const sitePort = s.port || import.meta.env.VITE_SITE_PORT || '3000';
 
             // In development we serve the active site at the root of the port
-            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const url = isLocalhost
-              ? `http://localhost:${sitePort}/`
+            const hostname = window.location.hostname;
+            const isLocal = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.test') || hostname.startsWith('100.115.');
+            const url = isLocal
+              ? `http://${hostname}:${sitePort}/`
               : `https://athena-cms-factory.github.io/${sitename}/`;
 
             if (typeof s === 'string') return { id: s, name: s, url };
@@ -37,8 +38,9 @@ const SiteSelector = ({ selectedSite, onSelectSite }) => {
         // Check voor actieve servers via het dashboard
         let firstActive = null;
         try {
-          const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '4001';
-          const activeRes = await fetch(`http://localhost:${dashboardPort}/api/servers/active`);
+          const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '5001';
+          const dashboardHost = window.location.hostname;
+          const activeRes = await fetch(`http://${dashboardHost}:${dashboardPort}/api/servers/active`);
           if (activeRes.ok) {
             const data = await activeRes.json();
             const servers = data.servers || [];

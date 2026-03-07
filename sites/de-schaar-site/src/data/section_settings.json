@@ -3,17 +3,19 @@
     "id": "basis",
     "title": "Kapsalon Gent",
     "subtitle": "Dok-Noord",
-    "visible": true
+    "visible": true,
+    "padding": 32
   },
   {
     "id": "locaties",
     "title": "Locatie",
-    "subtitle": "."
+    "subtitle": ".",
+    "padding": 0
   },
   {
     "id": "stylist_gradatie",
     "title": "Stylist gradatie",
-    "subtitle": "Overzicht van stylist_gradatie"
+    "subtitle": ""
   },
   {
     "id": "teamleden",
@@ -39,7 +41,7 @@
   {
     "id": "aveda_informatie",
     "title": "Aveda informatie",
-    "subtitle": "Overzicht van aveda_informatie"
+    "subtitle": ""
   },
   {
     "id": "social_media",

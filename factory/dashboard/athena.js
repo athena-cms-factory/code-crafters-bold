@@ -223,7 +223,7 @@ app.post('/api/pull-from-sheets/:id', async (req, res) => res.json(await siteCtr
 // --- SERVER API ---
 app.get('/api/servers/check/:port', (req, res) => res.json(serverCtrl.checkStatus(req.params.port)));
 app.post('/api/servers/stop/:type', async (req, res) => res.json(await serverCtrl.stopByType(req.params.type)));
-app.get('/api/servers/active', (req, res) => res.json({ servers: serverCtrl.getActive() }));
+app.get('/api/servers/active', (req, res) => res.json({ servers: serverCtrl.getActive(req.hostname) }));
 app.post('/api/servers/kill/:port', async (req, res) => res.json(await serverCtrl.kill(req.params.port)));
 app.post('/api/start-layout-server', async (req, res) => res.json(await serverCtrl.startLayoutEditor()));
 app.post('/api/start-media-server', async (req, res) => res.json(await serverCtrl.startMediaVisualizer(req.body.siteName)));

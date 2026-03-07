@@ -6,7 +6,8 @@
         "missie_kern",
         "bedrijfsnaam",
         "copyright_tekst",
-        "afbeelding"
+        "afbeelding",
+        "telefoonnummer"
       ]
     },
     "locaties": {
@@ -42,6 +43,12 @@
         "header_show_navbar"
       ],
       "hidden_fields": []
+    },
+    "stylist_gradatie": {
+      "visible_fields": [],
+      "hidden_fields": [
+        "min_ervaring_jaren"
+      ]
     }
   }
 }

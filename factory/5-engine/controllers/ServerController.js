@@ -54,26 +54,16 @@ export class ServerController {
     /**
      * Get all active site and system servers
      */
-    getActive() {
+    getActive(hostname = 'localhost') {
         const active = this.pm.listActive();
         const activeMap = new Map();
         const systemPorts = Object.values(this.configManager.get('ports') || {});
 
         const addServer = (port, info) => {
-            // Only add if not already present AND not a core system port (like Dashboard itself)
-            // Note: We keep Dock if we want it in the dynamic list, but typically 
-            // the dashboard UI already has a dedicated section for system servers.
             if (!activeMap.has(port)) {
-                // Skip dashboard port to avoid self-reference redundancy
                 if (port === (this.configManager.get('ports.dashboard') || 5001)) return;
-                
-                // If it's a system port, we mark it as such
                 const isSystem = systemPorts.includes(port);
-                
-                activeMap.set(port, {
-                    ...info,
-                    isSystem
-                });
+                activeMap.set(port, { ...info, isSystem });
             }
         };
 
@@ -85,7 +75,7 @@ export class ServerController {
                 port: parseInt(port),
                 pid: info.pid,
                 type: info.type,
-                url: info.type === 'preview' ? `http://localhost:${port}/${info.id}/` : `http://localhost:${port}/`
+                url: info.type === 'preview' ? `http://${hostname}:${port}/${info.id}/` : `http://${hostname}:${port}/`
             });
         }
 
@@ -107,7 +97,7 @@ export class ServerController {
                         port: port,
                         pid: 'external',
                         type: 'preview',
-                        url: `http://localhost:${port}/${site}/`
+                        url: `http://${hostname}:${port}/${site}/`
                     });
                 }
             }

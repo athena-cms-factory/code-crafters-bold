@@ -135,6 +135,7 @@ const Section = ({ data }) => {
 
         const bgClass = idx % 2 === 1 ? 'bg-black/5 dark:bg-white/5' : 'bg-transparent';
         const visibilityClass = !isVisible ? 'opacity-40 grayscale-[50%]' : '';
+        const paddingVal = sectionMeta.padding !== undefined ? sectionMeta.padding : 32;
 
         // SPECIAL CASE: DIENSTEN TARIEVEN (Gegroepeerd)
         if (config.table === 'diensten_tarieven') {
@@ -153,7 +154,8 @@ const Section = ({ data }) => {
               key={idx}
               id={config.table.toLowerCase()}
               data-dock-section={config.table.toLowerCase()}
-              className={`py-32 px-6 ${bgClass} ${visibilityClass} relative`}
+              className={`${bgClass} ${visibilityClass} relative transition-all duration-500 px-6`}
+              style={{ paddingTop: `${paddingVal * 4}px`, paddingBottom: `${paddingVal * 4}px` }}
             >
               {!isVisible && isDev && <div className="absolute top-4 right-4 bg-red-500 text-white text-[10px] px-2 py-1 rounded font-bold uppercase z-50">Hidden Section</div>}
               <div className="max-w-6xl mx-auto">
@@ -242,7 +244,8 @@ const Section = ({ data }) => {
             key={idx}
             id={config.table.toLowerCase()}
             data-dock-section={config.table.toLowerCase()}
-            className={`py-32 px-6 ${bgClass} ${visibilityClass} relative transition-colors duration-500`}
+            className={`${bgClass} ${visibilityClass} relative transition-all duration-500 px-6`}
+            style={{ paddingTop: `${paddingVal * 4}px`, paddingBottom: `${paddingVal * 4}px` }}
           >
             {!isVisible && isDev && <div className="absolute top-4 right-4 bg-red-500 text-white text-[10px] px-2 py-1 rounded font-bold uppercase z-50">Hidden Section</div>}
 
@@ -293,61 +296,73 @@ const Section = ({ data }) => {
                   let candidatePrice = keys.find(k => /prijs|kosten|tarief/i.test(k));
 
                   // 3. Pas visibility regels toe op hoofdvelden
-                  // Als een veld expliciet verborgen is, mag het GEEN hoofdveld zijn.
                   const titleKey = hiddenFields.includes(candidateTitle) ? null : candidateTitle;
                   const descKey = hiddenFields.includes(candidateDesc) ? null : candidateDesc;
                   const imgKey = hiddenFields.includes(candidateImg) ? null : candidateImg;
                   const priceKey = (candidatePrice && !hiddenFields.includes(candidatePrice)) ? candidatePrice : null;
 
-                  // 4. Bepaal extra velden (metadata)
                   const technicalFields = ['absoluteIndex', '_hidden', 'id', 'pk', 'uuid', 'naam', 'product_naam', 'bedrijfsnaam', 'titel', 'kaas_naam', 'naam_hond', 'beschrijving', 'omschrijving', 'korte_bio', 'info', 'inhoud_bericht', 'prijs', 'kosten', 'categorie', 'type', 'specialisatie'];
 
-                  const metaFields = keys.filter(k => {
-                    // a. Als het een hoofdveld is dat we tonen, sla over voor meta
-                    if (k === titleKey || k === descKey || k === imgKey || k === priceKey) return false;
+                  const metaFields = configFields.length > 0 
+                    ? configFields.filter(k => k !== titleKey && k !== descKey && k !== imgKey && k !== priceKey && !hiddenFields.includes(k))
+                    : keys.filter(k => {
+                        if (k === titleKey || k === descKey || k === imgKey || k === priceKey) return false;
+                        if (hiddenFields.includes(k)) return false;
+                        if (technicalFields.some(tf => k.toLowerCase().includes(tf))) return false;
+                        if (k.toLowerCase().includes('foto') || k.toLowerCase().includes('image')) return false;
+                        return true;
+                      });
 
-                    // b. Als het expliciet verborgen is, sla over
-                    if (hiddenFields.includes(k)) return false;
+                  const renderList = configFields.length > 0 
+                    ? configFields.filter(k => k !== imgKey && !hiddenFields.includes(k))
+                    : [titleKey, descKey, priceKey, ...metaFields].filter(Boolean);
 
-                    // c. Als er een whitelist is (visible_fields), moet het erin staan
-                    if (configFields.length > 0) {
-                      return configFields.includes(k);
-                    }
+                  const renderContents = () => (
+                    <div className="mt-4 space-y-4">
+                      {renderList.map((k, i) => {
+                        const isTitle = (configFields.length === 0 && k === titleKey) || (configFields.length > 0 && i === 0);
+                        const isDesc = (configFields.length === 0 && k === descKey) || (configFields.length > 0 && i === 1);
+                        const isPrice = k === priceKey;
 
-                    // d. Anders: standaard filter (geen technische velden of afbeeldingen)
-                    if (technicalFields.some(tf => k.toLowerCase().includes(tf))) return false;
-                    if (k.toLowerCase().includes('foto') || k.toLowerCase().includes('image')) return false;
+                        let className = "text-text block ";
+                        let tagName = "div";
+                        
+                        if (isTitle) {
+                          tagName = "h3";
+                          className += (currentLayout === 'focus' && index === 0) ? "text-4xl font-serif font-bold mb-4" : "text-2xl font-serif font-bold mb-2";
+                        } else if (isPrice) {
+                          className += "font-serif font-bold text-xl text-accent";
+                        } else if (isDesc) {
+                          className += "text-lg opacity-70 leading-relaxed font-light";
+                        } else {
+                          className += "text-sm opacity-60";
+                        }
 
-                    return true;
-                  });
-
-                  const renderMetadata = () => (
-                    <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-start">
-                      {metaFields.map(mk => (
-                        <EditableText
-                          key={mk}
-                          value={item[mk]}
-                          cmsBind={{ file: config.table.toLowerCase(), index, key: mk }}
-                          className="text-sm opacity-70"
-                        />
-                      ))}
+                        return (
+                          <EditableText
+                            key={k}
+                            tagName={tagName}
+                            value={item[k]}
+                            cmsBind={{ file: config.table.toLowerCase(), index, key: k }}
+                            className={className}
+                          />
+                        );
+                      })}
                     </div>
                   );
 
                   // Binding object voor de Dock
                   const bind = (key) => JSON.stringify({ file: config.table.toLowerCase(), index, key });
 
-                  if (priceKey) {
+                  if (priceKey && configFields.length === 0) {
                     return (
                       <div key={index} className={itemClass + " w-full max-w-2xl mx-auto"}>
-                        <div className="flex justify-between items-end">
+                        <div className="flex justify-between items-end border-b border-dotted border-slate-300 dark:border-white/20 pb-4">
                           <div className="flex-1">
-                            {titleKey && <EditableText tagName="span" value={item[titleKey]} className="text-lg font-medium block text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} data-dock-bind={bind(titleKey)} />}
-                            {descKey && <EditableText tagName="span" value={item[descKey]} className="text-sm opacity-60 block mt-1 text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} data-dock-bind={bind(descKey)} />}
-                            {renderMetadata()}
-                            <div className="border-b border-dotted border-slate-300 dark:border-white/20 flex-1 mx-4 relative top-[-5px]"></div>
+                            {titleKey && <EditableText tagName="span" value={item[titleKey]} className="text-lg font-medium block text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} />}
+                            {descKey && <EditableText tagName="span" value={item[descKey]} className="text-sm opacity-60 block mt-1 text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} />}
                           </div>
-                          <EditableText tagName="span" value={item[priceKey]} className="font-serif font-bold text-lg text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: priceKey }} data-dock-bind={bind(priceKey)} />
+                          <EditableText tagName="span" value={item[priceKey]} className="font-serif font-bold text-lg text-text ml-4" cmsBind={{ file: config.table.toLowerCase(), index, key: priceKey }} />
                         </div>
                       </div>
                     );
@@ -363,9 +378,7 @@ const Section = ({ data }) => {
                           </div>
                         )}
                         <div className={`w-full ${imgKey ? 'md:w-1/2' : 'max-w-3xl mx-auto'} text-center ${imgKey ? 'md:text-left' : ''}`}>
-                          {titleKey && <EditableText tagName="h3" value={item[titleKey]} className="text-4xl font-serif font-bold mb-6 block text-[var(--color-heading)]" cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} data-dock-bind={bind(titleKey)} />}
-                          {descKey && <EditableText tagName="p" value={item[descKey]} className="text-xl leading-relaxed font-light block opacity-70 text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} data-dock-bind={bind(descKey)} />}
-                          {renderMetadata()}
+                          {renderContents()}
                         </div>
                       </article>
                     );
@@ -380,9 +393,7 @@ const Section = ({ data }) => {
                           </div>
                         )}
                         <div className="flex-1">
-                          {titleKey && <EditableText tagName="h3" value={item[titleKey]} className="text-3xl font-serif font-bold mb-4 block text-[var(--color-heading)]" cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} data-dock-bind={bind(titleKey)} />}
-                          {descKey && <EditableText tagName="p" value={item[descKey]} className="text-lg leading-relaxed font-light block opacity-70 text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} data-dock-bind={bind(descKey)} />}
-                          {renderMetadata()}
+                          {renderContents()}
                         </div>
                       </article>
                     );
@@ -395,9 +406,7 @@ const Section = ({ data }) => {
                           <EditableMedia src={item[imgKey]} alt={getText(item[titleKey])} className="w-full h-full object-cover" dataItem={item} cmsBind={{ file: config.table.toLowerCase(), index, key: imgKey }} data-dock-bind={bind(imgKey)} />
                         </div>
                       )}
-                      {titleKey && <EditableText tagName="h3" value={item[titleKey]} className={(currentLayout === 'focus' && index === 0 ? 'text-4xl' : 'text-2xl') + ' font-serif font-bold mb-4 block text-[var(--color-heading)]'} cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} data-dock-bind={bind(titleKey)} />}
-                      {descKey && <EditableText tagName="p" value={item[descKey]} className={'leading-relaxed font-light block opacity-70 text-text ' + (currentLayout === 'focus' && index === 0 ? 'text-xl' : 'line-clamp-4')} cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} data-dock-bind={bind(descKey)} />}
-                      {renderMetadata()}
+                      {renderContents()}
                     </article>
                   );
                 })}

@@ -414,8 +414,9 @@ const DockFrame = () => {
     }
 
     try {
-      const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '4001';
-      const res = await fetch(`http://localhost:${dashboardPort}/api/sync-to-sheets/${siteId}`, {
+      const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '5001';
+      const hostname = window.location.hostname;
+      const res = await fetch(`http://${hostname}:${dashboardPort}/api/sync-to-sheets/${siteId}`, {
         method: 'POST'
       });
       const data = await res.json();
@@ -453,8 +454,9 @@ const DockFrame = () => {
     }
 
     try {
-      const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '4001';
-      const res = await fetch(`http://localhost:${dashboardPort}/api/pull-from-sheets/${siteId}`, {
+      const dashboardPort = import.meta.env.VITE_DASHBOARD_PORT || '5001';
+      const hostname = window.location.hostname;
+      const res = await fetch(`http://${hostname}:${dashboardPort}/api/pull-from-sheets/${siteId}`, {
         method: 'POST'
       });
       const data = await res.json();
@@ -935,19 +937,40 @@ const DockFrame = () => {
 
                 <div className="space-y-4">
                   {/* Layout Selector */}
-                  <div>
-                    <label className="text-[9px] uppercase font-black text-slate-400 block mb-1">Layout</label>
-                    <select
-                      className="w-full text-xs p-2 bg-white border border-slate-200 rounded-lg text-slate-600 focus:outline-none focus:border-blue-400"
-                      onChange={(e) => updateLayout(section, e.target.value)}
-                      value={siteStructure?.layouts?.[section] || 'grid'}
-                      title="Kies de visuele indeling voor deze sectie (bijv. Raster, Lijst of Z-Patroon)."
-                    >
-                      <option value="grid">Grid (Raster)</option>
-                      <option value="list">List (Lijst)</option>
-                      <option value="z-pattern">Z-Pattern (Z-Vorm)</option>
-                      <option value="focus">Focus (Eén groot item)</option>
-                    </select>
+                  <div className="flex gap-4">
+                    <div className="flex-1">
+                      <label className="text-[9px] uppercase font-black text-slate-400 block mb-1">Layout</label>
+                      <select
+                        className="w-full text-xs p-2 bg-white border border-slate-200 rounded-lg text-slate-600 focus:outline-none focus:border-blue-400"
+                        onChange={(e) => updateLayout(section, e.target.value)}
+                        value={siteStructure?.layouts?.[section] || 'grid'}
+                        title="Kies de visuele indeling voor deze sectie (bijv. Raster, Lijst of Z-Patroon)."
+                      >
+                        <option value="grid">Grid (Raster)</option>
+                        <option value="list">List (Lijst)</option>
+                        <option value="z-pattern">Z-Pattern (Z-Vorm)</option>
+                        <option value="focus">Focus (Eén groot item)</option>
+                      </select>
+                    </div>
+                    <div className="w-24">
+                      <label className="text-[9px] uppercase font-black text-slate-400 block mb-1">Padding (y)</label>
+                      <input 
+                        type="range" 
+                        min="0" 
+                        max="80" 
+                        step="4"
+                        className="w-full accent-blue-500"
+                        value={siteStructure?.data?.section_settings?.find(s => s.id === section)?.padding || 32}
+                        onChange={(e) => {
+                          const idx = siteStructure?.data?.section_settings?.findIndex(s => s.id === section);
+                          if (idx !== -1) {
+                            saveData('section_settings', idx, 'padding', parseInt(e.target.value));
+                            // Refresh content to show new padding
+                            setTimeout(() => forceRefresh(), 100);
+                          }
+                        }}
+                      />
+                    </div>
                   </div>
 
                   {/* Field Management (NEW) */}
