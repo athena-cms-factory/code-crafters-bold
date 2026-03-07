@@ -11,7 +11,7 @@
     "title": "Locatie",
     "subtitle": ".",
     "padding": 0,
-    "visible": false
+    "visible": true
   },
   {
     "id": "stylist_gradatie",

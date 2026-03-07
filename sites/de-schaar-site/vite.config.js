@@ -31,7 +31,18 @@ export default defineConfig(async ({ command }) => {
     plugins: [
       react(),
       tailwindcss(),
-      athenaEditorPlugin ? athenaEditorPlugin() : null
+      athenaEditorPlugin ? athenaEditorPlugin() : null,
+      {
+        name: 'athena-hmr-suppressor',
+        handleHotUpdate({ file, server, modules }) {
+          if (file.includes('src/data') && file.endsWith('.json')) {
+            // Wis de module referentie uit het geheugen zodat een "harde refresh" van de browser
+            // ALTIJD de nieuwste JSON inlaadt, zonder dat we de browser nu Dwingen om te herladen.
+            modules.forEach(m => server.moduleGraph.invalidateModule(m));
+            return []; // Geef een lege array terug -> Vite snapt: "Ah, doe niks naar de browser!"
+          }
+        }
+      }
     ].filter(Boolean),
     server: {
       host: true,
@@ -40,9 +51,6 @@ export default defineConfig(async ({ command }) => {
       hmr: {
         host: 'localhost',
         port: 6110
-      },
-      watch: {
-        ignored: ['**/src/data/**']
       }
     },
     build: {

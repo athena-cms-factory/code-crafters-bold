@@ -317,18 +317,22 @@ const Section = ({ data }) => {
                     ? configFields.filter(k => k !== imgKey && !hiddenFields.includes(k))
                     : [titleKey, descKey, priceKey, ...metaFields].filter(Boolean);
 
-                  const renderContents = () => (
-                    <div className="mt-4 space-y-4">
+                  const renderContents = () => {
+                    const inlineFields = config.inline_fields || [];
+                    
+                    return (
+                    <div className="mt-4 flex flex-wrap gap-x-3 gap-y-4 items-baseline">
                       {renderList.map((k, i) => {
                         const isTitle = (configFields.length === 0 && k === titleKey) || (configFields.length > 0 && i === 0);
                         const isDesc = (configFields.length === 0 && k === descKey) || (configFields.length > 0 && i === 1);
                         const isPrice = k === priceKey;
+                        const isInline = inlineFields.includes(k);
 
-                        let className = "text-text block ";
-                        let tagName = "div";
+                        let className = "text-text " + (isInline ? "inline-block " : "block w-full ");
+                        let tagName = isInline ? "span" : "div";
                         
                         if (isTitle) {
-                          tagName = "h3";
+                          tagName = isInline ? "span" : "h3";
                           className += (currentLayout === 'focus' && index === 0) ? "text-4xl font-serif font-bold mb-4" : "text-2xl font-serif font-bold mb-2";
                         } else if (isPrice) {
                           className += "font-serif font-bold text-xl text-accent";
@@ -350,6 +354,7 @@ const Section = ({ data }) => {
                       })}
                     </div>
                   );
+                 };
 
                   // Binding object voor de Dock
                   const bind = (key) => JSON.stringify({ file: config.table.toLowerCase(), index, key });

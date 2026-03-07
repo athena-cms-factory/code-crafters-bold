@@ -19,7 +19,11 @@
         "ligging_omschrijving",
         "parking_info"
       ],
-      "hidden_fields": []
+      "hidden_fields": [],
+      "inline_fields": [
+        "stad",
+        "postcode"
+      ]
     },
     "hero": {
       "visible_fields": [

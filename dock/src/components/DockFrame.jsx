@@ -645,8 +645,28 @@ const DockFrame = () => {
     }
 
     updateFieldConfig(tableName, {
+      ...sectionConfig,
       visible_fields: visible,
       hidden_fields: hidden
+    });
+  };
+
+  const toggleFieldInline = (tableName, field) => {
+    const data = siteStructure?.data || {};
+    const displayConfig = data.display_config || { sections: {} };
+    const sectionConfig = displayConfig.sections?.[tableName] || { visible_fields: [], hidden_fields: [], inline_fields: [] };
+
+    let inline = Array.isArray(sectionConfig.inline_fields) ? [...sectionConfig.inline_fields] : [];
+
+    if (inline.includes(field)) {
+      inline = inline.filter(f => f !== field);
+    } else {
+      inline.push(field);
+    }
+
+    updateFieldConfig(tableName, {
+      ...sectionConfig,
+      inline_fields: inline
     });
   };
 
@@ -1124,6 +1144,15 @@ const DockFrame = () => {
                                 >
                                   <i className={`fa-solid ${isVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                                 </button>
+                                {isVisible && (
+                                  <button
+                                    onClick={() => { console.log('↔️ Clicked inline toggle', field); toggleFieldInline(section, field); }}
+                                    className={`p-1.5 rounded transition-all cursor-pointer ${Array.isArray(config.inline_fields) && config.inline_fields.includes(field) ? 'text-purple-500 hover:bg-purple-50' : 'text-slate-300 hover:bg-slate-100'}`}
+                                    title={Array.isArray(config.inline_fields) && config.inline_fields.includes(field) ? 'Dit veld staat NAAST het vorige veld. Klik om weer op een nieuwe regel te plaatsen.' : 'Dit veld staat op een NIEUWE REGEL. Klik om naast het vorige veld te plaatsen.'}
+                                  >
+                                    <i className={`fa-solid ${Array.isArray(config.inline_fields) && config.inline_fields.includes(field) ? 'fa-arrow-right-long' : 'fa-level-down-alt'}`}></i>
+                                  </button>
+                                )}
                               </div>
                             </div>
                           );
