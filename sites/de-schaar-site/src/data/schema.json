@@ -10,14 +10,6 @@
           "description": "De officiële naam van de zaak ('De Salon')."
         },
         {
-          "name": "missie_kern",
-          "description": "De korte kern van de missie ('We care about your hair')."
-        },
-        {
-          "name": "missie_uitgebreid",
-          "description": "Het combineren van schoonheid, milieubewustheid en welzijn."
-        },
-        {
           "name": "telefoonnummer",
           "description": "Het algemene telefoonnummer voor contact en afspraken."
         },
@@ -32,6 +24,23 @@
         {
           "name": "cookies_beleid_link",
           "description": "Link naar de Cookies pagina."
+        }
+      ]
+    },
+    {
+      "table_name": "missie",
+      "columns": [
+        {
+          "name": "missie_kern",
+          "description": "De korte kern van de missie ('We care about your hair')."
+        },
+        {
+          "name": "missie_uitgebreid",
+          "description": "Het combineren van schoonheid, milieubewustheid en welzijn."
+        },
+        {
+          "name": "afbeelding",
+          "description": "De sfeerfoto voor de missie sectie."
         }
       ]
     },

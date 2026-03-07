@@ -1,19 +1,9 @@
 [
   {
     "bedrijfsnaam": "De Schaar",
-    "missie_kern": "We care About your hair",
-    "missie_uitgebreid": "Het combineren van schoonheid, milieubewustheid en welzijn. Dat is onze missie.",
-    "telefoonnummer": {
-      "text": "09 222 99 22",
-      "color": "",
-      "fontSize": "",
-      "fontWeight": "normal",
-      "fontStyle": "normal",
-      "textAlign": "center"
-    },
+    "telefoonnummer": "09 222 99 22",
     "copyright_tekst": "© 2026 De Schaar",
     "privacy_beleid_link": "/Privacybeleid",
-    "cookies_beleid_link": "/Cookies",
-    "afbeelding": "Screenshot2026-01-2206.59.57-1769104077061.png"
+    "cookies_beleid_link": "/Cookies"
   }
 ]

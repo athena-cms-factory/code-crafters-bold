@@ -10,6 +10,7 @@ const Section = ({ data }) => {
   const layouts = Array.isArray(data.layout_settings) ? (data.layout_settings[0] || {}) : (data.layout_settings || {});
 
   const sectionConfigs = [
+    { table: "missie", title: "onze missie", subtitle: "Waar we voor staan", defaultLayout: "z-pattern" },
     { table: "footer", title: "basisgegevens", subtitle: "Overzicht van basisgegevens", defaultLayout: "list" },
     { table: "locatie", title: "locaties", subtitle: "Overzicht van locaties", defaultLayout: "list" },
     { table: "stylist_gradatie", title: "stylist gradatie", subtitle: "Overzicht van stylist gradatie", defaultLayout: "grid" },
