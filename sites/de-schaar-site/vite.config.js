@@ -27,7 +27,7 @@ export default defineConfig(async ({ command }) => {
 
   return {
     // Gebruik relatieve paden voor maximale compatibiliteit (Dock & GitHub Pages)
-    base: './', 
+    base: process.env.NODE_ENV === 'production' ? '/de-schaar-site/' : '/', 
     plugins: [
       react(),
       tailwindcss(),

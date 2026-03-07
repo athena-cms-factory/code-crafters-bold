@@ -1,0 +1,12 @@
+[
+  {
+    "Key": "github_user",
+    "Value": "athenacmsfactory",
+    "Description": "De GitHub gebruikersnaam van de ontwikkelaar."
+  },
+  {
+    "Key": "github_repo_name",
+    "Value": "de-schaar-site",
+    "Description": "De specifieke repository-naam voor dit project."
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "hero",
+    "title": "Onze Passie",
+    "subtitle": "Kappers met hart voor haar",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "missie",
+    "title": "Onze Missie",
+    "subtitle": "Waar we voor staan",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "locatie",
+    "title": "Onze Locatie",
+    "subtitle": "Breng ons een bezoek",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "stylist_gradatie",
+    "title": "Stylist Gradaties",
+    "subtitle": "Gediplomeerd vakmanschap",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "team",
+    "title": "Ons Team",
+    "subtitle": "De makers van jouw stijl",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "tarieven",
+    "title": "Diensten & Tarieven",
+    "subtitle": "Kwaliteit voor een eerlijke prijs",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "testimonials",
+    "title": "Wat klanten zeggen",
+    "subtitle": "Echte ervaringen",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "aveda",
+    "title": "Aveda Filosofie",
+    "subtitle": "Natuurlijke schoonheid",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "footer",
+    "title": "Contact & Info",
+    "subtitle": "We horen graag van je",
+    "visible": true,
+    "padding": 40
+  },
+  {
+    "id": "paginastructuur",
+    "title": "paginastructuur",
+    "subtitle": "Overzicht van paginastructuur",
+    "visible": "",
+    "padding": ""
+  }
+]

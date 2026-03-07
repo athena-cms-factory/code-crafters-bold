@@ -1,0 +1,65 @@
+[
+  {
+    "pagina_id": 1,
+    "titel_navigatie": {
+      "text": "HOME",
+      "color": "#000000",
+      "fontSize": "",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textAlign": "left"
+    },
+    "slug": "home",
+    "menu_positie": 1,
+    "is_call_to_action": false
+  },
+  {
+    "pagina_id": 2,
+    "titel_navigatie": {
+      "text": "PRIJZEN",
+      "color": "#000000",
+      "fontSize": "",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textAlign": "left"
+    },
+    "slug": "prijzen",
+    "menu_positie": 2,
+    "is_call_to_action": false
+  },
+  {
+    "pagina_id": 3,
+    "titel_navigatie": {
+      "text": "OVER ONS",
+      "color": "#000000",
+      "fontSize": "",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textAlign": "left"
+    },
+    "slug": "over-ons",
+    "menu_positie": 3,
+    "is_call_to_action": false
+  },
+  {
+    "pagina_id": 4,
+    "titel_navigatie": {
+      "text": "AVEDA & INFO",
+      "color": "#000000",
+      "fontSize": "",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textAlign": "left"
+    },
+    "slug": "aveda-info",
+    "menu_positie": 4,
+    "is_call_to_action": false
+  },
+  {
+    "pagina_id": 6,
+    "titel_navigatie": "Afspraak",
+    "slug": "afspraak",
+    "menu_positie": 5,
+    "is_call_to_action": true
+  }
+]

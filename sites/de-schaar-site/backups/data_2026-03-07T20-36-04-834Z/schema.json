@@ -1,0 +1,302 @@
+{
+  "blueprint_name": "de-schaar-type",
+  "track": "docked",
+  "data_structure": [
+    {
+      "table_name": "footer",
+      "columns": [
+        {
+          "name": "bedrijfsnaam",
+          "description": "De officiële naam van de zaak ('De Salon')."
+        },
+        {
+          "name": "telefoonnummer",
+          "description": "Het algemene telefoonnummer voor contact en afspraken."
+        },
+        {
+          "name": "copyright_tekst",
+          "description": "De copyright vermelding (incl. jaar)."
+        },
+        {
+          "name": "privacy_beleid_link",
+          "description": "Link naar de Privacybeleid pagina."
+        },
+        {
+          "name": "cookies_beleid_link",
+          "description": "Link naar de Cookies pagina."
+        }
+      ]
+    },
+    {
+      "table_name": "missie",
+      "columns": [
+        {
+          "name": "missie_kern",
+          "description": "De korte kern van de missie ('We care about your hair')."
+        },
+        {
+          "name": "missie_uitgebreid",
+          "description": "Het combineren van schoonheid, milieubewustheid en welzijn."
+        },
+        {
+          "name": "afbeelding",
+          "description": "De sfeerfoto voor de missie sectie."
+        }
+      ]
+    },
+    {
+      "table_name": "locatie",
+      "columns": [
+        {
+          "name": "locatie_id",
+          "description": "Primaire sleutel van de locatie."
+        },
+        {
+          "name": "naam_locatie",
+          "description": "Gebruikelijke naam van de locatie (e.g., Hoofdvestiging Gent)."
+        },
+        {
+          "name": "straat_nummer",
+          "description": "Adres: Dok Zuid 3."
+        },
+        {
+          "name": "postcode",
+          "description": "Postcode: 9000."
+        },
+        {
+          "name": "stad",
+          "description": "Stad: Gent."
+        },
+        {
+          "name": "telefoonnummer",
+          "description": "Locatie-specifiek telefoonnummer."
+        },
+        {
+          "name": "ligging_omschrijving",
+          "description": "Beschrijving van de ligging (Dampoort, dokken, centrum Gent)."
+        },
+        {
+          "name": "parking_info",
+          "description": "Informatie over parkeermogelijkheden."
+        }
+      ]
+    },
+    {
+      "table_name": "stylist_gradatie",
+      "columns": [
+        {
+          "name": "gradatie_id",
+          "description": "Primaire sleutel, unieke identificatie van de gradatie (e.g., 1, 2, 3)."
+        },
+        {
+          "name": "titel",
+          "description": "De titel van de stylist (Junior stylist, Stylist, Senior Stylist, Director)."
+        },
+        {
+          "name": "min_ervaring_jaren",
+          "description": "Minimum aantal jaren ervaring voor deze gradatie."
+        },
+        {
+          "name": "omschrijving_criteria",
+          "description": "Gedetailleerde uitleg over de criteria (cursussen, werkzaam bij ons)."
+        }
+      ]
+    },
+    {
+      "table_name": "team",
+      "columns": [
+        {
+          "name": "teamlid_id",
+          "description": "Primaire sleutel van het teamlid."
+        },
+        {
+          "name": "naam",
+          "description": "De naam van het teamlid (Jan, Pascal, Lies & Freddy)."
+        },
+        {
+          "name": "functie",
+          "description": "De rol binnen het bedrijf (Zaakvoerder, Haarstyliste, Oprichters)."
+        },
+        {
+          "name": "gradatie_id",
+          "description": "Optionele Vreemde Sleutel naar de 'stylist_gradatie' tabel (indien van toepassing)."
+        },
+        {
+          "name": "foto_url",
+          "description": "URL van de profielfoto."
+        },
+        {
+          "name": "bio_tekst",
+          "description": "Korte persoonlijke beschrijving (niet aanwezig in tekst, maar logisch)."
+        }
+      ]
+    },
+    {
+      "table_name": "diensten_hoofdgroepen",
+      "columns": [
+        {
+          "name": "groep_id",
+          "description": "Primaire sleutel voor de dienstengroep (e.g., Kapsalon Dames, Kleuringen, Behandelingen)."
+        },
+        {
+          "name": "naam",
+          "description": "De naam van de dienstengroep."
+        },
+        {
+          "name": "volgorde",
+          "description": "Volgorde waarin de groep op de prijzenpagina verschijnt."
+        }
+      ]
+    },
+    {
+      "table_name": "tarieven",
+      "columns": [
+        {
+          "name": "tarief_id",
+          "description": "Primaire sleutel van het specifieke tarief."
+        },
+        {
+          "name": "groep_id",
+          "description": "Vreemde Sleutel naar de 'diensten_hoofdgroepen' tabel."
+        },
+        {
+          "name": "dienst_naam",
+          "description": "De naam van de specifieke dienst (e.g., Wassen, snit en handdrogen)."
+        },
+        {
+          "name": "basis_prijs",
+          "description": "De start- of vaste prijs van de dienst (numeriek, e.g., 60.00)."
+        },
+        {
+          "name": "prijs_indicatie",
+          "description": "Tekstuele indicatie van de prijs (Vanaf, Per 10 min, Leeg)."
+        },
+        {
+          "name": "gradatie_afhankelijk",
+          "description": "Boolean: Geeft aan of de prijs varieert per stylist gradatie (True/False)."
+        },
+        {
+          "name": "is_behandeling",
+          "description": "Boolean: Geeft aan of het een therapeutische/schoonheidsbehandeling is (e.g., botanical therapy)."
+        }
+      ]
+    },
+    {
+      "table_name": "testimonials",
+      "columns": [
+        {
+          "name": "testimonial_id",
+          "description": "Primaire sleutel van de review."
+        },
+        {
+          "name": "klant_naam",
+          "description": "De naam van de tevreden klant (Janne, Stijn, Joke, Vicky)."
+        },
+        {
+          "name": "gebruikte_service",
+          "description": "De dienst waarvoor de klant kwam (haarkleuring, haarstyling)."
+        },
+        {
+          "name": "beoordeling_tekst",
+          "description": "De volledige review tekst."
+        },
+        {
+          "name": "datum_review",
+          "description": "Datum van de review (indien beschikbaar)."
+        },
+        {
+          "name": "is_actief",
+          "description": "Boolean om te bepalen of de review op de site getoond wordt."
+        }
+      ]
+    },
+    {
+      "table_name": "aveda",
+      "columns": [
+        {
+          "name": "info_id",
+          "description": "Primaire sleutel voor de informatie sectie."
+        },
+        {
+          "name": "titel",
+          "description": "De sectietitel (e.g., Aveda, Ayurveda)."
+        },
+        {
+          "name": "hoofdtekst_nl",
+          "description": "Gedetailleerde tekst over de filosofie en producten van Aveda."
+        },
+        {
+          "name": "focus_punten",
+          "description": "Belangrijke kernwaarden (fair trade, groen denken, well-being)."
+        }
+      ]
+    },
+    {
+      "table_name": "social_media",
+      "columns": [
+        {
+          "name": "social_id",
+          "description": "Primaire sleutel."
+        },
+        {
+          "name": "naam",
+          "description": "Naam van het platform (fa=Facebook, in=Instagram)."
+        },
+        {
+          "name": "icoon_klasse",
+          "description": "De font-awesome of andere klasse voor het icoon."
+        },
+        {
+          "name": "url",
+          "description": "De link naar het social media profiel."
+        }
+      ]
+    },
+    {
+      "table_name": "paginastructuur",
+      "columns": [
+        {
+          "name": "pagina_id",
+          "description": "Primaire sleutel."
+        },
+        {
+          "name": "titel_navigatie",
+          "description": "De titel zoals getoond in het menu (Home, Prijzen, Afspraak)."
+        },
+        {
+          "name": "slug",
+          "description": "De URL-vriendelijke naam van de pagina (home, prijzen)."
+        },
+        {
+          "name": "menu_positie",
+          "description": "Volgorde in de hoofdnavigatie."
+        },
+        {
+          "name": "is_call_to_action",
+          "description": "Boolean: geeft aan of dit een CTA-knop is (Afspraak)."
+        }
+      ]
+    }
+  ],
+  "mapping": {
+    "header": {
+      "logo": "site_logo_image",
+      "titel": "title",
+      "tagline": "tagline",
+      "knop-tekst": "header_button_text",
+      "knop-url": "header_button_url"
+    }
+  },
+  "design_system": {
+    "colors": {
+      "primary": "#3C5A4D",
+      "secondary": "#1A1A1A",
+      "accent": "#D3906F",
+      "background": "#F9F7F5",
+      "surface": "#E5E3DF"
+    },
+    "radius": "10px",
+    "font_sans": "Inter, sans-serif",
+    "font_serif": "Lora, serif"
+  }
+}

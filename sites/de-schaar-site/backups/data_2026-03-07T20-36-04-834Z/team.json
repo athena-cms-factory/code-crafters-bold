@@ -1,0 +1,34 @@
+[
+  {
+    "teamlid_id": 1,
+    "naam": "Dirk",
+    "functie": "Zaakvoerder",
+    "gradatie_id": "",
+    "foto_url": "team_dirk.png",
+    "bio_tekst": ""
+  },
+  {
+    "teamlid_id": 2,
+    "naam": "Yana",
+    "functie": "Haarstyliste",
+    "gradatie_id": "",
+    "foto_url": "team_yana.png",
+    "bio_tekst": ""
+  },
+  {
+    "teamlid_id": 3,
+    "naam": "Erica",
+    "functie": "Haarstyliste",
+    "gradatie_id": "",
+    "foto_url": "team_erica.png",
+    "bio_tekst": ""
+  },
+  {
+    "teamlid_id": 4,
+    "naam": "John & Maaike",
+    "functie": "Oprichters",
+    "gradatie_id": "",
+    "foto_url": "team_founders.png",
+    "bio_tekst": ""
+  }
+]

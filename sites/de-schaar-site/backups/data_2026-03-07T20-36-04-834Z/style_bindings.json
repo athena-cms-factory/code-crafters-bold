@@ -1,0 +1,263 @@
+[
+  {
+    "title": "De Schaar !",
+    "hero_image": "Screenshot2026-01-2206.59.57-1769104082479.png",
+    "Key": "site_name",
+    "Value": "de-schaar-site"
+  },
+  {
+    "Key": "hero:0:title",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "section_settings:6:title",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "section_settings:0:title",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "section_settings:0:subtitle",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "basis:0:copyright_tekst",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "section_settings:1:title",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "section_settings:1:subtitle",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "section_settings:2:title",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "section_settings:3:title",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "section_settings:7:title",
+    "Value": {
+      "bold": false,
+      "italic": false,
+      "fontSize": "16px",
+      "textAlign": "left",
+      "fontFamily": "sans-serif",
+      "textShadow": false,
+      "text": {
+        "bold": false,
+        "italic": false,
+        "fontSize": "16px",
+        "textAlign": "left",
+        "fontFamily": "sans-serif",
+        "textShadow": false
+      }
+    }
+  },
+  {
+    "Key": "basis:0:kvk_label",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "basis:0:bedrijfsnaam",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "paginastructuur:0:titel_navigatie",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "paginastructuur:1:titel_navigatie",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "paginastructuur:2:titel_navigatie",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "paginastructuur:3:titel_navigatie",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "paginastructuur:4:titel_navigatie",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "basis:0:undefined",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "basis:0:telefoonnummer",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "section_settings:2:subtitle",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "section_settings:7:subtitle",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "locaties:0:parking_info",
+    "Value": {
+      "text": {}
+    }
+  },
+  {
+    "Key": "locaties:0:telefoonnummer",
+    "Value": {
+      "text": {}
+    }
+  }
+]

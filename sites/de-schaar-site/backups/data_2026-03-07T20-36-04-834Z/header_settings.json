@@ -1,0 +1,13 @@
+[
+  {
+    "header_show_logo": false,
+    "header_show_title": true,
+    "header_visible": true,
+    "header_transparent": "0.61",
+    "header_height": "68",
+    "content_top_offset": "0",
+    "header_show_tagline": false,
+    "header_show_button": true,
+    "header_show_navbar": true
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "testimonial_id": 1,
+    "klant_naam": "Sarah",
+    "gebruikte_service": "haarkleuring",
+    "beoordeling_tekst": "Fantastisch kapsalon met zeer professionele kappers. Ik kwam hier na een mislukte balayage op een zaterdagavond en ik werd super vriendelijk ontvangen en ze hebben heel mijn kapsel gered en er iets heel mooi van gemaakt.",
+    "datum_review": "",
+    "is_actief": true,
+    "afbeelding": "AQMzlqTpgIepJFLlI4w3cTLA_2g3b-pu1u0mvNgbaYAz_aByS1rvcAbQPHd9pQOtnqpIwQXSWoZFEQ0ahleHtXkZA5oEysJq-gINJQnK91k-lSECK4I8xIgAWT6KuUuxA1FKtDGK6R3O-rffVZp7qe36iTnOnw-1770992671146-1770992760738.jpg"
+  },
+  {
+    "testimonial_id": 2,
+    "klant_naam": "Stijn",
+    "gebruikte_service": "haarstyling",
+    "beoordeling_tekst": "Fantastische zaak. Prachtig interieur, zeer goed advies en producten. Naast jarenlange ervaring in knippen, ook nog eens zeer ontspannend om naartoe te gaan. Vriendelijk personeel, altijd een lach, een koffietje of drankje erbij. De massages van Fleur zijn zeker ook een aanrader!",
+    "datum_review": "",
+    "is_actief": true,
+    "afbeelding": "AQPgFasnW9tqAzEN8Sfi5XdZyxFxFv3ATq3UqTnrFGpexLXUCiCzzQR6i-QriJ0nXbgbDWB7s9ygcaZ9jJIyXbcj_UT9Xpd48E6xI4GNtjlCun7MEK1QDDV3VcWgTpVNlad8OuXDtLOSRI_6Ue8acbk-B0egQw-1770992714625.jpg"
+  },
+  {
+    "testimonial_id": 3,
+    "klant_naam": "Stien",
+    "gebruikte_service": "haarstyling",
+    "beoordeling_tekst": "Keer op keer een aangename ontvangst in een zeer proper salon! De producten die ze gebruiken van Aveda zijn eerlijk en natuurlijk. De kappers/kapsters bekijken je haar en gezicht voor ze knippen en geven tijdens het knippen advies. Nog nooit met een slecht gevoel buitengekomen! Voor Corona kreeg je een fijne massage van nek en rug, tijdens het knippen een handmassage en een drankje. Een aanrader!",
+    "datum_review": "",
+    "is_actief": true,
+    "afbeelding": "AQMB3ot7xeCwNsJj94bGlpErEkAokrgq3rfYMqSzZtACGTGxxmDOfJAYt_Jg25lojT8p06S5Di96DIcBywG7WIL9gtf9vClCaeo7OlDM_PNcaLOp_u3FKlOFx4yunpQ64jc8yUlOp3eYGBaqa_suwHIUd731-1770992775410.jpg"
+  },
+  {
+    "testimonial_id": 4,
+    "klant_naam": "Evi",
+    "gebruikte_service": "haarkleuring",
+    "beoordeling_tekst": "Vakkundige kapper. Aangename omgeving , iedereen probeert het zeer Zen te houden naar de oorspronkelijke filosofie van de stichters van AVEDA.",
+    "datum_review": "",
+    "is_actief": true,
+    "afbeelding": "AQMa7IgrfBXfVUxoprESk1JtnjQzOnI8oMsPLGc5BSHenlBpYYiHE5rPF_SZk3akEntXdkdjul7YkedA0EEKWh66qnlhT2BsMaH3IAvdXMsS9eyae3XnP3Yqi339QHw8r0c5kjiXyVMvFx9qJoca0Y0tzx79Vg-1770992816387.jpg"
+  }
+]

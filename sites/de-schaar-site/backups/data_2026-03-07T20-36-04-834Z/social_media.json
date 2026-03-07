@@ -1,0 +1,16 @@
+[
+  {
+    "social_id": 1,
+    "naam": "Facebook",
+    "icoon_klasse": "fa",
+    "url": "https://facebook.com",
+    "afbeelding": ""
+  },
+  {
+    "social_id": 2,
+    "naam": "Instagram",
+    "icoon_klasse": "in",
+    "url": "https://instagram.com",
+    "afbeelding": ""
+  }
+]

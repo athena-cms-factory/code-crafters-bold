@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "footer": {
+      "visible_fields": [],
+      "hidden_fields": []
+    },
+    "missie": {
+      "visible_fields": [
+        "missie_kern",
+        "missie_uitgebreid",
+        "afbeelding"
+      ],
+      "hidden_fields": []
+    },
+    "locatie": {
+      "visible_fields": [
+        "naam_locatie",
+        "straat_nummer",
+        "postcode",
+        "stad",
+        "telefoonnummer",
+        "ligging_omschrijving",
+        "parking_info"
+      ],
+      "hidden_fields": [],
+      "inline_fields": [
+        "stad",
+        "postcode",
+        "straat_nummer"
+      ]
+    },
+    "hero": {
+      "visible_fields": [
+        "title",
+        "hero_image",
+        "hero_overlay_opacity"
+      ],
+      "hidden_fields": []
+    },
+    "header": {
+      "visible_fields": [
+        "logo",
+        "titel",
+        "tagline",
+        "knop-tekst",
+        "knop-url"
+      ],
+      "hidden_fields": []
+    },
+    "stylist_gradatie": {
+      "visible_fields": [],
+      "hidden_fields": [
+        "min_ervaring_jaren"
+      ]
+    },
+    "team": {
+      "visible_fields": [
+        "naam",
+        "functie",
+        "foto_url",
+        "bio_tekst"
+      ],
+      "hidden_fields": []
+    },
+    "tarieven": {
+      "visible_fields": [
+        "dienst_naam",
+        "basis_prijs",
+        "prijs_indicatie"
+      ],
+      "hidden_fields": []
+    }
+  }
+}

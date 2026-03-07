@@ -1,9 +1,23 @@
 {
   "5002": {
-    "pid": 28305,
+    "pid": 1653,
     "id": "athena-dock",
     "type": "dock",
-    "startTime": "2026-03-07T12:18:27.424Z",
+    "startTime": "2026-03-07T20:32:39.078Z",
     "logFile": "/home/kareltestspecial/0-IT/2-Productie/athena/athena-x/factory/output/logs/athena-dock-dock.log"
+  },
+  "5004": {
+    "pid": 2523,
+    "id": "media-mapper",
+    "type": "editor",
+    "startTime": "2026-03-07T20:33:04.250Z",
+    "logFile": "/home/kareltestspecial/0-IT/2-Productie/athena/athena-x/factory/output/logs/media-mapper-editor.log"
+  },
+  "6110": {
+    "pid": 965,
+    "id": "de-schaar-site",
+    "type": "preview",
+    "startTime": "2026-03-07T20:31:57.178Z",
+    "logFile": "/home/kareltestspecial/0-IT/2-Productie/athena/athena-x/factory/output/logs/de-schaar-site-preview.log"
   }
 }

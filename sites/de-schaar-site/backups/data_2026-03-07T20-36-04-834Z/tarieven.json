@@ -1,0 +1,200 @@
+[
+  {
+    "tarief_id": 1,
+    "groep_id": 1,
+    "dienst_naam": "Dames Snit zonder drogen of brushen",
+    "basis_prijs": 60,
+    "prijs_indicatie": "",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 2,
+    "groep_id": 1,
+    "dienst_naam": "Wassen, snit en handdrogen",
+    "basis_prijs": 72,
+    "prijs_indicatie": "",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 3,
+    "groep_id": 1,
+    "dienst_naam": "Extra stylen",
+    "basis_prijs": 12,
+    "prijs_indicatie": "Per 10 min",
+    "gradatie_afhankelijk": false,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 4,
+    "groep_id": 1,
+    "dienst_naam": "Wassen, snit en stylen",
+    "basis_prijs": 87,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 5,
+    "groep_id": 1,
+    "dienst_naam": "Wassen en stylen",
+    "basis_prijs": 42,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 6,
+    "groep_id": 1,
+    "dienst_naam": "botanical therapy",
+    "basis_prijs": 37,
+    "prijs_indicatie": "",
+    "gradatie_afhankelijk": false,
+    "is_behandeling": true
+  },
+  {
+    "tarief_id": 7,
+    "groep_id": 1,
+    "dienst_naam": "scalp solutions balancing treatment",
+    "basis_prijs": 55,
+    "prijs_indicatie": "",
+    "gradatie_afhankelijk": false,
+    "is_behandeling": true
+  },
+  {
+    "tarief_id": 8,
+    "groep_id": 1,
+    "dienst_naam": "Styling feestkapsel incl. wassen en brushen",
+    "basis_prijs": 120,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 9,
+    "groep_id": 2,
+    "dienst_naam": "Wassen, snit en stylen",
+    "basis_prijs": 41,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 10,
+    "groep_id": 2,
+    "dienst_naam": "kleuren",
+    "basis_prijs": 65,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 11,
+    "groep_id": 2,
+    "dienst_naam": "kleuren half",
+    "basis_prijs": 55,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 12,
+    "groep_id": 2,
+    "dienst_naam": "permanent volledig",
+    "basis_prijs": 90,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 13,
+    "groep_id": 2,
+    "dienst_naam": "permanent half",
+    "basis_prijs": 65,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 14,
+    "groep_id": 3,
+    "dienst_naam": "Permanente kleuren",
+    "basis_prijs": 81,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 15,
+    "groep_id": 3,
+    "dienst_naam": "Bijwerken uitgroei",
+    "basis_prijs": 68,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 16,
+    "groep_id": 3,
+    "dienst_naam": "Mèshes met de kam (kort haar)",
+    "basis_prijs": 61,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 17,
+    "groep_id": 3,
+    "dienst_naam": "High- of lowlights volledig hoofd met spatola en folie",
+    "basis_prijs": 102,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 18,
+    "groep_id": 3,
+    "dienst_naam": "High- of lowlights volledig hoofd met spatola",
+    "basis_prijs": 88,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 19,
+    "groep_id": 3,
+    "dienst_naam": "Permanenten half",
+    "basis_prijs": 65,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 20,
+    "groep_id": 3,
+    "dienst_naam": "Permanenten volledig",
+    "basis_prijs": 90,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 21,
+    "groep_id": 3,
+    "dienst_naam": "Lokken kap",
+    "basis_prijs": 77,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  },
+  {
+    "tarief_id": 22,
+    "groep_id": 3,
+    "dienst_naam": "Ontkleuring + verzorging",
+    "basis_prijs": 87,
+    "prijs_indicatie": "Vanaf",
+    "gradatie_afhankelijk": true,
+    "is_behandeling": false
+  }
+]
