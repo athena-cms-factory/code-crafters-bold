@@ -6,21 +6,21 @@
         "missie_kern",
         "bedrijfsnaam",
         "copyright_tekst",
-        "afbeelding",
-        "telefoonnummer"
+        "afbeelding"
       ]
     },
     "locaties": {
       "visible_fields": [
         "naam_locatie",
-        "straat_nummer",
         "postcode",
         "stad",
         "telefoonnummer",
         "ligging_omschrijving",
         "parking_info"
       ],
-      "hidden_fields": []
+      "hidden_fields": [
+        "straat_nummer"
+      ]
     },
     "hero": {
       "visible_fields": [

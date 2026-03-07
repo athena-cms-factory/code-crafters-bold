@@ -42,7 +42,7 @@ export default defineConfig(async ({ command }) => {
         port: 6110
       },
       watch: {
-          // src/data wordt niet genegeerd voor HMR
+        ignored: ['**/src/data/**']
       }
     },
     build: {

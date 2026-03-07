@@ -340,7 +340,7 @@ const Section = ({ data }) => {
 
                         return (
                           <EditableText
-                            key={k}
+                            key={`${k}-${i}`}
                             tagName={tagName}
                             value={item[k]}
                             cmsBind={{ file: config.table.toLowerCase(), index, key: k }}

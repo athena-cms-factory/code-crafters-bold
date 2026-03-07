@@ -294,14 +294,9 @@ const DockFrame = () => {
     console.log("💾 Saving data to server...");
     await saveData(file, index, key, newValue, newFormatting);
 
-    // 4. Force reload after a short delay to ensure filesystem is synced
-    // We verhogen dit naar 2000ms voor meer stabiliteit op Chromebooks
-    // De timestamp in de URL zorgt dat we de nieuwste data krijgen
-    console.log("⏳ Waiting for filesystem sync before reload...");
-    setTimeout(() => {
-      forceRefresh();
-      setEditingItem(null);
-    }, 2000);
+    // We no longer force a slow iframe refresh here to avoid "flashing" and "scroll-to-top".
+    // The optimistic updates above (postMessage + setSiteStructure) keep the UI in sync.
+    setEditingItem(null);
   };
 
   // Send section move command
@@ -318,19 +313,37 @@ const DockFrame = () => {
       return;
     }
     const currentVisible = siteStructure.data.section_settings[sectionIndex].visible !== false;
-    saveData('section_settings', sectionIndex, 'visible', !currentVisible);
-    
-    // Refresh to show/hide in iframe
-    setTimeout(() => forceRefresh(), 500);
+    const nextVisible = !currentVisible;
+
+    // Direct feedback via postMessage
+    if (iframeRef.current) {
+      iframeRef.current.contentWindow.postMessage({
+        type: 'DOCK_UPDATE_SECTION_VISIBILITY',
+        section: sectionId,
+        value: nextVisible
+      }, '*');
+    }
+
+    saveData('section_settings', sectionIndex, 'visible', nextVisible);
   };
 
   const saveSectionMove = async (key, direction) => {
     try {
       const url = getSiteApiUrl();
       if (!url) return;
-      const currentOrder = siteStructure?.sections?.map(s => s.toLowerCase()) || [];
+      const currentOrder = siteStructure?.data?.section_order || siteStructure?.sections?.map(s => s.toLowerCase()) || [];
+      const idx = currentOrder.indexOf(key.toLowerCase());
+      if (idx === -1) return;
 
-      console.log(`↔️ Moving section via ${url}:`, key, direction, "Current order:", currentOrder);
+      const newOrder = [...currentOrder];
+      const newIdx = direction === 'up' ? idx - 1 : idx + 1;
+      if (newIdx < 0 || newIdx >= newOrder.length) return;
+
+      const temp = newOrder[idx];
+      newOrder[idx] = newOrder[newIdx];
+      newOrder[newIdx] = temp;
+
+      console.log(`↔️ Moving section via ${url}:`, key, direction, "New order:", newOrder);
 
       const response = await fetch(url, {
         method: 'POST',
@@ -339,13 +352,28 @@ const DockFrame = () => {
           action: 'reorder-sections',
           key,
           direction,
-          value: currentOrder
+          value: currentOrder // Server expects currentOrder and handles move itself, OR we could just send the new order if server supported it
         })
       });
 
       if (response.ok) {
-        console.log('✅ Move successful, refreshing iframe...');
-        setTimeout(forceRefresh, 300);
+        // Direct feedback via postMessage
+        if (iframeRef.current) {
+          iframeRef.current.contentWindow.postMessage({
+            type: 'DOCK_UPDATE_SECTION_ORDER',
+            value: newOrder
+          }, '*');
+        }
+
+        // Update local state to keep Sidebar in sync
+        setSiteStructure(prev => {
+           if (!prev) return prev;
+           return {
+               ...prev,
+               data: { ...prev.data, section_order: newOrder },
+               sections: newOrder // Keep sections list in sync
+           };
+        });
       } else {
         console.error('❌ Move failed on server:', response.status);
       }
@@ -364,7 +392,23 @@ const DockFrame = () => {
       });
       if (response.ok) {
         console.log('✅ Layout update successful');
-        setTimeout(forceRefresh, 300);
+        // Direct feedback via postMessage
+        if (iframeRef.current) {
+          iframeRef.current.contentWindow.postMessage({
+            type: 'DOCK_UPDATE_LAYOUT',
+            section: section,
+            value: layout
+          }, '*');
+        }
+
+        // Update local state
+        setSiteStructure(prev => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            layouts: { ...prev.layouts, [section]: layout }
+          };
+        });
       } else {
         console.error('❌ Layout update failed');
       }
@@ -509,7 +553,30 @@ const DockFrame = () => {
           config
         })
       });
-      if (res.ok) setTimeout(forceRefresh, 300);
+      if (res.ok) {
+         // Direct feedback via postMessage
+         if (iframeRef.current) {
+           iframeRef.current.contentWindow.postMessage({
+             type: 'DOCK_UPDATE_SECTION_CONFIG',
+             file: tableName,
+             config: config
+           }, '*');
+         }
+
+         // Update local state
+         setSiteStructure(prev => {
+           if (!prev) return prev;
+           const newData = { ...prev.data };
+           newData.display_config = {
+             ...newData.display_config,
+             sections: {
+               ...(newData.display_config?.sections || {}),
+               [tableName]: config
+             }
+           };
+           return { ...prev, data: newData };
+         });
+      }
     } catch (err) { console.error(err); }
   };
 
@@ -551,14 +618,19 @@ const DockFrame = () => {
     let visible = Array.isArray(sectionConfig.visible_fields) ? [...sectionConfig.visible_fields] : [];
     let hidden = Array.isArray(sectionConfig.hidden_fields) ? [...sectionConfig.hidden_fields] : [];
 
-    if (visible.includes(field)) {
-      visible = visible.filter(f => f !== field);
-      hidden.push(field);
-    } else if (hidden.includes(field)) {
+    // ONLY manage the hidden array. `visible` just manages order.
+    if (hidden.includes(field)) {
+      // It is currently hidden, so unhide it
       hidden = hidden.filter(f => f !== field);
+      
+      // If visible array has elements and NOT this one, we should add it so it renders
+      if (visible.length > 0 && !visible.includes(field)) {
+         visible.push(field);
+      }
     } else {
-      // Standaard gedrag: als het nergens staat, is het zichtbaar. Dus we zetten het in hidden om het te verbergen.
+      // It is currently visible, so hide it
       hidden.push(field);
+      // We DO NOT remove it from `visible` so it retains its position if we unhide it later!
     }
 
     updateFieldConfig(tableName, {
@@ -962,11 +1034,18 @@ const DockFrame = () => {
                         className="w-full accent-blue-500"
                         value={siteStructure?.data?.section_settings?.find(s => s.id === section)?.padding || 32}
                         onChange={(e) => {
+                          const val = parseInt(e.target.value);
                           const idx = siteStructure?.data?.section_settings?.findIndex(s => s.id === section);
                           if (idx !== -1) {
-                            saveData('section_settings', idx, 'padding', parseInt(e.target.value));
-                            // Refresh content to show new padding
-                            setTimeout(() => forceRefresh(), 100);
+                            // Direct feedback via postMessage
+                            if (iframeRef.current) {
+                              iframeRef.current.contentWindow.postMessage({
+                                type: 'DOCK_UPDATE_SECTION_PADDING',
+                                section: section,
+                                value: val
+                              }, '*');
+                            }
+                            saveData('section_settings', idx, 'padding', val);
                           }
                         }}
                       />

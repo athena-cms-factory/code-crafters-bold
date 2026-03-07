@@ -160,6 +160,36 @@
             }
         }
 
+        // Section Padding Update (Live)
+        if (type === 'DOCK_UPDATE_SECTION_PADDING') {
+            const el = document.getElementById(section);
+            if (el) {
+                const px = value * 4;
+                el.style.paddingTop = px + 'px';
+                el.style.paddingBottom = px + 'px';
+            }
+        }
+
+        // Section Visibility Update (Live)
+        if (type === 'DOCK_UPDATE_SECTION_VISIBILITY') {
+            const el = document.getElementById(section);
+            if (el) {
+                const badge = el.querySelector('.athena-hidden-badge');
+                if (value === false) {
+                    el.classList.add('opacity-40', 'grayscale-[50%]');
+                    if (!badge) {
+                        const b = document.createElement('div');
+                        b.className = 'athena-hidden-badge absolute top-4 right-4 bg-red-500 text-white text-[10px] px-2 py-1 rounded font-bold uppercase z-50';
+                        b.innerText = 'Hidden Section';
+                        el.appendChild(b);
+                    }
+                } else {
+                    el.classList.remove('opacity-40', 'grayscale-[50%]');
+                    if (badge) badge.remove();
+                }
+            }
+        }
+
         // Style Swap (Requires full reload to apply new CSS imports)
         if (type === 'DOCK_SWAP_STYLE') {
             console.log("🎨 Swapping global style to:", value);

@@ -5,7 +5,7 @@ import React from 'react';
  * Renders text with 'data-dock-bind' for Athena Dock.
  * Inline editing is disabled in favor of the Dock's specialized Modal editor.
  */
-export default function EditableText({ tagName: Tag = 'span', value, children, cmsBind, table, field, id, className = "", style = {}, ...props }) {
+export default function EditableText({ tagName: Tag = 'span', value, children, cmsBind, table, field, id, className = "", style = {}, renderValue, ...props }) {
   const isDev = import.meta.env.DEV;
 
   const actualValue = value !== undefined ? value : children;
