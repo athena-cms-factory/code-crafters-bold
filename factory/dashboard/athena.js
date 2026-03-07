@@ -248,8 +248,13 @@ app.post('/api/storage/enforce', async (req, res) => res.json(await doctorCtrl.e
 app.post('/api/storage/prune-all', async (req, res) => {
     const auditResults = doctorCtrl.audit();
     const actions = auditResults.filter(r => r.policy === 'dormant' && r.hydration === 'hydrated').map(r => ({ site: r.site, ...doctorCtrl.dehydrate(r.site) }));
-    res.json({ success: true, actions });
+    
+    // Ook temp data opschonen bij een prune-all
+    const tempResult = await doctorCtrl.cleanupTempData();
+    
+    res.json({ success: true, actions, tempResult });
 });
+app.post('/api/storage/cleanup-temp', async (req, res) => res.json(await doctorCtrl.cleanupTempData()));
 
 // --- MARKETING API ---
 app.post('/api/marketing/generate-seo', async (req, res) => res.json(await marketingCtrl.generateSEO(req.body.projectName)));

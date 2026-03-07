@@ -38,7 +38,8 @@ export class DoctorController {
             issues: [], 
             fixes: [],
             hydration: fs.existsSync(path.join(siteDir, 'node_modules')) ? 'hydrated' : 'dormant',
-            storage: this._calculateStorageUsage(siteName)
+            storage: this._calculateStorageUsage(siteName),
+            hasTempData: fs.existsSync(path.join(siteDir, 'src/data-temp'))
         };
 
         const policy = this.getPolicy(siteName);
@@ -77,6 +78,12 @@ export class DoctorController {
                 report.status = 'broken';
                 report.issues.push('Missing src/data directory');
             }
+        }
+
+        // 3. Check for leftover Temp Data
+        if (report.hasTempData) {
+            report.status = report.status === 'healthy' ? 'warning' : report.status;
+            report.issues.push('Residual temporary data found (src/data-temp)');
         }
 
         return report;
@@ -186,5 +193,34 @@ export class DoctorController {
         // TODO: Fix Corrupt JSON (DataManager restore)
 
         return { success: true, message: `Healed ${fixes.length} issues.`, fixes };
+    }
+
+    /**
+     * Remove all src/data-temp directories across all sites
+     */
+    async cleanupTempData() {
+        console.log("🧹 Cleaning up temporary data directories (older than 3 weeks)...");
+        const sites = fs.readdirSync(this.sitesDir).filter(f => 
+            fs.statSync(path.join(this.sitesDir, f)).isDirectory() && !f.startsWith('.')
+        );
+
+        let cleanedCount = 0;
+        const THREE_WEEKS_MS = 3 * 7 * 24 * 60 * 60 * 1000;
+        const now = Date.now();
+
+        for (const site of sites) {
+            const tempDirPath = path.join(this.sitesDir, site, 'src/data-temp');
+            if (fs.existsSync(tempDirPath)) {
+                const stats = fs.statSync(tempDirPath);
+                const age = now - stats.mtimeMs;
+                
+                if (age > THREE_WEEKS_MS) {
+                    execSync(`rm -rf "${tempDirPath}"`);
+                    cleanedCount++;
+                }
+            }
+        }
+
+        return { success: true, message: `Opgeschoond: ${cleanedCount} tijdelijke data-mappen (ouder dan 3 weken) verwijderd.` };
     }
 }
