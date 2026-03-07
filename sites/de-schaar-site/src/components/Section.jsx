@@ -326,7 +326,7 @@ const Section = ({ data }) => {
                       {metaFields.map(mk => (
                         <EditableText
                           key={mk}
-                          value={String(item[mk])}
+                          value={item[mk]}
                           cmsBind={{ file: config.table.toLowerCase(), index, key: mk }}
                           className="text-sm opacity-70"
                         />

@@ -1,7 +1,8 @@
 [
   {
-    "basis": "z-pattern",
+    "basis": "list",
     "locaties": "z-pattern",
-    "teamleden": "grid"
+    "teamleden": "grid",
+    "hero": "list"
   }
 ]

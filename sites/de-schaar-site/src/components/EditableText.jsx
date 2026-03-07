@@ -22,6 +22,9 @@ export default function EditableText({ tagName: Tag = 'span', value, children, c
     fontWeight: actualValue.fontWeight,
     fontStyle: actualValue.fontStyle,
     textAlign: actualValue.textAlign,
+    textTransform: actualValue.textTransform,
+    display: actualValue.textAlign ? 'block' : undefined,
+    width: actualValue.textAlign ? '100%' : undefined,
     ...style
   } : style;
 

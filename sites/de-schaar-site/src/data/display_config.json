@@ -4,9 +4,9 @@
       "visible_fields": [],
       "hidden_fields": [
         "missie_kern",
-        "afbeelding",
+        "bedrijfsnaam",
         "copyright_tekst",
-        "bedrijfsnaam"
+        "afbeelding"
       ]
     },
     "locaties": {
