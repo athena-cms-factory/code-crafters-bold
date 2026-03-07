@@ -357,14 +357,12 @@ const Section = ({ data }) => {
                     const isEven = index % 2 === 0;
                     return (
                       <article key={index} className={itemClass + ' flex flex-col ' + (isEven ? 'md:flex-row' : 'md:flex-row-reverse') + ' items-center gap-16 md:gap-24'}>
-                        <div className="w-full md:w-1/2 aspect-square md:aspect-video rounded-[3rem] overflow-hidden shadow-2xl">
-                          {imgKey ? (
+                        {imgKey && (
+                          <div className="w-full md:w-1/2 aspect-square md:aspect-video rounded-[3rem] overflow-hidden shadow-2xl">
                             <EditableMedia src={item[imgKey]} dataItem={item} cmsBind={{ file: config.table.toLowerCase(), index, key: imgKey }} data-dock-bind={bind(imgKey)} className="w-full h-full object-cover" />
-                          ) : (
-                            <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">Geen Afbeelding</div>
-                          )}
-                        </div>
-                        <div className="w-full md:w-1/2 text-center md:text-left">
+                          </div>
+                        )}
+                        <div className={`w-full ${imgKey ? 'md:w-1/2' : 'max-w-3xl mx-auto'} text-center ${imgKey ? 'md:text-left' : ''}`}>
                           {titleKey && <EditableText tagName="h3" value={item[titleKey]} className="text-4xl font-serif font-bold mb-6 block text-[var(--color-heading)]" cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} data-dock-bind={bind(titleKey)} />}
                           {descKey && <EditableText tagName="p" value={item[descKey]} className="text-xl leading-relaxed font-light block opacity-70 text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} data-dock-bind={bind(descKey)} />}
                           {renderMetadata()}
@@ -376,14 +374,12 @@ const Section = ({ data }) => {
                   if (currentLayout === 'list') {
                     return (
                       <article key={index} className={itemClass + ' flex flex-col md:flex-row items-start gap-12 border-b border-slate-100 dark:border-white/5 pb-24 last:border-0'}>
-                        <div className="w-32 h-32 rounded-full overflow-hidden flex-shrink-0 shadow-lg">
-                          {imgKey ? (
+                        {imgKey && (
+                          <div className="w-32 h-32 rounded-full overflow-hidden flex-shrink-0 shadow-lg">
                             <EditableMedia src={item[imgKey]} dataItem={item} cmsBind={{ file: config.table.toLowerCase(), index, key: imgKey }} data-dock-bind={bind(imgKey)} className="w-full h-full object-cover" />
-                          ) : (
-                            <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300 text-xs">Geen Foto</div>
-                          )}
-                        </div>
-                        <div>
+                          </div>
+                        )}
+                        <div className="flex-1">
                           {titleKey && <EditableText tagName="h3" value={item[titleKey]} className="text-3xl font-serif font-bold mb-4 block text-[var(--color-heading)]" cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} data-dock-bind={bind(titleKey)} />}
                           {descKey && <EditableText tagName="p" value={item[descKey]} className="text-lg leading-relaxed font-light block opacity-70 text-text" cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} data-dock-bind={bind(descKey)} />}
                           {renderMetadata()}
@@ -394,13 +390,11 @@ const Section = ({ data }) => {
 
                   return (
                     <article key={index} className={itemClass + ' ' + (currentLayout === 'focus' && index === 0 ? 'md:col-span-3' : 'w-full md:w-[calc(45%)] lg:w-[calc(30%)] min-w-[300px]')}>
-                      <div className={'relative overflow-hidden mb-10 ' + (currentLayout === 'focus' && index === 0 ? 'aspect-video rounded-[4rem]' : 'aspect-square rounded-[3rem]') + ' shadow-2xl'}>
-                        {imgKey ? (
+                      {imgKey && (
+                        <div className={'relative overflow-hidden mb-10 ' + (currentLayout === 'focus' && index === 0 ? 'aspect-video rounded-[4rem]' : 'aspect-square rounded-[3rem]') + ' shadow-2xl'}>
                           <EditableMedia src={item[imgKey]} alt={getText(item[titleKey])} className="w-full h-full object-cover" dataItem={item} cmsBind={{ file: config.table.toLowerCase(), index, key: imgKey }} data-dock-bind={bind(imgKey)} />
-                        ) : (
-                          <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">Geen Afbeelding</div>
-                        )}
-                      </div>
+                        </div>
+                      )}
                       {titleKey && <EditableText tagName="h3" value={item[titleKey]} className={(currentLayout === 'focus' && index === 0 ? 'text-4xl' : 'text-2xl') + ' font-serif font-bold mb-4 block text-[var(--color-heading)]'} cmsBind={{ file: config.table.toLowerCase(), index, key: titleKey }} data-dock-bind={bind(titleKey)} />}
                       {descKey && <EditableText tagName="p" value={item[descKey]} className={'leading-relaxed font-light block opacity-70 text-text ' + (currentLayout === 'focus' && index === 0 ? 'text-xl' : 'line-clamp-4')} cmsBind={{ file: config.table.toLowerCase(), index, key: descKey }} data-dock-bind={bind(descKey)} />}
                       {renderMetadata()}

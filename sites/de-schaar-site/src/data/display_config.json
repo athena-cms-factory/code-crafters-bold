@@ -3,7 +3,10 @@
     "basis": {
       "visible_fields": [],
       "hidden_fields": [
-        "missie_kern"
+        "missie_kern",
+        "afbeelding",
+        "copyright_tekst",
+        "bedrijfsnaam"
       ]
     },
     "locaties": {
