@@ -17,12 +17,18 @@ function Header({ primaryTable, tableName, hero = {}, headerSettings = {}, navDa
   const fallbackTitleKey = keys.find(k => /naam|titel|header|kop|bedrijfsnaam/i.test(k)) || keys[0];
   const fallbackTaglineKey = keys.find(k => /slogan|tagline|ondertitel|subtitle/i.test(k));
 
+  // Helper to safely extract text from potential Athena style-objects
+  const extractText = (val, fallback = '') => {
+    if (typeof val !== 'object' || val === null) return val ?? fallback;
+    return val.text || val.title || val.label || val.name || val.value || fallback;
+  };
+
   // Values: Hero settings > Primary Table > Default
   const rawTitle = heroData.title || info[fallbackTitleKey] || 'Welcome';
   const rawTagline = heroData.tagline || (fallbackTaglineKey ? info[fallbackTaglineKey] : '');
 
-  const title = (typeof rawTitle === 'object' && rawTitle !== null) ? (rawTitle.text || rawTitle.title || 'Welcome') : rawTitle;
-  const tagline = (typeof rawTagline === 'object' && rawTagline !== null) ? (rawTagline.text || rawTagline.title || '') : rawTagline;
+  const titleString = extractText(rawTitle, 'Welcome');
+  const taglineString = extractText(rawTagline, '');
 
   const sortedNav = [...navData].sort((a, b) => (a.menu_positie || 0) - (b.menu_positie || 0));
 
@@ -106,7 +112,7 @@ function Header({ primaryTable, tableName, hero = {}, headerSettings = {}, navDa
         <div className="absolute inset-0">
           <EditableMedia
             src={heroData.hero_image}
-            alt={title}
+            alt={titleString}
             className="w-full h-full"
             cmsBind={{ file: 'hero', index: 0, key: 'hero_image' }}
             dataItem={heroData}
@@ -129,7 +135,7 @@ function Header({ primaryTable, tableName, hero = {}, headerSettings = {}, navDa
               cmsBind={{ file: 'hero', index: 0, key: 'title' }}
             />
 
-            {tagline && (
+            {taglineString && (
               <EditableText
                 tagName="p"
                 value={rawTagline}

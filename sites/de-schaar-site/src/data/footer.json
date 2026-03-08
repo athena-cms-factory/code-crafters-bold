@@ -1,6 +1,18 @@
 [
   {
-    "bedrijfsnaam": "De Schaar",
+    "bedrijfsnaam": {
+      "text": "DE S",
+      "color": "",
+      "fontSize": "",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textAlign": "left",
+      "fontFamily": "",
+      "shadowX": 0,
+      "shadowY": 0,
+      "shadowBlur": 9,
+      "shadowColor": "#ffffff"
+    },
     "telefoonnummer": "09 222 99 22",
     "copyright_tekst": "© 2026 De Schaar",
     "privacy_beleid_link": "/Privacybeleid",

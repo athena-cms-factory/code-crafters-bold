@@ -11,7 +11,20 @@ const App = ({ data: initialData }) => {
   useEffect(() => {
     const handleMessage = (event) => {
       const { type, file, index, key, value, config, section } = event.data;
-      
+
+      if (type === 'DOCK_REQUEST_SYNC') {
+        const sourceFile = file || 'site_settings';
+        const sourceData = data[sourceFile];
+        const row = Array.isArray(sourceData) ? sourceData[index || 0] : sourceData;
+        
+        window.parent.postMessage({
+          type: 'SITE_SYNC_RESPONSE',
+          key,
+          value: row ? row[key] : null,
+          fullRow: row
+        }, '*');
+      }
+
       if (type === 'DOCK_UPDATE_TEXT' || type === 'DOCK_UPDATE_COLOR') {
         setData(prev => {
           const newData = { ...prev };

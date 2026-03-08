@@ -38,16 +38,25 @@ export default function EditableText({
   // 2. Advanced Content Extraction
   const content = useMemo(() => {
     if (renderValue) return renderValue(actualValue);
-    if (!isObject) return actualValue ?? "";
     
-    return actualValue.text || 
-           actualValue.title || 
-           actualValue.label || 
-           actualValue.name || 
-           actualValue.value || 
-           actualValue.content || 
-           (typeof actualValue === 'object' ? JSON.stringify(actualValue) : actualValue);
-  }, [actualValue, isObject, renderValue]);
+    // Safety check: if it's already a primitive, return it
+    if (typeof actualValue !== 'object' || actualValue === null || React.isValidElement(actualValue)) {
+      return actualValue ?? "";
+    }
+    
+    // It's an object, extract the best possible string
+    const extracted = actualValue.text || 
+                     actualValue.title || 
+                     actualValue.label || 
+                     actualValue.name || 
+                     actualValue.value || 
+                     actualValue.content;
+
+    if (extracted !== undefined) return extracted;
+
+    // Fallback: stringify but hide from main view if it looks like a style-only object
+    return JSON.stringify(actualValue);
+  }, [actualValue, renderValue]);
 
   // 3. Robust Individual Styles (v8.4 Standard)
   const individualStyle = useMemo(() => {

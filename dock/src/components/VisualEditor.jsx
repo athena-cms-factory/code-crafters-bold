@@ -4,79 +4,106 @@ const VisualEditor = ({ item, selectedSite, onSave, onCancel, onUpload }) => {
   const labelRef = useRef(null);
   const urlRef = useRef(null);
   const [allSites, setAllSites] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const initialValueData = item.value || item.currentValue || '';
   const dockType = item.dockType || item.dataType || 'text';
   const isLink = dockType === 'link';
   const isMedia = dockType === 'media' || (!isLink && item.binding?.key?.toLowerCase().includes('image'));
 
-  const resolvedLabel = typeof initialValueData === 'object' ? (initialValueData.label || '') : initialValueData;
-  const resolvedUrl = typeof initialValueData === 'object' ? (initialValueData.url || '') : (item.url || '');
-
-  const [value, setValue] = useState(typeof initialValueData === 'object' ? (initialValueData.text || initialValueData.label || initialValueData.title || '') : initialValueData);
-  const [linkData, setLinkData] = useState({ label: resolvedLabel, url: resolvedUrl });
+  const [value, setValue] = useState('');
+  const [linkData, setLinkData] = useState({ label: '', url: '' });
   const [textStyles, setTextStyles] = useState({
-    color: typeof initialValueData === 'object' ? (initialValueData.color || '') : '',
-    fontSize: typeof initialValueData === 'object' ? (initialValueData.fontSize || '') : '',
-    fontWeight: typeof initialValueData === 'object' ? (initialValueData.fontWeight || 'normal') : 'normal',
-    fontStyle: typeof initialValueData === 'object' ? (initialValueData.fontStyle || 'normal') : 'normal',
-    textAlign: typeof initialValueData === 'object' ? (initialValueData.textAlign || 'left') : 'left',
-    fontFamily: typeof initialValueData === 'object' ? (initialValueData.fontFamily || '') : '',
-    shadowX: typeof initialValueData === 'object' ? (initialValueData.shadowX || 0) : 0,
-    shadowY: typeof initialValueData === 'object' ? (initialValueData.shadowY || 0) : 0,
-    shadowBlur: typeof initialValueData === 'object' ? (initialValueData.shadowBlur || 0) : 0,
-    shadowColor: typeof initialValueData === 'object' ? (initialValueData.shadowColor || 'rgba(0,0,0,0.5)') : 'rgba(0,0,0,0.5)'
+    color: '',
+    fontSize: '',
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    textAlign: 'left',
+    fontFamily: '',
+    shadowX: 0,
+    shadowY: 0,
+    shadowBlur: 0,
+    shadowColor: 'rgba(0,0,0,0.5)'
   });
 
   // [v33 Debug Bridge]: Luister naar antwoorden van de site
   useEffect(() => {
     const handleSyncResponse = (event) => {
-      const { type, key, value: siteValue, fullRow } = event.data;
-      if (type === 'SITE_SYNC_RESPONSE') {
-        console.log('🏁 [VisualEditor] Received live data from site:', siteValue);
+      const { type, key, value: siteValue } = event.data;
+      
+      // Controleer of dit antwoord voor ONS is (match op key)
+      if (type === 'SITE_SYNC_RESPONSE' && key === item.binding?.key) {
+        console.log('🏁 [VisualEditor] Parameters received from site:', siteValue);
 
         if (isLink) {
-          // Als de site een object stuurt, pak de url. Anders check of er een sibling key is.
-          let foundUrl = (typeof siteValue === 'object' && siteValue !== null) ? siteValue.url : null;
-          if (!foundUrl && fullRow) {
-            foundUrl = fullRow[`${key}_url`] || fullRow['cta_url'] || fullRow['url'];
-          }
-
-          if (foundUrl && urlRef.current) {
-            urlRef.current.value = foundUrl;
-            setLinkData(prev => ({ ...prev, url: foundUrl }));
+          const foundUrl = (typeof siteValue === 'object' && siteValue !== null) ? siteValue.url : siteValue;
+          const foundLabel = (typeof siteValue === 'object' && siteValue !== null) ? siteValue.label : siteValue;
+          setLinkData({ label: foundLabel || '', url: foundUrl || '' });
+          if (labelRef.current) labelRef.current.value = foundLabel || '';
+          if (urlRef.current) urlRef.current.value = foundUrl || '';
+        } else if (!isMedia) {
+          if (typeof siteValue === 'object' && siteValue !== null) {
+            setValue(siteValue.text || siteValue.title || siteValue.label || siteValue.name || siteValue.value || '');
+            setTextStyles({
+              color: siteValue.color || '',
+              fontSize: siteValue.fontSize || '',
+              fontWeight: siteValue.fontWeight || 'normal',
+              fontStyle: siteValue.fontStyle || 'normal',
+              textAlign: siteValue.textAlign || 'left',
+              fontFamily: siteValue.fontFamily || '',
+              shadowX: siteValue.shadowX !== undefined ? siteValue.shadowX : 0,
+              shadowY: siteValue.shadowY !== undefined ? siteValue.shadowY : 0,
+              shadowBlur: siteValue.shadowBlur !== undefined ? siteValue.shadowBlur : 0,
+              shadowColor: siteValue.shadowColor || 'rgba(0,0,0,0.5)'
+            });
+          } else {
+            setValue(siteValue || '');
           }
         }
+        setIsLoaded(true);
       }
     };
 
     window.addEventListener('message', handleSyncResponse);
-    return () => window.removeEventListener('message', handleSyncResponse);
-  }, [isLink]);
+    
+    // On-Demand Sync logica
+    const requestSync = () => {
+      const iframe = document.querySelector('iframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          type: 'DOCK_REQUEST_SYNC',
+          file: item.binding?.file,
+          index: item.binding?.index,
+          key: item.binding?.key
+        }, '*');
+      }
+    };
 
-  // Vraag de site om de actuele data (On-Demand Sync)
-  const requestSiteSync = () => {
-    const iframe = document.querySelector('iframe');
-    if (iframe && iframe.contentWindow) {
-      console.log('❓ [VisualEditor] Asking site for current data state...');
-      iframe.contentWindow.postMessage({
-        type: 'DOCK_REQUEST_SYNC',
-        file: item.binding?.file,
-        index: item.binding?.index,
-        key: item.binding?.key
-      }, '*');
-    }
-  };
+    // STARTUP SEQUENCE:
+    // 1. Toon de modal (is mount)
+    // 2. Wacht heel even tot React klaar is
+    // 3. Vraag data op
+    const timer = setTimeout(() => {
+        requestSync();
+        // Fallback als de site niet reageert binnen 1 sec: gebruik initial data
+        setTimeout(() => {
+            if (!isLoaded) {
+                console.warn('⚠️ Site sync timeout, falling back to initial values');
+                const val = typeof initialValueData === 'object' ? (initialValueData.text || initialValueData.label || '') : initialValueData;
+                setValue(val);
+                if (typeof initialValueData === 'object') {
+                    setTextStyles(prev => ({ ...prev, ...initialValueData }));
+                }
+                setIsLoaded(true);
+            }
+        }, 1000);
+    }, 100);
 
-  useEffect(() => {
-    if (labelRef.current) labelRef.current.value = linkData.label;
-    if (urlRef.current) urlRef.current.value = linkData.url;
-    if (isLink) fetch('./sites.json').then(r => r.json()).then(d => setAllSites(d));
-
-    // Automatische sync-vraag bij openen
-    const timer = setTimeout(requestSiteSync, 300);
-    return () => clearTimeout(timer);
-  }, []);
+    return () => {
+      window.removeEventListener('message', handleSyncResponse);
+      clearTimeout(timer);
+    };
+  }, [item.binding?.key, isLink, isMedia]);
 
   const handleSave = () => {
     let finalData;

@@ -54,19 +54,24 @@ export async function deployProject(selectedProject, commitMsg = "Deploy update"
         try {
             const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { cwd: monorepoRoot, encoding: 'utf8' }).trim();
             console.log(`   📦 Wijzigingen toevoegen aan monorepo (Branch: ${currentBranch})...`);
+            
+            // Verifieer welke bestanden gewijzigd zijn
+            const changes = execSync('git status --porcelain', { cwd: monorepoRoot, encoding: 'utf8' });
+            console.log(`   🔍 Gevonden wijzigingen:\n${changes || 'Geen'}`);
+
             execSync('git add .', { cwd: monorepoRoot, stdio: 'pipe' });
             
-            const status = execSync('git status --porcelain', { cwd: monorepoRoot, encoding: 'utf8' });
+            const statusAfterAdd = execSync('git status --porcelain', { cwd: monorepoRoot, encoding: 'utf8' });
             
-            if (status.trim() !== "") {
+            if (statusAfterAdd.trim() !== "") {
                 console.log(`   📝 Committen naar monorepo: "${commitMsg}"...`);
                 execSync(`git commit -m "${commitMsg}"`, { cwd: monorepoRoot, stdio: 'pipe' });
                 
                 console.log(`   📤 Pushen naar monorepo (origin ${currentBranch})...`);
-                execSync(`git push origin ${currentBranch}`, { cwd: monorepoRoot, stdio: 'pipe' });
-                console.log(`   ✅ Monorepo push voltooid.`);
+                const pushOutput = execSync(`git push origin ${currentBranch}`, { cwd: monorepoRoot, encoding: 'utf8' });
+                console.log(`   ✅ Monorepo push voltooid:\n${pushOutput}`);
             } else {
-                console.log(`   ℹ️ Geen wijzigingen gevonden in de monorepo.`);
+                console.log(`   ℹ️ Geen wijzigingen om te committen naar de monorepo.`);
             }
 
             return {

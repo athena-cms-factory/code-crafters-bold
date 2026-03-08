@@ -29,32 +29,8 @@ const App = ({ data: initialData }) => {
 
   useEffect(() => {
     const handleMessage = (event) => {
-      const { type, key, value, file, index } = event.data;
-      if (!type) return;
+      const { type, file, index, key, value, config, section } = event.data;
 
-      // 1. Luister naar updates van de Dock
-      if (type.startsWith('DOCK_UPDATE_')) {
-        setData(prev => {
-          const newData = { ...prev };
-          const settingsKey = file || 'site_settings';
-          if (newData[settingsKey]) {
-            if (Array.isArray(newData[settingsKey])) {
-              const row = { ...newData[settingsKey][index || 0], [key]: value };
-              newData[settingsKey] = [...newData[settingsKey]];
-              newData[settingsKey][index || 0] = row;
-            } else {
-              newData[settingsKey] = { ...newData[settingsKey], [key]: value };
-            }
-            const currentOverrides = JSON.parse(sessionStorage.getItem('athena_live_overrides') || '{}');
-            if (!currentOverrides[settingsKey]) currentOverrides[settingsKey] = {};
-            currentOverrides[settingsKey][key] = value;
-            sessionStorage.setItem('athena_live_overrides', JSON.stringify(currentOverrides));
-          }
-          return newData;
-        });
-      }
-
-      // 2. [NIEUW]: Beantwoord vragen van de Dock (v33 Debug Bridge)
       if (type === 'DOCK_REQUEST_SYNC') {
         console.log('📡 [App] Responding to data sync request for:', key);
         const sourceFile = file || 'site_settings';

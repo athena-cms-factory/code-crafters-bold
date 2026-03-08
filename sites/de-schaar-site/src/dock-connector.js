@@ -210,7 +210,11 @@
                         : value;
                     el.src = src;
                 } else {
-                    el.innerText = value;
+                    // Robust text extraction for style-objects
+                    const text = (typeof value === 'object' && value !== null) 
+                        ? (value.text || value.title || value.label || value.value || '') 
+                        : value;
+                    el.innerText = text;
                 }
             });
         }
