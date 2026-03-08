@@ -39,9 +39,9 @@ export default function EditableText({
   const content = useMemo(() => {
     if (renderValue) return renderValue(actualValue);
     
-    // Safety check: if it's already a primitive, return it
+    // Safety check: if it's already a primitive, return it as string
     if (typeof actualValue !== 'object' || actualValue === null || React.isValidElement(actualValue)) {
-      return actualValue ?? "";
+      return String(actualValue ?? "");
     }
     
     // It's an object, extract the best possible string
@@ -52,11 +52,15 @@ export default function EditableText({
                      actualValue.value || 
                      actualValue.content;
 
-    if (extracted !== undefined) return extracted;
+    if (extracted !== undefined) return String(extracted);
 
-    // Fallback: stringify but hide from main view if it looks like a style-only object
-    return JSON.stringify(actualValue);
+    // Fallback: If it's a style-only object, we don't want to render [object Object]
+    // Return empty string or something sensible
+    return "";
   }, [actualValue, renderValue]);
+
+  // Final render safety
+  const safeContent = typeof content === 'string' ? content : String(content || '');
 
   // 3. Robust Individual Styles (v8.4 Standard)
   const individualStyle = useMemo(() => {
@@ -97,7 +101,7 @@ export default function EditableText({
   }, [actualValue, isObject, style]);
 
   if (!isDev) {
-    return <Tag className={className} style={individualStyle} {...props}>{content}</Tag>;
+    return <Tag className={className} style={individualStyle} {...props}>{safeContent}</Tag>;
   }
 
   // 4. Enhanced Metadata for Dock
@@ -124,7 +128,7 @@ export default function EditableText({
       title={`Shift+Klik om "${dockLabel}" te bewerken in de Dock`}
       {...props}
     >
-      {content}
+      {safeContent}
     </Tag>
   );
 }

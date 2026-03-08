@@ -1,95 +1,109 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useDisplayConfig } from './DisplayConfigContext';
 
 /**
- * EditableLink (v32 - Sibling Discovery)
- * Automatically finds related URL fields when the primary binding is just a label string.
+ * EditableLink (Docked Track v8.4.1)
+ * Passive wrapper that binds to the Athena Dock with individual styling support.
  */
 export default function EditableLink({ 
   url, 
   label,
   children,
   className = "",
+  style = {},
   cmsBind, 
   table, 
   field, 
   id, 
   as: Tag = 'a',
-  data, // We voegen de volledige data-set toe voor discovery
   ...props 
 }) {
+  const { isFieldVisible } = useDisplayConfig() || {};
   const isDev = import.meta.env.DEV;
-  const binding = cmsBind || { file: table, index: id, key: field };
 
-  // 1. Resolve Link & Label
-  let finalLabel = label;
-  let finalUrl = url;
+  const binding = useMemo(() => cmsBind || { 
+    file: table, 
+    index: id !== undefined ? id : 0, 
+    key: field 
+  }, [cmsBind, table, id, field]);
 
-  // Discovery Logic: Als de URL ontbreekt, zoek in de data-bron
-  if (!finalUrl && isDev) {
-    const dataSource = window.athenaData?.[binding.file];
-    if (dataSource) {
-      const row = Array.isArray(dataSource) ? dataSource[binding.index || 0] : dataSource;
-      // Zoek naar sleutels zoals 'cta_url' of 'header_cta_url'
-      const urlKey = `${binding.key}_url`;
-      if (row && row[urlKey]) {
-        finalUrl = row[urlKey];
-      }
-    }
+  // 1. Visibility Check
+  if (isFieldVisible && !isFieldVisible(binding.file, binding.key)) {
+    return null;
   }
 
-  if (typeof url === 'object' && url !== null) {
-    finalLabel = url.label || finalLabel;
-    finalUrl = url.url || url;
+  const isObject = typeof url === 'object' && url !== null && !React.isValidElement(url);
+  const actualValue = url;
+
+  // 2. Advanced Content Extraction
+  const finalLabel = useMemo(() => {
+    if (label) return label;
+    if (!isObject) return "";
+    return actualValue.label || actualValue.text || actualValue.title || "";
+  }, [label, isObject, actualValue]);
+
+  const finalUrl = useMemo(() => {
+    if (!isObject) return actualValue || "";
+    return actualValue.url || "";
+  }, [isObject, actualValue]);
+
+  const actualUrl = useMemo(() => {
+    if (!finalUrl) return "";
+    if (finalUrl.startsWith('http') || finalUrl.startsWith('/') || finalUrl.startsWith('#')) return finalUrl;
+    return `${import.meta.env.BASE_URL}${finalUrl}`.replace(/\/+/g, '/');
+  }, [finalUrl]);
+
+  const content = finalLabel || children || actualUrl;
+  const safeContent = typeof content === 'object' && !React.isValidElement(content) ? (content.text || content.label || JSON.stringify(content)) : content;
+
+  // 3. Robust Individual Styles (v8.4.1 Standard)
+  const individualStyle = useMemo(() => {
+    if (!isObject) return style;
+
+    const styles = {
+      color: actualValue.color,
+      fontSize: actualValue.fontSize ? (typeof actualValue.fontSize === 'number' ? `${actualValue.fontSize}px` : actualValue.fontSize) : undefined,
+      fontWeight: actualValue.fontWeight,
+      fontStyle: actualValue.fontStyle,
+      fontFamily: actualValue.fontFamily,
+      textAlign: actualValue.textAlign,
+      backgroundColor: actualValue.backgroundColor,
+      borderRadius: actualValue.borderRadius ? (typeof actualValue.borderRadius === 'number' ? `${actualValue.borderRadius}px` : actualValue.borderRadius) : undefined,
+      padding: actualValue.padding,
+      ...style
+    };
+
+    return Object.fromEntries(Object.entries(styles).filter(([_, v]) => v !== undefined));
+  }, [actualValue, isObject, style]);
+
+  if (!isDev) {
+    return (
+      <Tag href={Tag === 'a' ? actualUrl : undefined} className={className} style={individualStyle} {...props}>
+        {safeContent}
+      </Tag>
+    );
   }
-  
-  if (typeof label === 'object' && label !== null) {
-    finalUrl = label.url || finalUrl;
-    finalLabel = label.label || finalLabel;
-  }
 
-  const actualUrl = (finalUrl && typeof finalUrl === 'string' && !finalUrl.startsWith('http') && !finalUrl.startsWith('/') && !finalUrl.startsWith('#'))
-    ? `${import.meta.env.BASE_URL}${finalUrl}`.replace(/\/+/g, '/')
-    : finalUrl;
+  const dockBind = JSON.stringify({
+    file: binding.file,
+    index: binding.index,
+    key: binding.key
+  });
 
-  const content = finalLabel || children || (typeof actualUrl === 'string' ? actualUrl : "Link");
-
-  const handleLinkAction = (e) => {
-    if (isDev && e.shiftKey) {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log('📡 [EditableLink] Sending discovered URL to Dock:', finalUrl);
-      window.parent.postMessage({
-        type: 'SITE_CLICK',
-        binding: { file: binding.file, index: binding.index || 0, key: binding.key },
-        value: { label: finalLabel, url: finalUrl }, // Het complete pakket!
-        dockType: 'link'
-      }, '*');
-      return;
-    }
-
-    if (!actualUrl) return;
-    if (actualUrl.startsWith('#')) {
-      const targetId = actualUrl.substring(1);
-      const element = document.getElementById(targetId);
-      if (element) { e.preventDefault(); element.scrollIntoView({ behavior: 'smooth' }); }
-    } else if (Tag === 'button' || !isDev) {
-      if (!actualUrl.startsWith('#') && !actualUrl.startsWith('mailto:') && !actualUrl.startsWith('tel:')) {
-        window.open(actualUrl, '_blank', 'noopener,noreferrer');
-      }
-    }
-  };
+  const dockLabel = field ? field.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : binding.key;
 
   return (
     <Tag
       href={Tag === 'a' ? actualUrl : undefined}
-      data-dock-bind={JSON.stringify({ file: binding.file, index: binding.index || 0, key: binding.key })}
+      data-dock-bind={dockBind}
       data-dock-type="link"
-      data-dock-ignore="true"
+      data-dock-label={dockLabel}
       className={`${className} cursor-pointer hover:ring-2 hover:ring-blue-400/40 rounded-sm transition-all`}
-      onClick={handleLinkAction}
+      style={individualStyle}
+      title={`Shift+Klik om "${dockLabel}" te bewerken in de Dock (Normale klik om link te volgen)`}
       {...props}
     >
-      {content}
+      {safeContent}
     </Tag>
   );
 }

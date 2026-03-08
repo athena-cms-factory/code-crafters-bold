@@ -8,6 +8,9 @@
     "content_top_offset": "0",
     "toon_ondertitel": false,
     "toon_cta_knop": true,
-    "toon_navigatie": true
+    "toon_navigatie": true,
+    "header_height": "40",
+    "header_transparent": "0",
+    "header_visible": true
   }
 ]

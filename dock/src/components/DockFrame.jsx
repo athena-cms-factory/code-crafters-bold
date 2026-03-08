@@ -1219,23 +1219,33 @@ const DockFrame = () => {
                     <label className="text-[9px] uppercase font-black text-slate-400 block mb-1">Items ({siteStructure?.data?.[section]?.length || 0})</label>
                     <div className="max-h-32 overflow-y-auto mb-2 space-y-1 border-y border-slate-100 py-2">
                       {siteStructure?.data?.[section]?.map((item, index) => {
+                        // Helper to extract text from potential Athena style-objects
+                        const extractItemText = (val) => {
+                          if (!val) return null;
+                          if (typeof val === 'string') return val;
+                          if (typeof val === 'object') return val.text || val.title || val.label || val.name || val.value;
+                          return null;
+                        };
+
                         // Slimmere titel bepaling
-                        let title = item.naam || item.titel || item.header || item.kop;
+                        let title = extractItemText(item.naam) || 
+                                    extractItemText(item.titel) || 
+                                    extractItemText(item.header) || 
+                                    extractItemText(item.kop);
+
                         if (!title) {
-                          // Zoek eerste beste string veld dat niet een url/afbeelding is
-                          const stringKey = Object.keys(item).find(k =>
-                            typeof item[k] === 'string' &&
-                            item[k].length < 50 &&
-                            !k.includes('foto') &&
-                            !k.includes('image') &&
-                            !k.includes('url')
-                          );
-                          if (stringKey) title = item[stringKey];
+                          // Zoek eerste beste string of style-object veld
+                          const validKey = Object.keys(item).find(k => {
+                            const val = item[k];
+                            const text = extractItemText(val);
+                            return text && text.length < 50 && !k.includes('foto') && !k.includes('image') && !k.includes('url');
+                          });
+                          if (validKey) title = extractItemText(item[validKey]);
                         }
                         if (!title) title = `Item ${index + 1}`;
 
                         return (
-                          <div key={index} className="flex items-center justify-between bg-white p-1.5 rounded border border-slate-100 text-[10px]" title={`Beheer item: ${title}`}>
+                          <div key={index} className="flex items-center justify-between bg-white p-1.5 rounded border border-slate-100 text-[10px]" title={`Beheer item: ${typeof title === 'string' ? title : 'Item'}`}>
                             <span className="truncate flex-1 pr-2 text-slate-600">{title}</span>
                             <button
                               onClick={() => deleteItem(section, index)}

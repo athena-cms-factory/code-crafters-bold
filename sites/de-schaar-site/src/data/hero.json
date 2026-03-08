@@ -2,18 +2,19 @@
   {
     "titel": {
       "text": "De Schaar",
-      "color": "",
+      "color": "#834444",
       "fontSize": "",
-      "fontWeight": "normal",
+      "fontWeight": "bold",
       "fontStyle": "normal",
       "textAlign": "center",
       "fontFamily": "",
       "shadowX": 0,
       "shadowY": 0,
-      "shadowBlur": 2,
+      "shadowBlur": 6,
       "shadowColor": "#fdfcfc"
     },
     "hero_afbeelding": "hero_de-schaar-1.png",
-    "hero_overlay_transparantie": 0.2
+    "hero_overlay_transparantie": 0.2,
+    "hero_overlay_opacity": "0.1"
   }
 ]
