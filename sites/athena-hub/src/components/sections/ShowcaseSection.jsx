@@ -15,18 +15,19 @@ const ShowcaseSection = ({ sectionName, items, sectionStyle }) => {
     }
     setLoading(true);
     try {
-      const response = await fetch('https://docs.google.com/spreadsheets/d/1Uv2vxokhcvD83uj-ZZTN3yMQZikmtCPM-VAW7xHhMPM/export?format=tsv&gid=0');
-      const text = await response.text();
-      const lines = text.split('\n');
-      const headers = lines[0].split('\t').map(h => h.trim());
-      const data = lines.slice(1).map(line => {
-        const values = line.split('\t');
-        const obj = {};
-        headers.forEach((header, i) => {
-          obj[header] = values[i]?.trim();
-        });
-        return obj;
-      }).filter(item => item.name);
+      const response = await fetch('https://api.github.com/users/athenacmsfactory/repos?sort=updated&per_page=100');
+      const repos = await response.json();
+      
+      const data = repos
+        .filter(repo => !repo.fork && repo.name !== 'athena-x') // Optioneel: filter eigen engine/monorepo uit
+        .map(repo => ({
+          name: repo.name.replace(/-/g, ' '),
+          type: repo.language || 'Project',
+          description: repo.description || 'Geen omschrijving beschikbaar.',
+          githubLink: repo.html_url,
+          liveLink: repo.has_pages ? `https://athenacmsfactory.github.io/${repo.name}/` : repo.homepage
+        }));
+
       setArchiveData(data);
       setShowArchive(true);
     } catch (e) {
