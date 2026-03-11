@@ -39,10 +39,10 @@ const Section = ({ data }) => {
         const currentLayout = layoutSettings[sectionName] || 'list';
 
         // --- 1. HERO SECTION ---
-        if (sectionName === 'basis' || sectionName === 'basis' || sectionName === 'hero') {
+        if (sectionName === 'basis' || sectionName === 'hero') {
           const hero = items[0];
-          const heroTitle = hero.title || hero.titel || hero.hero_header || hero.site_naam;
-          const heroSubtitle = hero.subtitle || hero.ondertitel || hero.introductie;
+          const heroTitle = hero.title || hero.titel || hero.hero_header || hero.site_naam || hero.name || hero.bedrijfsnaam;
+          const heroSubtitle = hero.subtitle || hero.ondertitel || hero.introductie || hero.tagline || hero.slagzin;
           const imgKey = Object.keys(hero).find(k => /foto|afbeelding|url|image|img/i.test(k)) || 'image';
 
           return (
@@ -66,11 +66,11 @@ const Section = ({ data }) => {
               <div className="relative z-10 text-center px-6 max-w-5xl">
                 {!hero[imgKey] && <div className="h-2 w-32 bg-accent mx-auto mb-10 rounded-full shadow-lg shadow-accent/50"></div>}
                 <h1 className="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-tight drop-shadow-2xl">
-                  <EditableText value={heroTitle} cmsBind={{ file: sectionName, index: 0, key: Object.keys(hero).find(k => k === 'title' || k === 'titel' || k === 'hero_header' || k === 'site_naam') || 'title' }} />
+                  <EditableText value={heroTitle} cmsBind={{ file: sectionName, index: 0, key: Object.keys(hero).find(k => k === 'title' || k === 'titel' || k === 'hero_header' || k === 'site_naam' || k === 'name' || k === 'bedrijfsnaam') || 'name' }} />
                 </h1>
                 <div className="flex flex-col items-center gap-12">
                   <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-light italic">
-                    <EditableText value={heroSubtitle} cmsBind={{ file: sectionName, index: 0, key: Object.keys(hero).find(k => k === 'subtitle' || k === 'ondertitel' || k === 'introductie') || 'subtitle' }} />
+                    <EditableText value={heroSubtitle} cmsBind={{ file: sectionName, index: 0, key: Object.keys(hero).find(k => k === 'subtitle' || k === 'ondertitel' || k === 'introductie' || k === 'tagline' || k === 'slagzin') || 'tagline' }} />
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
                     <EditableLink

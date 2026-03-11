@@ -15,12 +15,11 @@ const App = ({ data }) => {
     <DisplayConfigProvider data={data}>
       <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)] transition-colors duration-500">
-          <StyleInjector siteSettings={data['site_settings']} />
-          
-          <Header primaryTable={data[primaryTable]} tableName={primaryTable} siteSettings={data['site_settings']} />
-          
-          <main style={{ paddingTop: 'var(--content-top-offset, 0px)' }}>
-            <Section data={data} />
+          <StyleInjector siteSettings={data['site_settings']} data={data} />
+
+          <Header data={data} />
+
+          <main style={{ paddingTop: 'var(--content-top-offset, 0px)' }}>            <Section data={data} />
           </main>
 
           <Footer data={data} />

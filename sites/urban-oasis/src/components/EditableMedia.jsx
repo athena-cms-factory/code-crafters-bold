@@ -14,11 +14,13 @@ export default function EditableMedia({ src, alt, className, cmsBind, ...props }
     return null;
   }
 
-    let finalPath = src;
+  let finalPath = src;
   if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:')) {
-    const isRootPublic = src.startsWith('./') || (src.includes('.') && !src.includes('/'));
-    const pathPrefix = isRootPublic ? '' : 'images/';
-    finalPath = `${import.meta.env.BASE_URL}${pathPrefix}${src.replace('./', '')}`.replace(/\/+/g, '/');
+    // Als de Media Mapper een pad heeft gezet (bv. "public/images/...") hoeven we niets te doen
+    // Maar als het een simpele filename is, voegen we BASE_URL en images/ toe
+    const isSimpleFilename = !src.includes('/');
+    const pathPrefix = isSimpleFilename ? 'images/' : '';
+    finalPath = `${import.meta.env.BASE_URL}${pathPrefix}${src}`.replace(/\/+/g, '/');
   }
   const finalSrc = finalPath;
 

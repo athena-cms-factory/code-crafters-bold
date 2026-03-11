@@ -4,14 +4,14 @@ import EditableMedia from './EditableMedia';
 import EditableLink from './EditableLink';
 import { Link } from 'react-router-dom';
 
-function Header({ siteSettings = {} }) {
+function Header({ data = {} }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const settings = Array.isArray(siteSettings) ? (siteSettings[0] || {}) : (siteSettings || {});
-  const siteName = settings.site_name || 'pure-relaxation';
-  const logoChar = (settings.logo_text || siteName).charAt(0).toUpperCase();
-
-  // Use a reliable default logo if site_logo_image is missing
+  const settings = data.site_settings || {};
+  const basis = data.basis?.[0] || {};
+  const siteName = settings.site_name || basis.name || 'pure-relaxation';
+  const tagline = settings.tagline || basis.tagline || '';
   const displayLogo = settings.site_logo_image || "athena-icon.svg";
+  const logoChar = siteName.charAt(0).toUpperCase();
 
   const handleScroll = (e) => {
     const url = settings.header_cta_url || "#contact";
@@ -25,7 +25,7 @@ function Header({ siteSettings = {} }) {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-[1000] border-b border-white/10 px-6 transition-all duration-500 flex items-center"
+      className="fixed top-0 left-0 right-0 z-[1000] border-b border-white/10 px-6 transition-all duration-500 flex items-center shadow-sm"
       style={{
         display: settings.header_visible === false ? 'none' : 'flex',
         backgroundColor: 'var(--header-bg, var(--color-header-bg, rgba(255,255,255,0.9)))',
@@ -56,9 +56,9 @@ function Header({ siteSettings = {} }) {
                   <EditableText value={siteName} cmsBind={{ file: 'site_settings', index: 0, key: 'site_name' }} />
                 </span>
               )}
-              {settings.header_show_tagline !== false && settings.tagline && (
+              {tagline && (
                 <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-bold opacity-80">
-                  <EditableText value={settings.tagline} cmsBind={{ file: 'site_settings', index: 0, key: 'tagline' }} />
+                  <EditableText value={tagline} cmsBind={{ file: 'basis', index: 0, key: 'tagline' }} />
                 </span>
               )}
             </div>
