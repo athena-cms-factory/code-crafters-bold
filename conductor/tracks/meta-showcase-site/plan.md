@@ -1,1 +1,0 @@
-- [x] Generate base site via athena-agent CLI (athena-promo)\n- [x] Refine content using AI Interpreter (waarde-propositie)\n- [x] Sync to Google Sheet\n- [x] Deploy naar GitHub Pages

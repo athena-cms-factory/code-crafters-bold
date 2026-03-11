@@ -1,5 +1,0 @@
-- [x] Audit current ThemeEngine and CSS boilerplate
-- [x] Consolidate logic in factory/5-engine/lib/theme-engine.js (Added RGB and Dark Mode support)
-- [x] Implement automated CSS variable generation from blueprint
-- [x] Refactor sites to use optimized theme structure (Updated templates for new sites)
-- [x] Improve Tailwind v4 integration with CSS-variable-first approach

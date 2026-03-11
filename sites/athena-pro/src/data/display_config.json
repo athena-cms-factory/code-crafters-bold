@@ -1,9 +1,0 @@
-{
-  "hero": { "title": true, "subtitle": true, "cta_text": true, "image": true },
-  "intro": { "title": true, "content": true, "subcontent": true, "image": true },
-  "voordelen": { "title": true, "description": true, "icon": true },
-  "innovatie": { "name": true, "skills": true },
-  "showcase": { "name": true, "category": true, "description": true, "link": true, "image": true },
-  "proces": { "stap": true, "titel": true, "tijdsduur": true, "uitleg": true },
-  "contact": { "title": true, "email": true, "linkedin": true, "location": true }
-}

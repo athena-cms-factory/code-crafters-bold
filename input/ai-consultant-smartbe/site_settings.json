@@ -1,9 +1,0 @@
-{
-  "projectName": "ai-consultant-smartbe",
-  "siteType": "portfolio-kbm",
-  "blueprintFile": "portfolio-kbm.json",
-  "layoutName": "standard",
-  "styleName": "professional",
-  "siteModel": "SPA",
-  "reasoning": "Ik heb gekozen voor een professioneel portfolio omdat het een AI Consultant betreft en een professionele uitstraling vereist. De siteType is 'portfolio' omdat het doel is om de vaardigheden en ervaringen van de consultant te laten zien. De styleName is 'professional' om een zakelijke en betrouwbare indruk te geven. De siteModel is 'SPA' om een moderne en responsieve website te bieden."
-}

@@ -1,4 +1,0 @@
---- QUICK-CREATE INPUT ---
-Test Site
-Just a test for the registry.
-

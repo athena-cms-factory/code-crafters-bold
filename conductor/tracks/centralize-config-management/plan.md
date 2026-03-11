@@ -1,1 +1,0 @@
-- [x] Implement ConfigManager.js\n- [x] Add /api/system/config endpoint to dashboard\n- [x] Refactor dashboard frontend to fetch config\n- [x] Refactor shell scripts to query ConfigManager\n- [x] Clean up all hardcoded 500x/400x fallbacks

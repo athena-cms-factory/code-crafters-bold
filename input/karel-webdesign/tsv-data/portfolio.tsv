@@ -1,4 +1,0 @@
-title	description	tech_stack	status	github_url	live_url	image_url
-Bouwbedrijf Peeters	Een moderne one-page website voor een lokaal aannemersbedrijf, inclusief contactformulier en projectgalerij.	React, Tailwind CSS, Sanity CMS	Live	https://github.com/kareltestspecial/bouwbedrijf	https://bouwbedrijf-peeters-demo.netlify.app	https://picsum.photos/id/10/800/600
-Bistro De Markt	Sfeervolle website voor een restaurant met online reserveringssysteem en dynamische menukaart.	Next.js, PostgreSQL, Stripe	In Ontwikkeling	https://github.com/kareltestspecial/bistro-app		https://picsum.photos/id/42/800/600
-Kinesist Verstraeten	Zakelijke website met CMS integratie zodat de klant zelf blogposts en nieuws kan toevoegen.	Vue.js, Nuxt, Firebase	Live	https://github.com/kareltestspecial/kine-site	https://kine-verstraeten.be	https://picsum.photos/id/60/800/600

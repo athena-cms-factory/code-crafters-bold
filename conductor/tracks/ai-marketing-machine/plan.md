@@ -1,5 +1,0 @@
-- [x] Implement MarketingController.js
-- [x] Add "generate-blog" method (LLM -> JSON -> Sheet)
-- [x] Integrate with athena-agent CLI
-- [x] Implement automated SEO metadata optimization
-- [x] Integrate SEO and Blog features into Dashboard UI

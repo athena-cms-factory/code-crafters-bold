@@ -1,4 +1,0 @@
-- [x] Audit existing process logic
-- [x] Implement ProcessManager.js
-- [x] Refactor dashboard to use ProcessManager
-- [x] Clean up redundant server endpoint files

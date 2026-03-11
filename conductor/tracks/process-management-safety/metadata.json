@@ -1,1 +1,0 @@
-{ "id": "process-management-safety", "title": "Safe & Structured Process Management", "status": "active", "description": "Consolidate process spawning and termination logic into a central ProcessManager to prevent zombie processes and port conflicts." }

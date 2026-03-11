@@ -1,3 +1,0 @@
-title	category	summary	description	tech_stack	demo_url	repo_url	image_url	status
-Athena CMS Factory	AI / Web Automation	Een headless CMS engine aangedreven door Google Sheets en AI.	Dit systeem automatiseert de volledige lifecycle van een website, van content parsing tot cloud deployment.	Node.js, React, Vite, Gemini AI, Git				Live
-Project Hydra (MPA Engine)	Web Scraping / Data	Een engine voor het genereren van Multi-Page Applications uit gescrapte data.	Ontworpen voor grote informatieve sites zoals het FPC Gent archief.	Cheerio, React Router, Vite				Beta

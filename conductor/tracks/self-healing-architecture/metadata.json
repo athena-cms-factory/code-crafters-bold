@@ -1,1 +1,0 @@
-{ "id": "self-healing-architecture", "title": "Athena Doctor (Self-Healing)", "status": "active", "description": "Create a DoctorController that audits site integrity, fixes broken dependencies, and ensures data consistency." }

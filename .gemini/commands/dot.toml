@@ -1,7 +1,0 @@
-# This command will be invoked via: /doct
-
-description = "Asks the model to update documentation and task management."
-
-prompt = """
-update factory/docs/ en factory/TASKS/ waar nodig
-"""

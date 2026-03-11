@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://jets-archive.netlify.app/sitemap.xml

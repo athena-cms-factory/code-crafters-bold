@@ -1,1 +1,0 @@
-{ "id": "optimize-theme-engine", "title": "Optimize Theme Engine & CSS Architecture", "status": "active", "description": "Consolidate ThemeEngine logic, improve Tailwind v4 integration, and automate CSS variable generation for better content/style separation." }

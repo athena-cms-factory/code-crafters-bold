@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Athena Dashboard
-Comment=CMS Factory Master Dashboard
-Exec=/home/kareltestspecial/ath/athena-2/factory/athena.sh
-Icon=/home/kareltestspecial/ath/athena-2/factory/dashboard/public/athena-icon.svg
-Terminal=false
-Type=Application
-Categories=Development;

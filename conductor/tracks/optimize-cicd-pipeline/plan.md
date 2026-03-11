@@ -1,1 +1,0 @@
-- [x] Make athena-publisher.yml portable (remove hardcoded repo names)\n- [x] Add pre-flight build check (Vite build) for changed sites\n- [x] Optimize site detection logic\n- [x] Add Lighthouse audit step (Performance, SEO, Accessibility)

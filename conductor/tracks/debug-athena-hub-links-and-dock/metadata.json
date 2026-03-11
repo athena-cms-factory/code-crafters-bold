@@ -1,9 +1,0 @@
-{
-  "id": "debug-athena-hub-links-and-dock",
-  "name": "Debug Athena Hub: Links & Dock Editing",
-  "type": "debug",
-  "status": "completed",
-  "owner": "profdrkdc",
-  "created_at": "2026-02-21T00:00:00.000Z",
-  "description": "Fixing broken Dock editing in athena-hub and implementing a system to resolve localhost links to live URLs."
-}

@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://athena-pro.netlify.app/sitemap.xml

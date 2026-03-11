@@ -1,5 +1,0 @@
-- [x] Audit existing Gateway.js
-- [x] Install and configure mail listener (imapflow)
-- [x] Implement "Mail-to-Agent" logic (Parse body -> SiteController)
-- [x] Implement "Agent-to-Mail" reply logic (Mock/Log for now)
-- [x] Create a "Watchdog" service to keep the gateway alive (start-gateway command)

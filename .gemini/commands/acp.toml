@@ -1,7 +1,0 @@
-# This command will be invoked via: /acp
-
-description = "Asks the model to add, commit, push."
-
-prompt = """
-add commit push
-"""

@@ -1,1 +1,0 @@
-{ "id": "multi-channel-gateway", "title": "Multi-Channel Mail Gateway", "status": "active", "description": "Connect the Athena Agent directly to a mailbox (IMAP) to process customer requests without human intervention." }

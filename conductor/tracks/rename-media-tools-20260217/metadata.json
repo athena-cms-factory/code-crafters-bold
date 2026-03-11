@@ -1,7 +1,0 @@
-{
-  "id": "rename-media-tools-20260217",
-  "title": "Renaming Media Tools & Scripts",
-  "description": "Standardizing terminology for media tools: Media Visualizer -> Site Media Mapper, Media Fetcher -> Site Media Fetcher, AI Image Prompt Generator -> Site AI Image Prompt Generator. Includes script renaming for consistency.",
-  "status": "in-progress",
-  "startedAt": "2026-02-17T16:30:00.000Z"
-}

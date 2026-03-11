@@ -1,8 +1,0 @@
-{
-  "track_id": "rename_basis_20260213",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-02-13T12:00:00Z",
-  "updated_at": "2026-02-13T12:00:00Z",
-  "description": "Rename all occurrences of basisgegevens to basis across the factory, dock, templates, and Google Sheets integration."
-}

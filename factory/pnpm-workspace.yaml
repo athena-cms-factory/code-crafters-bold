@@ -1,9 +1,0 @@
-packages:
-  - '5-engine'
-  - '2-templates'
-  - 'athena-api'
-  - 'athena-dashboard-ui'
-  - 'sites/*'
-
-onlyBuiltDependencies:
-  - esbuild

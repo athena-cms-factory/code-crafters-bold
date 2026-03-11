@@ -1,7 +1,0 @@
-{
-  "id": "refactor-sync-engine",
-  "title": "Standardize Data Synchronization Engine",
-  "status": "in-progress",
-  "description": "Consolidate fragmented sync-*.js scripts into a unified DataManager class.",
-  "created_at": "2026-02-14"
-}

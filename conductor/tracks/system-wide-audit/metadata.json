@@ -1,7 +1,0 @@
-{
-  "id": "system-wide-audit",
-  "name": "System-Wide Quality Audit & Optimization",
-  "status": "in-progress",
-  "priority": "high",
-  "tags": ["audit", "refactoring", "quality"]
-}

@@ -1,7 +1,0 @@
-[
-  { "account": "KarelTestSpecial", "title": "portfolio-kbm", "description": "Centraal re-integratie portfolio dossier.", "tags": ["React", "Vite", "Dossier"], "url": "https://github.com/KarelTestSpecial/portfolio-kbm" },
-  { "account": "KarelTestSpecial", "title": "kdc-master-dashboard", "description": "Centraal dashboard voor KDC infrastructuur.", "tags": ["Node.js", "PM2", "Dashboard"], "url": "https://github.com/KarelTestSpecial/kdc-master-dashboard" },
-  { "account": "KarelTestSpecial", "title": "aiga", "description": "AI Automation Agency core engine.", "tags": ["GenAI", "Automation", "Agents"], "url": "https://github.com/KarelTestSpecial/aiga" },
-  { "account": "athenacmsfactory", "title": "athena-x", "description": "Core engine van Athena CMS Factory.", "tags": ["CMS", "Vite", "JSON-Driven"], "url": "https://github.com/athenacmsfactory/athena-x" },
-  { "account": "athenacmsfactory", "title": "demo-portfolio", "description": "Athena CMS Showcase: Portfolio template.", "tags": ["Template", "Showcase"], "url": "https://github.com/athenacmsfactory/demo-portfolio" }
-]

@@ -1,7 +1,0 @@
-# This command will be invoked via: /dtp
-
-description = "Asks the model to update documentation and task management and then add commit push."
-
-prompt = """
-update factory/docs en factory/TASKS/ waar nodig ; add commit push
-"""
