@@ -14,10 +14,10 @@ const Testimonials = ({ data, sectionName }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {data.map((item, index) => {
-                        const citaatKey = Object.keys(item).find(k => /tekst|quote|citaat|review/i.test(k)) || 'tekst';
-                        const auteurKey = Object.keys(item).find(k => /naam|auteur|klant/i.test(k)) || 'naam';
-                        const roleKey = Object.keys(item).find(k => /rol|functie|bedrijf/i.test(k)) || 'rol';
-                        const imgKey = Object.keys(item).find(k => /foto|afbeelding/i.test(k));
+                        const citaatKey = Object.keys(item).find(k => /tekst|quote|citaat|review|comment/i.test(k)) || 'comment';
+                        const auteurKey = Object.keys(item).find(k => /naam|name|auteur|klant|customer/i.test(k)) || 'name';
+                        const roleKey = Object.keys(item).find(k => /role|rol|functie|bedrijf/i.test(k)) || 'role';
+                        const imgKey = Object.keys(item).find(k => /foto|afbeelding|image/i.test(k));
 
                         return (
                             <div key={index} className="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100 flex flex-col relative">

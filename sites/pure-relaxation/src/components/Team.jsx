@@ -14,15 +14,17 @@ const Team = ({ data, sectionName }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
                     {data.map((item, index) => {
-                        const naamKey = Object.keys(item).find(k => /naam/i.test(k)) || 'naam';
-                        const rolKey = Object.keys(item).find(k => /rol|functie/i.test(k)) || 'rol';
+                        const naamKey = Object.keys(item).find(k => /name|naam/i.test(k)) || 'name';
+                        const rolKey = Object.keys(item).find(k => /role|rol|functie/i.test(k)) || 'role';
                         const bioKey = Object.keys(item).find(k => /tekst|bio|beschrijving/i.test(k)) || 'bio';
-                        const imgKey = Object.keys(item).find(k => /foto|afbeelding/i.test(k)) || 'foto';
+                        const imgKey = Object.keys(item).find(k => /image|foto|afbeelding/i.test(k)) || 'image_url';
+
+                        const displayImg = item[imgKey] || "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400"; // Fallback placeholder
 
                         return (
                             <div key={index} className="flex flex-col items-center text-center group">
                                 <div className="w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-white shadow-2xl group-hover:scale-105 transition-transform duration-300 ring-4 ring-transparent hover:ring-accent/30 relative">
-                                    <EditableMedia src={item[imgKey]} cmsBind={{ file: sectionName, index, key: imgKey }} className="w-full h-full object-cover" />
+                                    <EditableMedia src={displayImg} cmsBind={{ file: sectionName, index, key: imgKey }} className="w-full h-full object-cover" />
                                 </div>
                                 <h3 className="text-xl font-bold text-primary mb-1">
                                     <EditableText value={item[naamKey]} cmsBind={{ file: sectionName, index, key: naamKey }} />
