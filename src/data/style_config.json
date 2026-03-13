@@ -1,0 +1,19 @@
+{
+  "--color-primary": "#000000",
+  "--color-secondary": "#FFD700",
+  "--color-accent": "#FF0055",
+  "--color-button-bg": "#FFD700",
+  "--color-card-bg": "#FFFFFF",
+  "--color-header-bg": "#FFFFFF",
+  "--color-background": "#F0F0F0",
+  "--color-text": "#000000",
+  "--color-heading": "#000000",
+  "--color-title": "#000000",
+  "--color-surface": "#FFFFFF",
+  "--font-sans": "'Oswald', sans-serif",
+  "--font-serif": "'Playfair Display', serif",
+  "--font-mono": "'Space Mono', monospace",
+  "--radius-custom": "0px",
+  "--shadow-main": "4px 4px 0px rgba(0, 0, 0, 1)",
+  "--animate-reveal": "reveal 0.3s steps(4) forwards"
+}

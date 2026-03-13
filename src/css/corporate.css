@@ -1,0 +1,130 @@
+@import "tailwindcss";
+/* Athena Corporate Theme - Tailwind CSS v4 */
+
+@theme {
+    /* Corporate tokens */
+    --color-primary: #0F4C81;
+    /* Classic Navy */
+    --color-secondary: #6C757D;
+    --color-accent: #007BFF;
+    --color-button-bg: #0F4C81;
+    --color-card-bg: #FFFFFF;
+    --color-header-bg: #FFFFFF;
+    --color-background: #F8F9FA;
+    /* Very light gray */
+    --color-text: #212529;
+    --color-heading: #0F4C81;
+    --color-title: #0F4C81;
+    --color-surface: #FFFFFF;
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Inter', system-ui, sans-serif;
+    /* Corporate usually sticks to sans */
+
+    --radius-custom: 0.25rem;
+    /* Minimal radius */
+    --shadow-main: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    --animate-reveal: reveal 0.5s ease-out forwards;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@layer base {
+    :root {
+        color-scheme: light;
+        scroll-behavior: smooth;
+
+        --color-primary: #0F4C81;
+        --color-heading: #0F4C81;
+        --color-title: #0F4C81;
+        --color-accent: #007BFF;
+        --color-button-bg: #0F4C81;
+        --color-card-bg: #FFFFFF;
+        --color-header-bg: #FFFFFF;
+        --color-surface: #FFFFFF;
+        --color-background: #F8F9FA;
+        --color-text: #212529;
+        --radius-custom: 0.25rem;
+        --shadow-main: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    :root.dark {
+        color-scheme: dark;
+        --color-primary: #FFFFFF;
+        --color-heading: #FFFFFF;
+        --color-title: #FFFFFF;
+        --color-accent: #4DA3FF;
+        --color-button-bg: #4DA3FF;
+        --color-card-bg: #212529;
+        --color-header-bg: #121212;
+        --color-surface: #212529;
+        --color-background: #121212;
+        --color-text: #F8F9FA;
+        --shadow-main: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-family: var(--font-sans);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: var(--color-heading);
+        font-family: var(--font-sans);
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    section {
+        @starting-style {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        transition: opacity 0.5s,
+        transform 0.5s;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: var(--radius-custom);
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply px-5 py-2 text-white font-medium transition-colors hover:opacity-90 active:translate-y-[1px];
+        background-color: var(--color-button-bg);
+        border-radius: var(--radius-custom);
+    }
+
+    .card {
+        @apply p-6 border border-gray-200 transition-shadow hover:shadow-md;
+        background-color: var(--color-card-bg);
+        border-radius: var(--radius-custom);
+        box-shadow: var(--shadow-main);
+    }
+
+    .badge {
+        @apply px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold uppercase tracking-wide rounded-sm;
+    }
+}

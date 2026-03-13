@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://code-crafters.netlify.app/sitemap.xml

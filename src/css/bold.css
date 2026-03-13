@@ -1,0 +1,138 @@
+@import "tailwindcss";
+/* Athena Bold Theme - Tailwind CSS v4 */
+
+@theme {
+    /* Bold tokens */
+    --color-primary: #000000;
+    --color-secondary: #FFD700;
+    --color-accent: #FF0055;
+    --color-button-bg: #FFD700;
+    --color-card-bg: #FFFFFF;
+    --color-header-bg: #FFFFFF;
+    --color-background: #F0F0F0;
+    --color-text: #000000;
+    --color-heading: #000000;
+    --color-title: #000000;
+    --color-surface: #FFFFFF;
+
+    --font-sans: 'Oswald', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', monospace;
+
+    --radius-custom: 0px;
+    --shadow-main: 4px 4px 0px rgba(0, 0, 0, 1);
+
+    --animate-reveal: reveal 0.3s steps(4) forwards;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@layer base {
+    :root {
+        color-scheme: light;
+        scroll-behavior: smooth;
+
+        --color-primary: #000000;
+        --color-heading: #000000;
+        --color-title: #000000;
+        --color-accent: #FF0055;
+        --color-button-bg: #FFD700;
+        --color-card-bg: #FFFFFF;
+        --color-header-bg: #FFFFFF;
+        --color-surface: #FFFFFF;
+        --color-background: #F0F0F0;
+        --color-text: #000000;
+        --radius-custom: 0px;
+        --shadow-main: 4px 4px 0px rgba(0, 0, 0, 1);
+    }
+
+    :root.dark {
+        color-scheme: dark;
+        --color-primary: #FFFFFF;
+        --color-heading: #FFFFFF;
+        --color-title: #FFFFFF;
+        --color-accent: #FF0055;
+        --color-button-bg: #FFD700;
+        --color-card-bg: #000000;
+        --color-header-bg: #000000;
+        --color-surface: #000000;
+        --color-background: #111111;
+        --color-text: #FFFFFF;
+        --shadow-main: 4px 4px 0px #FFFFFF;
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-family: 'Space Mono', monospace;
+        /* Brutalist vibe */
+        line-height: 1.4;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: var(--color-heading);
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    h1 {
+        border-bottom: 4px solid var(--color-accent);
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+    }
+
+    section {
+        @starting-style {
+            opacity: 0;
+        }
+
+        transition: opacity 0.3s;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        border: 2px solid var(--color-text);
+        border-radius: 0;
+        box-shadow: var(--shadow-main);
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply px-6 py-3 text-black font-black uppercase tracking-wider transition-transform hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0;
+        background-color: var(--color-button-bg);
+        border: 2px solid var(--color-text);
+        box-shadow: var(--shadow-main);
+    }
+
+    .card {
+        @apply p-6 border-2 border-black;
+        background-color: var(--color-card-bg);
+        border-radius: 0;
+        box-shadow: var(--shadow-main);
+    }
+
+    .badge {
+        @apply px-2 py-1 bg-black text-white text-sm font-bold uppercase;
+    }
+}
